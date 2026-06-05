@@ -20,7 +20,7 @@ npm run build
 Add your real profile photo here:
 
 ```text
-public/profile.jpg
+public/profile.jpeg
 ```
 
 Add your resume PDF here:

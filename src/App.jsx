@@ -12,7 +12,6 @@ import {
   ExternalLink,
   FileText,
   GitBranch,
-  BriefcaseBusiness,
   Mail,
   MapPin,
   Menu,
@@ -25,6 +24,33 @@ import {
   Workflow,
   X,
 } from "lucide-react";
+import { FaAws, FaGithub, FaJava, FaLinkedinIn } from "react-icons/fa6";
+import {
+  SiAnsible,
+  SiC,
+  SiCplusplus,
+  SiDocker,
+  SiFirebase,
+  SiFlask,
+  SiGit,
+  SiGithubactions,
+  SiGnubash,
+  SiJenkins,
+  SiKubernetes,
+  SiLinux,
+  SiMongodb,
+  SiMysql,
+  SiNodedotjs,
+  SiPostman,
+  SiPython,
+  SiPytorch,
+  SiReact,
+  SiScikitlearn,
+  SiSelenium,
+  SiStreamlit,
+  SiTensorflow,
+  SiTerraform,
+} from "react-icons/si";
 
 const profile = {
   name: "Parth Rajesh Chandurkar",
@@ -42,58 +68,101 @@ const profile = {
 
 const navItems = ["About", "Skills", "Experience", "Projects", "Research", "Contact"];
 
+const skill = (name, icon, color) => ({ name, icon, color });
+const awsOrange = "#ff9900";
+
+const featuredStack = [
+  skill("AWS", FaAws, awsOrange),
+  skill("Docker", SiDocker, "#2496ed"),
+  skill("Kubernetes", SiKubernetes, "#326ce5"),
+  skill("Terraform", SiTerraform, "#844fba"),
+  skill("GitHub Actions", SiGithubactions, "#ffffff"),
+];
+
 const skillGroups = [
   {
     title: "Languages",
     icon: Code2,
     accent: "cyan",
-    items: ["C", "C++", "Python", "Java", "SQL", "Bash"],
+    items: [
+      skill("C", SiC, "#a8b9cc"),
+      skill("C++", SiCplusplus, "#659ad2"),
+      skill("Python", SiPython, "#ffd43b"),
+      skill("Java", FaJava, "#f89820"),
+      skill("SQL", Database, "#38bdf8"),
+      skill("Bash", SiGnubash, "#4eaa25"),
+    ],
   },
   {
     title: "Cloud & DevOps",
     icon: Cloud,
     accent: "violet",
     items: [
-      "AWS EC2",
-      "S3",
-      "RDS",
-      "Lambda",
-      "IAM",
-      "DynamoDB",
-      "Athena",
-      "CloudWatch",
-      "Docker",
-      "Kubernetes",
-      "Jenkins",
-      "Terraform",
-      "Ansible",
-      "Linux",
-      "GitHub Actions",
+      skill("AWS EC2", FaAws, awsOrange),
+      skill("S3", FaAws, awsOrange),
+      skill("RDS", Database, "#527fff"),
+      skill("Lambda", FaAws, awsOrange),
+      skill("IAM", ShieldCheck, "#a855f7"),
+      skill("DynamoDB", Database, "#4053d6"),
+      skill("Athena", Activity, "#38bdf8"),
+      skill("CloudWatch", Activity, "#ff4f8b"),
+      skill("Docker", SiDocker, "#2496ed"),
+      skill("Kubernetes", SiKubernetes, "#326ce5"),
+      skill("Jenkins", SiJenkins, "#d24939"),
+      skill("Terraform", SiTerraform, "#844fba"),
+      skill("Ansible", SiAnsible, "#ee0000"),
+      skill("Linux", SiLinux, "#fcc624"),
+      skill("GitHub Actions", SiGithubactions, "#ffffff"),
+      skill("Git", SiGit, "#f05032"),
     ],
   },
   {
     title: "Web & APIs",
     icon: ServerCog,
     accent: "green",
-    items: ["React", "Node.js", "Flask", "REST APIs", "Postman", "Selenium"],
+    items: [
+      skill("React", SiReact, "#61dafb"),
+      skill("Node.js", SiNodedotjs, "#5fa04e"),
+      skill("Flask", SiFlask, "#ffffff"),
+      skill("REST APIs", ServerCog, "#34d399"),
+      skill("Postman", SiPostman, "#ff6c37"),
+      skill("Selenium", SiSelenium, "#43b02a"),
+    ],
   },
   {
     title: "Databases",
     icon: Database,
     accent: "amber",
-    items: ["MongoDB", "MySQL", "Firebase", "DynamoDB"],
+    items: [
+      skill("MongoDB", SiMongodb, "#47a248"),
+      skill("MySQL", SiMysql, "#4479a1"),
+      skill("Firebase", SiFirebase, "#ffca28"),
+      skill("DynamoDB", Database, "#4053d6"),
+      skill("AWS RDS", FaAws, awsOrange),
+    ],
   },
   {
     title: "AI / ML",
     icon: BrainCircuit,
     accent: "rose",
-    items: ["Machine Learning", "NLP", "TensorFlow", "PyTorch", "scikit-learn"],
+    items: [
+      skill("Machine Learning", BrainCircuit, "#fb7185"),
+      skill("NLP", BrainCircuit, "#a855f7"),
+      skill("TensorFlow", SiTensorflow, "#ff6f00"),
+      skill("PyTorch", SiPytorch, "#ee4c2c"),
+      skill("scikit-learn", SiScikitlearn, "#f7931e"),
+    ],
   },
   {
     title: "Analytics",
     icon: Activity,
     accent: "blue",
-    items: ["Power BI", "Streamlit", "Monitoring", "Dashboards"],
+    items: [
+      skill("Power BI", Activity, "#f2c811"),
+      skill("Streamlit", SiStreamlit, "#ff4b4b"),
+      skill("Monitoring", Activity, "#60a5fa"),
+      skill("Dashboards", Workflow, "#34d399"),
+    ],
   },
 ];
 
@@ -191,7 +260,7 @@ const stats = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [avatarSrc, setAvatarSrc] = useState("/profile.jpg");
+  const [avatarSrc, setAvatarSrc] = useState("/profile.jpeg");
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
@@ -259,17 +328,26 @@ function App() {
 
             <div className="hero-actions" aria-label="Profile links">
               <a className="button button-primary" href={profile.github} target="_blank" rel="noreferrer">
-                <GitBranch size={18} />
+                <FaGithub size={18} />
                 GitHub
               </a>
               <a className="button button-secondary" href={profile.linkedin} target="_blank" rel="noreferrer">
-                <BriefcaseBusiness size={18} />
+                <FaLinkedinIn size={18} />
                 LinkedIn
               </a>
               <a className="button button-ghost" href={profile.resume} target="_blank" rel="noreferrer">
                 <Download size={18} />
                 Resume
               </a>
+            </div>
+
+            <div className="hero-stack" aria-label="Featured technologies">
+              {featuredStack.map(({ name, icon: StackIcon, color }) => (
+                <span className="stack-chip" key={name} style={{ "--skill-color": color }}>
+                  <StackIcon size={18} aria-hidden="true" />
+                  {name}
+                </span>
+              ))}
             </div>
           </div>
 
@@ -327,12 +405,18 @@ function App() {
             {skillGroups.map(({ title, icon: Icon, accent, items }) => (
               <article className={`skill-card accent-${accent}`} key={title}>
                 <div className="card-title">
-                  <Icon size={20} />
-                  <h3>{title}</h3>
+                  <div className="card-title-main">
+                    <Icon size={20} />
+                    <h3>{title}</h3>
+                  </div>
+                  <span className="skill-count">{items.length}</span>
                 </div>
-                <div className="tag-cloud">
-                  {items.map((item) => (
-                    <span key={item}>{item}</span>
+                <div className="skill-cloud">
+                  {items.map(({ name, icon: SkillIcon, color }) => (
+                    <span className="skill-pill" key={name} style={{ "--skill-color": color }}>
+                      <SkillIcon size={18} aria-hidden="true" />
+                      <span>{name}</span>
+                    </span>
                   ))}
                 </div>
               </article>
@@ -454,7 +538,7 @@ function App() {
         <section className="section contact-section" id="contact">
           <div className="section-heading">
             <span className="section-kicker">Contact</span>
-            <h2>Let’s build something reliable.</h2>
+            <h2>Let's build something reliable.</h2>
           </div>
           <div className="contact-layout">
             <div className="contact-details">
@@ -467,11 +551,11 @@ function App() {
                 {profile.phone}
               </a>
               <a href={profile.github} target="_blank" rel="noreferrer">
-                <GitBranch size={18} />
+                <FaGithub size={18} />
                 github.com/ParthrChandurkar
               </a>
               <a href={profile.linkedin} target="_blank" rel="noreferrer">
-                <BriefcaseBusiness size={18} />
+                <FaLinkedinIn size={18} />
                 linkedin.com/in/parth-chandurkar
               </a>
               <span>
@@ -503,7 +587,7 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <span>© {currentYear} {profile.name}</span>
+        <span>&copy; {currentYear} {profile.name}</span>
         <a href={profile.leetcode} target="_blank" rel="noreferrer">
           LeetCode <ChevronRight size={14} />
         </a>

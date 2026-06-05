@@ -3,7 +3,7 @@
 Place your real profile photo at:
 
 ```text
-public/profile.jpg
+public/profile.jpeg
 ```
 
 Place your resume PDF at:
