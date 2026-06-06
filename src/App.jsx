@@ -66,7 +66,15 @@ const profile = {
   resume: "/Parth_Rajesh_Chandurkar_Resume.pdf",
 };
 
-const navItems = ["About", "Skills", "Experience", "Projects", "Research", "Contact"];
+const navItems = [
+  { label: "Home", id: "top" },
+  { label: "About", id: "about" },
+  { label: "Skills", id: "skills" },
+  { label: "Education", id: "education" },
+  { label: "Experience", id: "experience" },
+  { label: "Work", id: "work" },
+  { label: "Contact", id: "contact" },
+];
 
 const skill = (name, icon, color) => ({ name, icon, color });
 const awsOrange = "#ff9900";
@@ -282,6 +290,27 @@ const certifications = [
   "Career Essentials in Project Management - Microsoft & LinkedIn Learning",
 ];
 
+const education = [
+  {
+    title: "B.Tech in Information Technology",
+    school: "Vishwakarma Institute of Information Technology, Pune",
+    period: "2023 - 2027",
+    status: "Pursuing | CGPA 8.71",
+  },
+  {
+    title: "Cloud & DevOps Engineering Track",
+    school: "AWS, Kubernetes, Terraform, CI/CD, Linux",
+    period: "Current Focus",
+    status: "Building production-grade portfolio systems",
+  },
+  {
+    title: "DevOps & Software Engineering",
+    school: "IBM, Cisco, AWS, Microsoft Learning",
+    period: "Certifications",
+    status: "Validated fundamentals across delivery, networks, and cloud",
+  },
+];
+
 const stats = [
   { value: "78%", label: "F1 ML accuracy" },
   { value: "12%", label: "Lap-loss reduction" },
@@ -317,8 +346,8 @@ function App() {
 
         <nav className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Primary navigation">
           {navItems.map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu}>
-              {item}
+            <a key={item.id} href={`#${item.id}`} onClick={closeMenu}>
+              {item.label}
             </a>
           ))}
         </nav>
@@ -344,8 +373,15 @@ function App() {
                 <Terminal size={16} />
                 <span>cloud/devops engineer</span>
               </div>
-              <h1 id="hero-title">{profile.name}</h1>
-              <p className="hero-role">{profile.role}</p>
+              <h1 id="hero-title">
+                <span>Hi There,</span>
+                <span>I'm Parth Rajesh</span>
+                <span className="name-accent">Chandurkar</span>
+              </h1>
+              <p className="hero-role">
+                I am into <span>Cloud Automation</span>
+                <i aria-hidden="true" />
+              </p>
               <p className="hero-copy">
                 I build cloud-ready systems, automate delivery pipelines, and connect DevOps,
                 MLOps, and full-stack engineering into products that are measurable, resilient,
@@ -537,6 +573,28 @@ function App() {
           </div>
         </section>
 
+        <section className="section education-section" id="education">
+          <div className="section-heading centered-heading">
+            <span className="section-kicker">Education</span>
+            <h2>Learning path built around cloud systems.</h2>
+          </div>
+          <div className="education-grid">
+            {education.map((item) => (
+              <article className="education-card" key={item.title}>
+                <div className="education-icon">
+                  <Award size={22} />
+                </div>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.school}</p>
+                  <span>{item.period}</span>
+                  <strong>{item.status}</strong>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="section timeline-section" id="experience">
           <div className="section-heading">
             <span className="section-kicker">Experience</span>
@@ -579,10 +637,10 @@ function App() {
           </div>
         </section>
 
-        <section className="section projects-section" id="projects">
+        <section className="section projects-section" id="work">
           <div className="section-heading">
-            <span className="section-kicker">Projects</span>
-            <h2>Systems built for operations, visibility, and scale.</h2>
+            <span className="section-kicker">Work</span>
+            <h2>Projects built for operations, visibility, and scale.</h2>
           </div>
           <div className="project-grid">
             {projects.map(({ title, label, status, stack, github, icon: Icon, points }) => (
