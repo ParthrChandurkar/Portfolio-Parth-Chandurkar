@@ -87,37 +87,6 @@ const featuredStack = [
   skill("GitHub Actions", SiGithubactions, "#ffffff"),
 ];
 
-const opsStages = [
-  {
-    label: "Provision",
-    command: "terraform apply",
-    detail: "Reusable AWS infrastructure with IAM, compute, storage, and databases.",
-    icon: SiTerraform,
-    color: "#844fba",
-  },
-  {
-    label: "Containerize",
-    command: "docker build",
-    detail: "Portable services packaged for repeatable delivery and environment parity.",
-    icon: SiDocker,
-    color: "#2496ed",
-  },
-  {
-    label: "Orchestrate",
-    command: "kubectl rollout",
-    detail: "Kubernetes deployments with health checks, rollbacks, and scaling paths.",
-    icon: SiKubernetes,
-    color: "#326ce5",
-  },
-  {
-    label: "Observe",
-    command: "grafana alerts",
-    detail: "Metrics, logs, dashboards, and failure signals for production confidence.",
-    icon: Activity,
-    color: "#34d399",
-  },
-];
-
 const skillGroups = [
   {
     title: "Languages",
@@ -312,9 +281,6 @@ const education = [
 ];
 
 const stats = [
-  { value: "78%", label: "F1 ML accuracy" },
-  { value: "12%", label: "Lap-loss reduction" },
-  { value: "35%", label: "Retention lift" },
   { value: "8.71", label: "CGPA" },
 ];
 
@@ -374,8 +340,7 @@ function App() {
                 <span>cloud/devops engineer</span>
               </div>
               <h1 id="hero-title">
-                <span>Hi There,</span>
-                <span>I'm Parth Rajesh</span>
+                <span>Parth Rajesh</span>
                 <span className="name-accent">Chandurkar</span>
               </h1>
               <p className="hero-role">
@@ -502,45 +467,6 @@ function App() {
                 <span>Building next</span>
                 <strong>InfraWatch and DevPilot</strong>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section ops-section" aria-labelledby="ops-title">
-          <div className="section-heading">
-            <span className="section-kicker">Cloud Delivery Loop</span>
-            <h2 id="ops-title">From infrastructure plan to observable release.</h2>
-          </div>
-          <div className="ops-layout">
-            <div className="ops-map" aria-hidden="true">
-              <svg viewBox="0 0 760 260" className="ops-svg">
-                <path className="ops-flow flow-a" d="M80 132 C180 42 290 42 380 132 S580 222 680 132" />
-                <path className="ops-flow flow-b" d="M80 132 C180 222 290 222 380 132 S580 42 680 132" />
-                {opsStages.map((stage, index) => {
-                  const x = 92 + index * 188;
-                  return (
-                    <g className="ops-node" key={stage.label} style={{ "--node-color": stage.color }}>
-                      <circle cx={x} cy="132" r="34" />
-                      <text x={x} y="138" textAnchor="middle">{index + 1}</text>
-                    </g>
-                  );
-                })}
-              </svg>
-            </div>
-
-            <div className="ops-cards">
-              {opsStages.map(({ label, command, detail, icon: StageIcon, color }) => (
-                <article className="ops-card" key={label} style={{ "--skill-color": color }}>
-                  <div className="ops-card-icon">
-                    <StageIcon size={20} aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h3>{label}</h3>
-                    <code>{command}</code>
-                    <p>{detail}</p>
-                  </div>
-                </article>
-              ))}
             </div>
           </div>
         </section>
