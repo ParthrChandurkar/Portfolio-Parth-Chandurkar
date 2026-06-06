@@ -79,6 +79,37 @@ const featuredStack = [
   skill("GitHub Actions", SiGithubactions, "#ffffff"),
 ];
 
+const opsStages = [
+  {
+    label: "Provision",
+    command: "terraform apply",
+    detail: "Reusable AWS infrastructure with IAM, compute, storage, and databases.",
+    icon: SiTerraform,
+    color: "#844fba",
+  },
+  {
+    label: "Containerize",
+    command: "docker build",
+    detail: "Portable services packaged for repeatable delivery and environment parity.",
+    icon: SiDocker,
+    color: "#2496ed",
+  },
+  {
+    label: "Orchestrate",
+    command: "kubectl rollout",
+    detail: "Kubernetes deployments with health checks, rollbacks, and scaling paths.",
+    icon: SiKubernetes,
+    color: "#326ce5",
+  },
+  {
+    label: "Observe",
+    command: "grafana alerts",
+    detail: "Metrics, logs, dashboards, and failure signals for production confidence.",
+    icon: Activity,
+    color: "#34d399",
+  },
+];
+
 const skillGroups = [
   {
     title: "Languages",
@@ -305,53 +336,96 @@ function App() {
       <main id="top">
         <section className="hero-section" aria-labelledby="hero-title">
           <div className="hero-bg-grid" aria-hidden="true" />
-          <img
-            className="hero-photo"
-            src={avatarSrc}
-            alt="Parth Rajesh Chandurkar"
-            onError={() => setAvatarSrc("/profile-fallback.bmp")}
-          />
           <div className="hero-overlay" aria-hidden="true" />
 
-          <div className="hero-content">
-            <div className="eyebrow">
-              <Terminal size={16} />
-              <span>cloud/devops engineer</span>
-            </div>
-            <h1 id="hero-title">{profile.name}</h1>
-            <p className="hero-role">{profile.role}</p>
-            <p className="hero-copy">
-              I build cloud-ready systems, automate delivery pipelines, and connect DevOps,
-              MLOps, and full-stack engineering into products that are measurable, resilient,
-              and useful.
-            </p>
+          <div className="hero-layout">
+            <div className="hero-content">
+              <div className="eyebrow">
+                <Terminal size={16} />
+                <span>cloud/devops engineer</span>
+              </div>
+              <h1 id="hero-title">{profile.name}</h1>
+              <p className="hero-role">{profile.role}</p>
+              <p className="hero-copy">
+                I build cloud-ready systems, automate delivery pipelines, and connect DevOps,
+                MLOps, and full-stack engineering into products that are measurable, resilient,
+                and useful.
+              </p>
 
-            <div className="hero-actions" aria-label="Profile links">
-              <a className="button button-primary" href={profile.github} target="_blank" rel="noreferrer">
-                <FaGithub size={18} />
-                GitHub
-              </a>
-              <a className="button button-secondary" href={profile.linkedin} target="_blank" rel="noreferrer">
-                <FaLinkedinIn size={18} />
-                LinkedIn
-              </a>
-              <a className="button button-ghost" href={profile.resume} target="_blank" rel="noreferrer">
-                <Download size={18} />
-                Resume
-              </a>
+              <div className="hero-actions" aria-label="Profile links">
+                <a className="button button-primary" href={profile.github} target="_blank" rel="noreferrer">
+                  <FaGithub size={18} />
+                  GitHub
+                </a>
+                <a className="button button-secondary" href={profile.linkedin} target="_blank" rel="noreferrer">
+                  <FaLinkedinIn size={18} />
+                  LinkedIn
+                </a>
+                <a className="button button-ghost" href={profile.resume} target="_blank" rel="noreferrer">
+                  <Download size={18} />
+                  Resume
+                </a>
+              </div>
+
+              <div className="hero-stack" aria-label="Featured technologies">
+                {featuredStack.map(({ name, icon: StackIcon, color }) => (
+                  <span className="stack-chip" key={name} style={{ "--skill-color": color }}>
+                    <StackIcon size={18} aria-hidden="true" />
+                    {name}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div className="hero-stack" aria-label="Featured technologies">
-              {featuredStack.map(({ name, icon: StackIcon, color }) => (
-                <span className="stack-chip" key={name} style={{ "--skill-color": color }}>
-                  <StackIcon size={18} aria-hidden="true" />
-                  {name}
-                </span>
-              ))}
+            <div className="hero-visual-card" aria-label="Cloud DevOps visual profile">
+              <svg className="infra-svg" viewBox="0 0 520 520" role="img" aria-label="Animated cloud infrastructure map">
+                <defs>
+                  <linearGradient id="infraStroke" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0%" stopColor="#38bdf8" />
+                    <stop offset="52%" stopColor="#34d399" />
+                    <stop offset="100%" stopColor="#f59e0b" />
+                  </linearGradient>
+                </defs>
+                <path className="infra-ring" d="M260 58a202 202 0 1 1 0 404 202 202 0 0 1 0-404Z" />
+                <path className="infra-line line-one" d="M88 260h96c28 0 42-42 76-42h172" />
+                <path className="infra-line line-two" d="M94 336h116c34 0 36-82 82-82h132" />
+                <path className="infra-line line-three" d="M104 184h84c30 0 50 72 86 72h154" />
+                {[
+                  [88, 260],
+                  [184, 260],
+                  [260, 218],
+                  [432, 218],
+                  [94, 336],
+                  [210, 336],
+                  [292, 254],
+                  [424, 254],
+                  [104, 184],
+                  [188, 184],
+                  [274, 256],
+                  [428, 256],
+                ].map(([cx, cy]) => (
+                  <circle className="infra-node" cx={cx} cy={cy} key={`${cx}-${cy}`} r="5" />
+                ))}
+              </svg>
+
+              <div className="profile-frame">
+                <img
+                  className="hero-photo"
+                  src={avatarSrc}
+                  alt="Parth Rajesh Chandurkar"
+                  onError={() => setAvatarSrc("/profile-fallback.bmp")}
+                />
+              </div>
+
+              <div className="cloud-console" aria-hidden="true">
+                <span className="console-dot" />
+                <code>kubectl get pods --watch</code>
+                <strong>99.9% uptime mindset</strong>
+              </div>
             </div>
           </div>
 
-          <div className="hero-stats" aria-label="Portfolio highlights">
+          <div className="hero-stats metrics-band" aria-label="Portfolio highlights">
             {stats.map((stat) => (
               <div className="stat-tile" key={stat.label}>
                 <strong>{stat.value}</strong>
@@ -392,6 +466,45 @@ function App() {
                 <span>Building next</span>
                 <strong>InfraWatch and DevPilot</strong>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section ops-section" aria-labelledby="ops-title">
+          <div className="section-heading">
+            <span className="section-kicker">Cloud Delivery Loop</span>
+            <h2 id="ops-title">From infrastructure plan to observable release.</h2>
+          </div>
+          <div className="ops-layout">
+            <div className="ops-map" aria-hidden="true">
+              <svg viewBox="0 0 760 260" className="ops-svg">
+                <path className="ops-flow flow-a" d="M80 132 C180 42 290 42 380 132 S580 222 680 132" />
+                <path className="ops-flow flow-b" d="M80 132 C180 222 290 222 380 132 S580 42 680 132" />
+                {opsStages.map((stage, index) => {
+                  const x = 92 + index * 188;
+                  return (
+                    <g className="ops-node" key={stage.label} style={{ "--node-color": stage.color }}>
+                      <circle cx={x} cy="132" r="34" />
+                      <text x={x} y="138" textAnchor="middle">{index + 1}</text>
+                    </g>
+                  );
+                })}
+              </svg>
+            </div>
+
+            <div className="ops-cards">
+              {opsStages.map(({ label, command, detail, icon: StageIcon, color }) => (
+                <article className="ops-card" key={label} style={{ "--skill-color": color }}>
+                  <div className="ops-card-icon">
+                    <StageIcon size={20} aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3>{label}</h3>
+                    <code>{command}</code>
+                    <p>{detail}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>

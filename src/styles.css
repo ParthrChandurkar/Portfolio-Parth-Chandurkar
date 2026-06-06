@@ -175,9 +175,10 @@ img {
 
 .hero-section {
   position: relative;
-  min-height: clamp(560px, 84svh, 820px);
-  padding: 8.5rem clamp(1rem, 5vw, 5.5rem) 2.2rem;
+  min-height: auto;
+  padding: 8.5rem clamp(1rem, 5vw, 5.5rem) 3rem;
   isolation: isolate;
+  overflow: hidden;
   border-bottom: 1px solid rgba(48, 54, 61, 0.7);
 }
 
@@ -192,34 +193,160 @@ img {
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), transparent 92%);
 }
 
-.hero-photo {
-  position: absolute;
-  right: clamp(-1.5rem, 4vw, 4.5rem);
-  bottom: 0;
-  z-index: -3;
-  width: min(46vw, 560px);
-  height: min(82svh, 780px);
-  object-fit: cover;
-  object-position: center top;
-  opacity: 0.88;
-  filter: saturate(1.08) contrast(1.08) brightness(0.86);
-  border: 1px solid rgba(56, 189, 248, 0.24);
-  border-bottom: 0;
-  border-radius: 8px 8px 0 0;
-  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.48);
-}
-
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(90deg, rgba(13, 17, 23, 0.99) 0%, rgba(13, 17, 23, 0.92) 40%, rgba(13, 17, 23, 0.32) 72%, rgba(13, 17, 23, 0.78) 100%),
-    linear-gradient(0deg, rgba(13, 17, 23, 0.98) 0%, rgba(13, 17, 23, 0.14) 42%, rgba(13, 17, 23, 0.5) 100%);
+    radial-gradient(circle at 72% 35%, rgba(52, 211, 153, 0.13), transparent 26rem),
+    linear-gradient(90deg, rgba(13, 17, 23, 0.98) 0%, rgba(13, 17, 23, 0.88) 42%, rgba(13, 17, 23, 0.54) 100%),
+    linear-gradient(0deg, rgba(13, 17, 23, 0.98) 0%, rgba(13, 17, 23, 0.2) 58%, rgba(13, 17, 23, 0.52) 100%);
+}
+
+.hero-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(330px, 0.78fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
 }
 
 .hero-content {
   width: min(760px, 100%);
+}
+
+.hero-visual-card {
+  position: relative;
+  min-height: 590px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(56, 189, 248, 0.12), rgba(52, 211, 153, 0.06) 44%, rgba(168, 85, 247, 0.09)),
+    rgba(13, 17, 23, 0.62);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.hero-visual-card::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(52, 211, 153, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+.infra-svg {
+  position: absolute;
+  inset: 5%;
+  width: 90%;
+  height: 90%;
+  opacity: 0.86;
+}
+
+.infra-ring {
+  fill: none;
+  stroke: rgba(56, 189, 248, 0.14);
+  stroke-width: 1.5;
+  stroke-dasharray: 8 12;
+  transform-origin: 50% 50%;
+  animation: orbitSpin 28s linear infinite;
+}
+
+.infra-line {
+  fill: none;
+  stroke: url("#infraStroke");
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-dasharray: 18 18;
+  animation: dataFlow 5.8s linear infinite;
+}
+
+.line-two {
+  animation-delay: -1.6s;
+}
+
+.line-three {
+  animation-delay: -3.2s;
+}
+
+.infra-node {
+  fill: #0d1117;
+  stroke: #38bdf8;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.72));
+  animation: nodePulse 2.8s ease-in-out infinite;
+}
+
+.profile-frame {
+  position: relative;
+  z-index: 2;
+  width: min(72%, 360px);
+  aspect-ratio: 0.74;
+  border: 1px solid rgba(230, 237, 243, 0.18);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0d1117;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.profile-frame::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(180deg, transparent 48%, rgba(13, 17, 23, 0.55)),
+    linear-gradient(90deg, rgba(13, 17, 23, 0.28), transparent 38%, rgba(13, 17, 23, 0.2));
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(1.08) contrast(1.08) brightness(0.92);
+}
+
+.cloud-console {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.2rem 0.65rem;
+  align-items: center;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(52, 211, 153, 0.26);
+  border-radius: 8px;
+  background: rgba(13, 17, 23, 0.84);
+  backdrop-filter: blur(14px);
+}
+
+.console-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 18px rgba(52, 211, 153, 0.8);
+  animation: nodePulse 2.4s ease-in-out infinite;
+}
+
+.cloud-console code {
+  color: #d1fae5;
+  font-size: 0.72rem;
+}
+
+.cloud-console strong {
+  grid-column: 2;
+  color: #ffffff;
+  font-size: 0.78rem;
 }
 
 .eyebrow {
@@ -333,15 +460,17 @@ img {
 }
 
 .hero-stats {
-  position: absolute;
-  right: clamp(1rem, 5vw, 5.5rem);
-  bottom: 2.2rem;
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(4, minmax(108px, 1fr));
-  width: min(680px, calc(100% - 2rem));
+  width: min(1160px, 100%);
+  margin-top: clamp(2rem, 5vw, 4rem);
   border: 1px solid rgba(48, 54, 61, 0.8);
   border-radius: 8px;
-  background: rgba(13, 17, 23, 0.78);
+  background:
+    linear-gradient(90deg, rgba(56, 189, 248, 0.08), rgba(52, 211, 153, 0.05), rgba(245, 158, 11, 0.06)),
+    rgba(13, 17, 23, 0.86);
   backdrop-filter: blur(16px);
   box-shadow: var(--shadow);
 }
@@ -455,6 +584,126 @@ img {
   display: block;
   margin-top: 0.3rem;
   color: #ffffff;
+}
+
+.ops-section {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(22, 27, 34, 0.12), rgba(13, 17, 23, 0.86)),
+    radial-gradient(circle at 78% 18%, rgba(245, 158, 11, 0.07), transparent 22rem);
+}
+
+.ops-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.ops-map,
+.ops-card {
+  border: 1px solid rgba(48, 54, 61, 0.86);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.012)),
+    rgba(22, 27, 34, 0.76);
+  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.18);
+}
+
+.ops-map {
+  position: relative;
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.ops-map::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(52, 211, 153, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+}
+
+.ops-svg {
+  position: relative;
+  z-index: 1;
+  width: min(94%, 760px);
+}
+
+.ops-flow {
+  fill: none;
+  stroke: rgba(56, 189, 248, 0.72);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 16 18;
+  animation: dataFlow 7s linear infinite;
+}
+
+.flow-b {
+  stroke: rgba(52, 211, 153, 0.62);
+  animation-delay: -3.2s;
+}
+
+.ops-node circle {
+  fill: rgba(13, 17, 23, 0.92);
+  stroke: var(--node-color);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--node-color), transparent 42%));
+}
+
+.ops-node text {
+  fill: #ffffff;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.ops-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.ops-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  min-height: 160px;
+  padding: 1.1rem;
+}
+
+.ops-card-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--skill-color), white 12%);
+  border-radius: 8px;
+  color: var(--skill-color);
+  background: color-mix(in srgb, var(--skill-color), transparent 88%);
+}
+
+.ops-card h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.ops-card code {
+  display: inline-flex;
+  margin-top: 0.45rem;
+  color: var(--skill-color);
+  font-size: 0.78rem;
+}
+
+.ops-card p {
+  margin: 0.7rem 0 0;
+  color: #c9d1d9;
+  font-size: 0.85rem;
 }
 
 .skill-grid {
@@ -868,6 +1117,35 @@ li::before {
   align-items: center;
 }
 
+@keyframes dataFlow {
+  from {
+    stroke-dashoffset: 120;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes orbitSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 1180px) {
   .project-grid,
   .cert-grid {
@@ -876,6 +1154,14 @@ li::before {
 
   .skill-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ops-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ops-map {
+    min-height: 280px;
   }
 
   .hero-stats {
@@ -920,15 +1206,27 @@ li::before {
   }
 
   .hero-section {
-    min-height: clamp(560px, 88svh, 740px);
+    min-height: auto;
     padding-top: 7.5rem;
   }
 
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual-card {
+    width: min(100%, 560px);
+    min-height: 520px;
+  }
+
+  .profile-frame {
+    width: min(68%, 330px);
+  }
+
   .hero-photo {
-    right: -5rem;
-    width: min(92vw, 560px);
-    height: min(58svh, 560px);
-    opacity: 0.42;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
   }
 
   .hero-overlay {
@@ -969,7 +1267,21 @@ li::before {
 
   .hero-content,
   .hero-stats {
-    max-width: 342px;
+    max-width: 100%;
+  }
+
+  .hero-visual-card {
+    min-height: 430px;
+  }
+
+  .profile-frame {
+    width: min(74%, 290px);
+  }
+
+  .cloud-console {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
   }
 
   .hero-section h1 {
@@ -989,8 +1301,13 @@ li::before {
 
   .skill-grid,
   .project-grid,
-  .cert-grid {
+  .cert-grid,
+  .ops-cards {
     grid-template-columns: 1fr;
+  }
+
+  .ops-map {
+    min-height: 220px;
   }
 
   .hero-actions {
@@ -1009,7 +1326,7 @@ li::before {
 
   .hero-stats {
     width: 100%;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 1.4rem;
   }
 
@@ -1020,12 +1337,12 @@ li::before {
   }
 
   .stat-tile:nth-child(2) {
-    border-right: 1px solid rgba(48, 54, 61, 0.72);
+    border-right: 0;
   }
 
   .stat-tile:nth-child(1),
   .stat-tile:nth-child(2) {
-    border-bottom: 0;
+    border-bottom: 1px solid rgba(48, 54, 61, 0.72);
   }
 
   .stat-tile strong {
