@@ -318,6 +318,11 @@ function App() {
           ))}
         </nav>
 
+        <a className="header-resume" href={profile.resume} target="_blank" rel="noreferrer">
+          <Download size={16} />
+          Resume
+        </a>
+
         <button
           className="icon-button mobile-menu"
           type="button"
@@ -333,82 +338,33 @@ function App() {
           <div className="hero-bg-grid" aria-hidden="true" />
           <div className="hero-overlay" aria-hidden="true" />
 
-          <div className="hero-layout">
-            <div className="hero-content">
+          <div className="hero-shell">
+            <div className="hero-topline">
               <div className="eyebrow">
                 <Terminal size={16} />
                 <span>cloud/devops engineer</span>
               </div>
-              <h1 id="hero-title">
-                <span>Parth Rajesh</span>
-                <span className="name-accent">Chandurkar</span>
-              </h1>
-              <p className="hero-role">
-                I am into <span>Cloud Automation</span>
-                <i aria-hidden="true" />
-              </p>
-              <p className="hero-copy">
-                I build cloud-ready systems, automate delivery pipelines, and connect DevOps,
-                MLOps, and full-stack engineering into products that are measurable, resilient,
-                and useful.
-              </p>
-
-              <div className="hero-actions" aria-label="Profile links">
-                <a className="button button-primary" href={profile.github} target="_blank" rel="noreferrer">
-                  <FaGithub size={18} />
-                  GitHub
-                </a>
-                <a className="button button-secondary" href={profile.linkedin} target="_blank" rel="noreferrer">
+              <div className="hero-socials" aria-label="Social links">
+                <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
                   <FaLinkedinIn size={18} />
-                  LinkedIn
                 </a>
-                <a className="button button-ghost" href={profile.resume} target="_blank" rel="noreferrer">
-                  <Download size={18} />
-                  Resume
+                <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+                  <FaGithub size={18} />
                 </a>
-              </div>
-
-              <div className="hero-stack" aria-label="Featured technologies">
-                {featuredStack.map(({ name, icon: StackIcon, color }) => (
-                  <span className="stack-chip" key={name} style={{ "--skill-color": color }}>
-                    <StackIcon size={18} aria-hidden="true" />
-                    {name}
-                  </span>
-                ))}
+                <a href={`mailto:${profile.email}`} aria-label="Email">
+                  <Mail size={18} />
+                </a>
               </div>
             </div>
 
-            <div className="hero-visual-card" aria-label="Cloud DevOps visual profile">
-              <svg className="infra-svg" viewBox="0 0 520 520" role="img" aria-label="Animated cloud infrastructure map">
-                <defs>
-                  <linearGradient id="infraStroke" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#38bdf8" />
-                    <stop offset="52%" stopColor="#34d399" />
-                    <stop offset="100%" stopColor="#f59e0b" />
-                  </linearGradient>
-                </defs>
-                <path className="infra-ring" d="M260 58a202 202 0 1 1 0 404 202 202 0 0 1 0-404Z" />
-                <path className="infra-line line-one" d="M88 260h96c28 0 42-42 76-42h172" />
-                <path className="infra-line line-two" d="M94 336h116c34 0 36-82 82-82h132" />
-                <path className="infra-line line-three" d="M104 184h84c30 0 50 72 86 72h154" />
-                {[
-                  [88, 260],
-                  [184, 260],
-                  [260, 218],
-                  [432, 218],
-                  [94, 336],
-                  [210, 336],
-                  [292, 254],
-                  [424, 254],
-                  [104, 184],
-                  [188, 184],
-                  [274, 256],
-                  [428, 256],
-                ].map(([cx, cy]) => (
-                  <circle className="infra-node" cx={cx} cy={cy} key={`${cx}-${cy}`} r="5" />
-                ))}
-              </svg>
+            <h1 id="hero-title" className="hero-title">
+              <span>Cloud & DevOps</span>
+              <span>Engineer</span>
+            </h1>
 
+            <div className="hero-stage" aria-label="Parth Rajesh Chandurkar profile visual">
+              <div className="orbit-ring ring-one" aria-hidden="true" />
+              <div className="orbit-ring ring-two" aria-hidden="true" />
               <div className="profile-frame">
                 <img
                   className="hero-photo"
@@ -417,23 +373,67 @@ function App() {
                   onError={() => setAvatarSrc("/profile-fallback.bmp")}
                 />
               </div>
-
               <div className="cloud-console" aria-hidden="true">
                 <span className="console-dot" />
-                <code>kubectl get pods --watch</code>
-                <strong>99.9% uptime mindset</strong>
+                <code>terraform plan</code>
+                <strong>AWS | Docker | Kubernetes</strong>
               </div>
+            </div>
+
+            <div className="hero-info">
+              <div className="hero-copy-block">
+                <span className="section-kicker">Parth Rajesh Chandurkar</span>
+                <p className="hero-role">
+                  I am into <span>Cloud Automation</span>
+                  <i aria-hidden="true" />
+                </p>
+                <p className="hero-copy">
+                  I build cloud-ready systems, automate delivery pipelines, and connect DevOps,
+                  MLOps, and full-stack engineering into products that are measurable, resilient,
+                  and useful.
+                </p>
+              </div>
+
+              <div className="hero-action-panel">
+                <div className="hero-actions" aria-label="Profile links">
+                  <a className="button button-primary" href={profile.github} target="_blank" rel="noreferrer">
+                    <FaGithub size={18} />
+                    GitHub
+                  </a>
+                  <a className="button button-secondary" href={profile.linkedin} target="_blank" rel="noreferrer">
+                    <FaLinkedinIn size={18} />
+                    LinkedIn
+                  </a>
+                  <a className="button button-ghost" href={profile.resume} target="_blank" rel="noreferrer">
+                    <Download size={18} />
+                    Resume
+                  </a>
+                </div>
+                <div className="hero-stats metrics-band" aria-label="Portfolio highlights">
+                  {stats.map((stat) => (
+                    <div className="stat-tile" key={stat.label}>
+                      <strong>{stat.value}</strong>
+                      <span>{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="hero-stack" aria-label="Featured technologies">
+              {featuredStack.map(({ name, icon: StackIcon, color }) => (
+                <span className="stack-chip" key={name} style={{ "--skill-color": color }}>
+                  <StackIcon size={18} aria-hidden="true" />
+                  {name}
+                </span>
+              ))}
             </div>
           </div>
 
-          <div className="hero-stats metrics-band" aria-label="Portfolio highlights">
-            {stats.map((stat) => (
-              <div className="stat-tile" key={stat.label}>
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </div>
-            ))}
-          </div>
+          <svg className="hero-terrain" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 168L96 108L176 132L280 74L390 148L510 88L626 142L742 78L852 132L960 92L1084 154L1194 72L1294 120L1440 64V220H0Z" />
+            <path className="terrain-line" d="M0 168L96 108L176 132L280 74L390 148L510 88L626 142L742 78L852 132L960 92L1084 154L1194 72L1294 120L1440 64" />
+          </svg>
         </section>
 
         <section className="section about-section" id="about">
