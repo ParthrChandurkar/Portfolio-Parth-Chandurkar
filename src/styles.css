@@ -301,9 +301,8 @@ img {
 .profile-frame {
   position: relative;
   z-index: 2;
-  width: min(82%, 560px);
-  height: clamp(320px, 25vw, 390px);
-  aspect-ratio: auto;
+  width: clamp(300px, 60%, 430px);
+  aspect-ratio: 3 / 4;
   border: 1px solid rgba(238, 246, 255, 0.2);
   border-radius: 8px;
   overflow: hidden;
