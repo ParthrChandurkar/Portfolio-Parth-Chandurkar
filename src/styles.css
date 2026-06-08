@@ -229,6 +229,8 @@ img {
   position: relative;
   min-height: 0;
   height: clamp(340px, 25vw, 370px);
+  width: min(100%, 560px);
+  justify-self: center;
   display: grid;
   align-content: center;
   place-items: center;
@@ -299,7 +301,7 @@ img {
 .profile-frame {
   position: relative;
   z-index: 2;
-  width: clamp(190px, 42%, 220px);
+  width: clamp(220px, 46%, 250px);
   aspect-ratio: 3 / 4;
   border: 1px solid rgba(238, 246, 255, 0.2);
   border-radius: 8px;
@@ -340,6 +342,10 @@ img {
   border-radius: 8px;
   background: rgba(8, 12, 20, 0.86);
   backdrop-filter: blur(14px);
+}
+
+.hero-visual-card .cloud-console {
+  width: min(82%, 400px);
 }
 
 .console-dot {
