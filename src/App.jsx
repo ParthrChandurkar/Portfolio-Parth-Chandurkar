@@ -54,7 +54,7 @@ import {
 
 const profile = {
   name: "Parth Rajesh Chandurkar",
-  shortName: "Parth",
+  shortName: "ParthChandurkar",
   role: "Cloud & DevOps Engineer",
   college: "VIIT Pune | B.Tech IT | CGPA 8.71",
   email: "parthrchn27@gmail.com",
@@ -307,7 +307,7 @@ function App() {
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Parth portfolio home">
           <span className="brand-mark">PC</span>
-          <span>Parth.dev</span>
+          <span>{profile.shortName}</span>
         </a>
 
         <nav className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Primary navigation">
