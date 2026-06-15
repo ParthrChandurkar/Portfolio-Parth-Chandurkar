@@ -230,13 +230,15 @@ const projects = [
   },
   {
     title: "InfraWatch",
-    label: "Coming soon",
-    status: "DevOps portfolio project",
-    stack: "FastAPI, React, Docker, Kubernetes, Terraform, Prometheus, Grafana, GitHub Actions",
+    label: "June 2026",
+    status: "Zero-touch deployment control plane",
+    stack: "FastAPI, React, TypeScript, Docker, Kubernetes, Terraform, Helm, Prometheus, Grafana, Loki, PostgreSQL, GitHub Actions",
+    github: "https://github.com/ParthrChandurkar/InfraWatch-Zero-Touch-Deployments-with-Full-Infrastructure-Visibility",
     icon: Workflow,
+    featured: true,
     points: [
-      "Production-grade CI/CD pipeline with automated Kubernetes deployments.",
-      "Real-time health monitoring, service telemetry, Grafana dashboards, and failure alerts.",
+      "Built a cloud-native DevOps command center for service deployments, rollout state, health metrics, logs, and audit events.",
+      "Connected Docker Compose, Kubernetes manifests, Terraform/Helm, Prometheus, Grafana, Loki, and GitHub Actions into one demo-ready platform.",
     ],
   },
   {
@@ -569,8 +571,8 @@ function App() {
             <h2>Projects built for operations, visibility, and scale.</h2>
           </div>
           <div className="project-grid">
-            {projects.map(({ title, label, status, stack, github, icon: Icon, points }) => (
-              <article className="project-card" key={title}>
+            {projects.map(({ title, label, status, stack, github, icon: Icon, points, featured }) => (
+              <article className={`project-card ${featured ? "is-featured" : ""}`} key={title}>
                 <div className="project-topline">
                   <Icon size={22} />
                   <span>{label}</span>
