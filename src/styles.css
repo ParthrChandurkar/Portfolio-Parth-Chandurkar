@@ -1086,6 +1086,24 @@ li::before {
   padding: 1.2rem;
 }
 
+.project-card.is-featured {
+  border-color: rgba(34, 211, 238, 0.52);
+  background:
+    linear-gradient(145deg, rgba(34, 211, 238, 0.12), rgba(34, 197, 94, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(22, 27, 34, 0.82);
+  box-shadow:
+    0 22px 58px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(238, 246, 255, 0.08);
+}
+
+.project-card.is-featured .project-topline svg {
+  color: var(--sky);
+}
+
+.project-card.is-featured .project-status {
+  color: #d1fae5;
+}
+
 .project-topline {
   justify-content: space-between;
   gap: 1rem;
