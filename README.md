@@ -23,3 +23,15 @@ This site presents my path as a B.Tech Information Technology student and aspiri
 - Research and certification showcases
 - Downloadable resume and mail-based contact form
 - Accessible navigation, labels, and semantic sections
+
+## Tech Stack
+
+| Area | Technologies |
+| --- | --- |
+| Frontend | React 19, JavaScript, HTML5, CSS3 |
+| Build tooling | Vite 8 |
+| UI and icons | Lucide React, React Icons |
+| Hosting | Vercel |
+| Development | npm, Git, GitHub |
+
+The portfolio content also highlights hands-on work with AWS, Docker, Kubernetes, Terraform, Jenkins, Ansible, GitHub Actions, Python, Node.js, Flask, SQL, and machine learning tooling.
