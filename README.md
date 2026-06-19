@@ -35,3 +35,42 @@ This site presents my path as a B.Tech Information Technology student and aspiri
 | Development | npm, Git, GitHub |
 
 The portfolio content also highlights hands-on work with AWS, Docker, Kubernetes, Terraform, Jenkins, Ansible, GitHub Actions, Python, Node.js, Flask, SQL, and machine learning tooling.
+
+## Project Structure
+
+```text
+Portfolio/
+├── public/              # Profile image, fallback image, and resume
+├── src/
+│   ├── App.jsx          # Portfolio content and React components
+│   ├── main.jsx         # Application entry point
+│   └── styles.css       # Layout, visual system, and responsive styles
+├── index.html           # Vite HTML shell
+├── package.json         # Scripts and dependencies
+└── vite.config.js       # Vite configuration
+```
+
+## Run Locally
+
+### Prerequisites
+
+- Node.js 20 or newer
+- npm 10 or newer
+
+### Setup
+
+```bash
+git clone https://github.com/ParthrChandurkar/Portfolio-Parth-Chandurkar.git
+cd Portfolio-Parth-Chandurkar
+npm install
+npm run dev
+```
+
+Open `http://127.0.0.1:5173` in your browser.
+
+### Production Build
+
+```bash
+npm run build
+npm run preview
+```
