@@ -54,7 +54,7 @@ Portfolio/
 
 ### Prerequisites
 
-- Node.js 20 or newer
+- Node.js 20.19+ or 22.12+
 - npm 10 or newer
 
 ### Setup
@@ -74,3 +74,31 @@ Open `http://127.0.0.1:5173` in your browser.
 npm run build
 npm run preview
 ```
+
+## Customize
+
+Most portfolio content is stored in the data collections at the top of `src/App.jsx`. Update those collections to change profile details, navigation, skills, experience, projects, certifications, or education without restructuring the page.
+
+Replace these files to use your own personal assets:
+
+```text
+public/profile.jpeg
+public/Parth_Rajesh_Chandurkar_Resume.pdf
+```
+
+If the main portrait cannot load, the interface automatically uses `public/profile-fallback.bmp`.
+
+## Deployment
+
+The site is deployed on Vercel. Every push to the production branch can trigger a new deployment after Vercel is connected to the repository. For another static host, run `npm run build` and publish the generated `dist/` directory.
+
+## Connect
+
+- [GitHub](https://github.com/ParthrChandurkar)
+- [LinkedIn](https://www.linkedin.com/in/parth-chandurkar)
+- [LeetCode](https://leetcode.com/u/parthchn28)
+- [Email](mailto:parthrchn27@gmail.com)
+
+---
+
+Built by [Parth Rajesh Chandurkar](https://github.com/ParthrChandurkar).
