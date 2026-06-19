@@ -9,3 +9,17 @@ A responsive, cloud-and-DevOps-focused portfolio showcasing my engineering exper
 
 ### [View the live portfolio →](https://parth-chandurkar.vercel.app)
 
+## About the Portfolio
+
+This site presents my path as a B.Tech Information Technology student and aspiring Cloud & DevOps Engineer. The content brings together practical infrastructure work, full-stack development, MLOps projects, and research in one recruiter-friendly experience.
+
+## Highlights
+
+- Responsive desktop and mobile layouts
+- Cloud and DevOps-oriented visual identity
+- Categorized skills with recognizable technology icons
+- Experience and education timelines
+- Project cards with repositories and measurable outcomes
+- Research and certification showcases
+- Downloadable resume and mail-based contact form
+- Accessible navigation, labels, and semantic sections
