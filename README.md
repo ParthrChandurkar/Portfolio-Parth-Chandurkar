@@ -1,32 +1,11 @@
-# Parth Rajesh Chandurkar Portfolio
+# Parth Rajesh Chandurkar — Portfolio
 
-Modern portfolio website for Parth Rajesh Chandurkar, Cloud & DevOps Engineer.
+[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-Visit-22c55e?style=for-the-badge&logo=vercel&logoColor=white)](https://parth-chandurkar.vercel.app)
+[![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
 
-## Run Locally
+A responsive, cloud-and-DevOps-focused portfolio showcasing my engineering experience, technical skills, research, certifications, and projects. It is designed as a fast single-page experience with clear navigation and direct access to my work.
 
-```bash
-npm install
-npm run dev
-```
+### [View the live portfolio →](https://parth-chandurkar.vercel.app)
 
-## Build
-
-```bash
-npm run build
-```
-
-## Assets
-
-Add your real profile photo here:
-
-```text
-public/profile.jpeg
-```
-
-Add your resume PDF here:
-
-```text
-public/Parth_Rajesh_Chandurkar_Resume.pdf
-```
-
-The site includes a generated fallback image, so the hero still works before the real photo is added.
