@@ -205,6 +205,20 @@ const experience = [
 
 const projects = [
   {
+    title: "SnapLink",
+    label: "June 2026",
+    status: "Live on Vercel",
+    stack: "React, Tailwind, Recharts, Python, AWS SAM, Lambda, DynamoDB, API Gateway",
+    github: "https://github.com/ParthrChandurkar/SnapLink",
+    live: "https://snaplink-eight.vercel.app",
+    icon: Rocket,
+    featured: true,
+    points: [
+      "Built a serverless URL shortener with redirect tracking, geolocation, device parsing, and browser analytics.",
+      "Designed a clean React dashboard for click trends, country breakdowns, and device distribution.",
+    ],
+  },
+  {
     title: "Pharmacy Management System",
     label: "2025",
     status: "Cloud-ready",
@@ -571,7 +585,7 @@ function App() {
             <h2>Projects built for operations, visibility, and scale.</h2>
           </div>
           <div className="project-grid">
-            {projects.map(({ title, label, status, stack, github, icon: Icon, points, featured }) => (
+            {projects.map(({ title, label, status, stack, github, live, icon: Icon, points, featured }) => (
               <article className={`project-card ${featured ? "is-featured" : ""}`} key={title}>
                 <div className="project-topline">
                   <Icon size={22} />
@@ -585,12 +599,20 @@ function App() {
                     <li key={point}>{point}</li>
                   ))}
                 </ul>
-                {github && (
-                  <a className="card-link" href={github} target="_blank" rel="noreferrer">
-                    View repository
-                    <ExternalLink size={15} />
-                  </a>
-                )}
+                <div className="project-links">
+                  {github && (
+                    <a className="card-link" href={github} target="_blank" rel="noreferrer">
+                      View repository
+                      <ExternalLink size={15} />
+                    </a>
+                  )}
+                  {live && (
+                    <a className="card-link" href={live} target="_blank" rel="noreferrer">
+                      Live demo
+                      <ExternalLink size={15} />
+                    </a>
+                  )}
+                </div>
               </article>
             ))}
           </div>
