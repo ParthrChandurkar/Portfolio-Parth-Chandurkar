@@ -1073,6 +1073,17 @@ li::before {
   color: var(--sky);
 }
 
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.2rem;
+}
+
+.project-links .card-link {
+  margin-top: 0;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
