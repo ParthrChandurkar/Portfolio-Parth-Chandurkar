@@ -1073,6 +1073,22 @@ li::before {
   color: var(--sky);
 }
 
+.inline-links .paper-link {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(251, 191, 36, 0.42);
+  border-radius: 8px;
+  background: rgba(251, 191, 36, 0.12);
+  color: #fde68a;
+  box-shadow: 0 10px 24px rgba(251, 191, 36, 0.08);
+}
+
+.inline-links .paper-link:hover,
+.inline-links .paper-link:focus-visible {
+  color: #ffffff;
+  border-color: rgba(251, 191, 36, 0.68);
+  background: rgba(251, 191, 36, 0.18);
+}
+
 .project-links {
   display: flex;
   flex-wrap: wrap;
@@ -1161,10 +1177,37 @@ li::before {
   box-shadow: var(--shadow);
 }
 
+.published-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+  padding: 0.42rem 0.68rem;
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  border-radius: 999px;
+  background: rgba(251, 191, 36, 0.14);
+  color: #fde68a;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.published-badge svg {
+  color: var(--amber);
+}
+
 .research-band p {
   max-width: 820px;
   margin: 1rem 0 0;
   color: #c9d1d9;
+}
+
+.paper-button {
+  border-color: rgba(251, 191, 36, 0.62);
+  background: linear-gradient(135deg, var(--amber), #34d399);
+  box-shadow:
+    0 16px 38px rgba(251, 191, 36, 0.2),
+    0 0 0 4px rgba(251, 191, 36, 0.08);
 }
 
 .cert-grid {

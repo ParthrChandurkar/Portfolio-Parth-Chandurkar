@@ -78,6 +78,7 @@ const navItems = [
 
 const skill = (name, icon, color) => ({ name, icon, color });
 const awsOrange = "#ff9900";
+const researchPaperUrl = "https://ieeexplore.ieee.org/document/11566649";
 
 const featuredStack = [
   skill("AWS", FaAws, awsOrange),
@@ -194,7 +195,7 @@ const experience = [
     stack: "React, Node.js, AWS EC2, NLP, Google API",
     github:
       "https://github.com/ParthrChandurkar/-ZenithMind-AI-Powered-Mental-Health-Assistant",
-    paper: "https://drive.google.com/file/d/1Uax5n5iSvLYXzWcYPgDl_za4hmlUQw_Z",
+    paper: researchPaperUrl,
     points: [
       "Built a CBT-based wellness platform with AI chatbot, sentiment analysis, and virtual therapist escalation.",
       "Deployed scalable MERN architecture on AWS EC2 with behavioral analytics dashboards.",
@@ -567,9 +568,9 @@ function App() {
                       Repository
                     </a>
                     {item.paper && (
-                      <a href={item.paper} target="_blank" rel="noreferrer">
+                      <a className="paper-link" href={item.paper} target="_blank" rel="noreferrer">
                         <FileText size={16} />
-                        IEEE Paper
+                        Published IEEE Paper
                       </a>
                     )}
                   </div>
@@ -622,6 +623,10 @@ function App() {
           <div className="research-band">
             <div>
               <span className="section-kicker">Research</span>
+              <span className="published-badge">
+                <ShieldCheck size={15} />
+                Published on IEEE Xplore
+              </span>
               <h2>ZenithMind IEEE research work</h2>
               <p>
                 A capstone research project exploring CBT-based mental wellness support with
@@ -630,13 +635,14 @@ function App() {
               </p>
             </div>
             <a
-              className="button button-primary"
-              href="https://drive.google.com/file/d/1Uax5n5iSvLYXzWcYPgDl_za4hmlUQw_Z"
+              className="button button-primary paper-button"
+              href={researchPaperUrl}
               target="_blank"
               rel="noreferrer"
             >
               <FileText size={18} />
-              Read Paper
+              Read Published Paper
+              <ExternalLink size={16} />
             </a>
           </div>
         </section>
