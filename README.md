@@ -112,6 +112,13 @@ public/Parth_Rajesh_Chandurkar_Resume.pdf
 
 If the main portrait cannot load, the interface automatically uses `public/profile-fallback.bmp`.
 
+## Content Update Checklist
+
+- Update profile details, project data, and timeline entries in `src/App.jsx`
+- Replace the resume PDF in `public/` after every major resume revision
+- Confirm all project, certification, and social links open correctly
+- Run `npm run build` before deployment to catch production build issues
+
 ## Deployment
 
 The site is deployed on Vercel. Every push to the production branch can trigger a new deployment after Vercel is connected to the repository. For another static host, run `npm run build` and publish the generated `dist/` directory.
