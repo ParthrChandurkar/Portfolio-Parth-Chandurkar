@@ -1,4 +1,4 @@
-# Parth Rajesh Chandurkar — Portfolio
+# Parth Rajesh Chandurkar - Portfolio
 
 [![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-Visit-22c55e?style=for-the-badge&logo=vercel&logoColor=white)](https://parth-chandurkar.vercel.app)
 [![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
@@ -7,7 +7,7 @@
 
 A responsive, cloud-and-DevOps-focused portfolio showcasing my engineering experience, technical skills, research, certifications, and projects. It is designed as a fast single-page experience with clear navigation and direct access to my work.
 
-### [View the live portfolio →](https://parth-chandurkar.vercel.app)
+### [View the live portfolio ->](https://parth-chandurkar.vercel.app)
 
 ## About the Portfolio
 
@@ -40,14 +40,14 @@ The portfolio content also highlights hands-on work with AWS, Docker, Kubernetes
 
 ```text
 Portfolio/
-├── public/              # Profile image, fallback image, and resume
-├── src/
-│   ├── App.jsx          # Portfolio content and React components
-│   ├── main.jsx         # Application entry point
-│   └── styles.css       # Layout, visual system, and responsive styles
-├── index.html           # Vite HTML shell
-├── package.json         # Scripts and dependencies
-└── vite.config.js       # Vite configuration
+|-- public/              # Profile image, fallback image, and resume
+|-- src/
+|   |-- App.jsx          # Portfolio content and React components
+|   |-- main.jsx         # Application entry point
+|   `-- styles.css       # Layout, visual system, and responsive styles
+|-- index.html           # Vite HTML shell
+|-- package.json         # Scripts and dependencies
+`-- vite.config.js       # Vite configuration
 ```
 
 ## Run Locally
