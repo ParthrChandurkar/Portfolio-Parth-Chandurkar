@@ -91,6 +91,14 @@ npm run build
 npm run preview
 ```
 
+## Available Scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Starts the local Vite development server |
+| `npm run build` | Creates the optimized production build |
+| `npm run preview` | Serves the production build locally for review |
+
 ## Customize
 
 Most portfolio content is stored in the data collections at the top of `src/App.jsx`. Update those collections to change profile details, navigation, skills, experience, projects, certifications, or education without restructuring the page.
