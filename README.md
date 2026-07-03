@@ -33,6 +33,13 @@ This site presents my path as a B.Tech Information Technology student and aspiri
 - Downloadable resume and mail-based contact form
 - Accessible navigation, labels, and semantic sections
 
+## What Visitors Can Explore
+
+- Cloud, DevOps, MLOps, and full-stack projects in one place
+- Skills grouped by practical engineering areas
+- Timeline-based education and experience details
+- Research, certifications, resume, and contact links for quick review
+
 ## Tech Stack
 
 | Area | Technologies |
