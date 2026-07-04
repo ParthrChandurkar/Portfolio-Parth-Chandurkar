@@ -42,6 +42,14 @@ This site presents my path as a B.Tech Information Technology student and aspiri
 - Timeline-based education and experience details
 - Research, certifications, resume, and contact links for quick review
 
+## Portfolio Sections
+
+- Hero section with profile summary and primary links
+- About section focused on education and career direction
+- Skills section organized across cloud, DevOps, programming, and tools
+- Experience, projects, research, certifications, and education timelines
+- Contact section with direct social and email routes
+
 ## Tech Stack
 
 | Area | Technologies |
