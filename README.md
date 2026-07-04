@@ -136,6 +136,15 @@ If the main portrait cannot load, the interface automatically uses `public/profi
 - Confirm all project, certification, and social links open correctly
 - Run `npm run build` before deployment to catch production build issues
 
+## Quality Checks
+
+Before publishing major content changes, review these items:
+
+- Verify the live links, resume download, and contact email
+- Check desktop and mobile layouts through the browser preview
+- Confirm project descriptions are current and measurable
+- Run a production build to catch dependency or bundling issues
+
 ## Deployment
 
 The site is deployed on Vercel. Every push to the production branch can trigger a new deployment after Vercel is connected to the repository. For another static host, run `npm run build` and publish the generated `dist/` directory.
