@@ -109,6 +109,13 @@ npm run preview
 | `npm run build` | Creates the optimized production build |
 | `npm run preview` | Serves the production build locally for review |
 
+## Development Notes
+
+- Main portfolio data and section rendering live in `src/App.jsx`
+- Global styling, responsive rules, and visual tokens live in `src/styles.css`
+- Static assets such as profile images, resume files, and fallbacks live in `public/`
+- Vite serves the app locally and creates the production-ready `dist/` output
+
 ## Customize
 
 Most portfolio content is stored in the data collections at the top of `src/App.jsx`. Update those collections to change profile details, navigation, skills, experience, projects, certifications, or education without restructuring the page.
