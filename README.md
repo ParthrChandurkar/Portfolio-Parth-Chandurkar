@@ -15,8 +15,11 @@ This repository contains the source code for the live Vercel deployment and is m
 
 - [About the Portfolio](#about-the-portfolio)
 - [Highlights](#highlights)
+- [Portfolio Sections](#portfolio-sections)
 - [Tech Stack](#tech-stack)
 - [Run Locally](#run-locally)
+- [Development Notes](#development-notes)
+- [Quality Checks](#quality-checks)
 - [Deployment](#deployment)
 - [Connect](#connect)
 
