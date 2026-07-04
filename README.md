@@ -9,6 +9,8 @@ A responsive, cloud-and-DevOps-focused portfolio showcasing my engineering exper
 
 ### [View the live portfolio ->](https://parth-chandurkar.vercel.app)
 
+This repository contains the source code for the live Vercel deployment and is maintained as the central place for portfolio content updates.
+
 ## Quick Links
 
 - [About the Portfolio](#about-the-portfolio)
