@@ -117,6 +117,10 @@ npm run dev
 
 Open `http://127.0.0.1:5173` in your browser.
 
+The development script binds to `127.0.0.1` for a local-only preview. If port `5173` is already in use, Vite may choose the next available port and print the active URL in the terminal.
+
+When checking profile images, resume downloads, or fallback assets, use the local preview instead of opening `index.html` directly so Vite can serve files from `public/` correctly.
+
 ### Production Build
 
 ```bash
