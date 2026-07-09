@@ -16,6 +16,7 @@ This repository contains the source code for the live Vercel deployment and is m
 - [About the Portfolio](#about-the-portfolio)
 - [Repository Purpose](#repository-purpose)
 - [Highlights](#highlights)
+- [Feature Snapshot](#feature-snapshot)
 - [Portfolio Sections](#portfolio-sections)
 - [Tech Stack](#tech-stack)
 - [Run Locally](#run-locally)
@@ -47,6 +48,15 @@ The repository is organized so portfolio content, visual polish, and deployment 
 - Research and certification showcases
 - Downloadable resume and mail-based contact form
 - Accessible navigation, labels, and semantic sections
+
+## Feature Snapshot
+
+| Experience Area | What It Supports |
+| --- | --- |
+| Recruiter review | Fast access to projects, resume, education, and contact routes |
+| Technical depth | Cloud, DevOps, MLOps, full-stack, and research work in one flow |
+| Content updates | Centralized React data collections for portfolio copy and links |
+| Deployment | Vercel-ready Vite build with static assets served from `public/` |
 
 ## What Visitors Can Explore
 
