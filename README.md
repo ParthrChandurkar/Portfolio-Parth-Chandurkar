@@ -23,6 +23,7 @@ This repository contains the source code for the live Vercel deployment and is m
 - [Development Notes](#development-notes)
 - [Quality Checks](#quality-checks)
 - [Maintenance Workflow](#maintenance-workflow)
+- [Troubleshooting](#troubleshooting)
 - [Deployment](#deployment)
 - [Connect](#connect)
 
@@ -182,6 +183,15 @@ Use this order for routine portfolio updates:
 3. Review the site locally with `npm run dev`
 4. Run `npm run build` before pushing deployment-ready changes
 5. Push to `main` so the connected Vercel project can publish the update
+
+## Troubleshooting
+
+| Issue | Check |
+| --- | --- |
+| Local preview does not open | Confirm the terminal URL printed by Vite and verify the selected port is available |
+| Profile image is missing | Confirm `public/profile.jpeg` exists and the fallback image remains in `public/` |
+| Resume link fails | Confirm `public/Parth_Rajesh_Chandurkar_Resume.pdf` exists with the same filename |
+| Deployment looks outdated | Check that the latest commit reached `main` and review the Vercel deployment log |
 
 ## Deployment
 
