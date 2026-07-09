@@ -14,6 +14,7 @@ This repository contains the source code for the live Vercel deployment and is m
 ## Quick Links
 
 - [About the Portfolio](#about-the-portfolio)
+- [Repository Purpose](#repository-purpose)
 - [Highlights](#highlights)
 - [Portfolio Sections](#portfolio-sections)
 - [Tech Stack](#tech-stack)
@@ -26,6 +27,15 @@ This repository contains the source code for the live Vercel deployment and is m
 ## About the Portfolio
 
 This site presents my path as a B.Tech Information Technology student and aspiring Cloud & DevOps Engineer. The content brings together practical infrastructure work, full-stack development, MLOps projects, and research in one recruiter-friendly experience.
+
+## Repository Purpose
+
+The repository is organized so portfolio content, visual polish, and deployment settings can be updated quickly without changing the core app structure. It is useful for:
+
+- Keeping public portfolio information version-controlled
+- Reviewing resume, project, and certification updates before deployment
+- Maintaining a reproducible local setup for design and content checks
+- Sharing a clear technical snapshot of the portfolio implementation
 
 ## Highlights
 
