@@ -22,6 +22,7 @@ This repository contains the source code for the live Vercel deployment and is m
 - [Run Locally](#run-locally)
 - [Development Notes](#development-notes)
 - [Quality Checks](#quality-checks)
+- [Maintenance Workflow](#maintenance-workflow)
 - [Deployment](#deployment)
 - [Connect](#connect)
 
@@ -171,6 +172,16 @@ Before publishing major content changes, review these items:
 - Check desktop and mobile layouts through the browser preview
 - Confirm project descriptions are current and measurable
 - Run a production build to catch dependency or bundling issues
+
+## Maintenance Workflow
+
+Use this order for routine portfolio updates:
+
+1. Update profile copy, projects, skills, or timeline entries in `src/App.jsx`
+2. Replace supporting files such as the resume PDF or profile image in `public/`
+3. Review the site locally with `npm run dev`
+4. Run `npm run build` before pushing deployment-ready changes
+5. Push to `main` so the connected Vercel project can publish the update
 
 ## Deployment
 
