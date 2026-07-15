@@ -206,6 +206,21 @@ const experience = [
 
 const projects = [
   {
+    title: "SeatFlow",
+    label: "July 2026",
+    status: "Live full-stack deployment",
+    stack: "React, Vite, TypeScript, Node.js, Express, Prisma, PostgreSQL, JWT, Resend, Render, Vercel, Neon",
+    github: "https://github.com/ParthrChandurkar/Ticket-Booking-System",
+    live: "https://seatflow-ticket-booking-tawny.vercel.app",
+    icon: ServerCog,
+    featured: true,
+    points: [
+      "Built a production-style movie and concert booking system with role-based admin, organiser, and customer workflows.",
+      "Implemented concurrency-safe seat holds with atomic SQL updates, TTL expiry jobs, waitlist auto-assignment, and QR email tickets.",
+      "Deployed the full stack on Vercel, Render, and Neon with seeded demo data, verified email delivery, and automated Jest/Supertest coverage.",
+    ],
+  },
+  {
     title: "SnapLink",
     label: "June 2026",
     status: "Live on Vercel",
