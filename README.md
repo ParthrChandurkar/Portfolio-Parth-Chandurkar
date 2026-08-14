@@ -5,7 +5,7 @@
 [![Vite](https://img.shields.io/badge/Vite-8-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
 
-A responsive, cloud-and-DevOps-focused portfolio showcasing my engineering experience, technical skills, research, certifications, and projects. It is designed as a fast single-page experience with clear navigation and direct access to my work.
+A responsive, cloud-and-DevOps-focused portfolio showcasing my engineering experience, technical skills, research, certifications, resume, and current public GitHub projects. It is designed as a fast single-page experience with clear navigation and direct access to my work.
 
 ### [View the live portfolio ->](https://parth-chandurkar.vercel.app)
 
@@ -46,9 +46,9 @@ The repository is organized so portfolio content, visual polish, and deployment 
 - Cloud and DevOps-oriented visual identity
 - Categorized skills with recognizable technology icons
 - Experience and education timelines
-- Project cards with repositories and measurable outcomes
+- GitHub-synced project cards with repositories, live demos, and measurable outcomes
 - Research and certification showcases
-- Downloadable resume and mail-based contact form
+- Updated downloadable Cloud & DevOps CV and mail-based contact form
 - Accessible navigation, labels, and semantic sections
 
 ## Feature Snapshot

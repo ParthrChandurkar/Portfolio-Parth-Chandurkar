@@ -30,26 +30,43 @@ import {
   SiC,
   SiCplusplus,
   SiDocker,
+  SiDvc,
+  SiFastapi,
   SiFirebase,
   SiFlask,
   SiGit,
   SiGithubactions,
+  SiGooglegemini,
+  SiGrafana,
   SiGnubash,
+  SiHelm,
   SiJenkins,
   SiKubernetes,
   SiLinux,
   SiMongodb,
   SiMysql,
+  SiNextdotjs,
   SiNodedotjs,
+  SiN8N,
   SiPostman,
+  SiPlotly,
+  SiPostgresql,
+  SiPrisma,
+  SiPrometheus,
   SiPython,
   SiPytorch,
+  SiRedis,
   SiReact,
+  SiRender,
   SiScikitlearn,
   SiSelenium,
+  SiSpringboot,
   SiStreamlit,
+  SiTailwindcss,
   SiTensorflow,
   SiTerraform,
+  SiTypescript,
+  SiVercel,
 } from "react-icons/si";
 
 const profile = {
@@ -65,6 +82,8 @@ const profile = {
   leetcode: "https://leetcode.com/u/parthchn28",
   resume: "/Parth_Rajesh_Chandurkar_Resume.pdf",
 };
+
+const portfolioUpdated = "August 2026";
 
 const navItems = [
   { label: "Home", id: "top" },
@@ -85,6 +104,8 @@ const featuredStack = [
   skill("Docker", SiDocker, "#2496ed"),
   skill("Kubernetes", SiKubernetes, "#326ce5"),
   skill("Terraform", SiTerraform, "#844fba"),
+  skill("FastAPI", SiFastapi, "#009688"),
+  skill("TypeScript", SiTypescript, "#3178c6"),
   skill("GitHub Actions", SiGithubactions, "#ffffff"),
 ];
 
@@ -117,6 +138,7 @@ const skillGroups = [
       skill("CloudWatch", Activity, "#ff4f8b"),
       skill("Docker", SiDocker, "#2496ed"),
       skill("Kubernetes", SiKubernetes, "#326ce5"),
+      skill("Helm", SiHelm, "#0f1689"),
       skill("Jenkins", SiJenkins, "#d24939"),
       skill("Terraform", SiTerraform, "#844fba"),
       skill("Ansible", SiAnsible, "#ee0000"),
@@ -131,9 +153,14 @@ const skillGroups = [
     accent: "green",
     items: [
       skill("React", SiReact, "#61dafb"),
+      skill("TypeScript", SiTypescript, "#3178c6"),
+      skill("Next.js", SiNextdotjs, "#ffffff"),
       skill("Node.js", SiNodedotjs, "#5fa04e"),
+      skill("Spring Boot", SiSpringboot, "#6db33f"),
+      skill("FastAPI", SiFastapi, "#009688"),
       skill("Flask", SiFlask, "#ffffff"),
       skill("REST APIs", ServerCog, "#34d399"),
+      skill("Tailwind CSS", SiTailwindcss, "#06b6d4"),
       skill("Postman", SiPostman, "#ff6c37"),
       skill("Selenium", SiSelenium, "#43b02a"),
     ],
@@ -145,6 +172,9 @@ const skillGroups = [
     items: [
       skill("MongoDB", SiMongodb, "#47a248"),
       skill("MySQL", SiMysql, "#4479a1"),
+      skill("PostgreSQL", SiPostgresql, "#4169e1"),
+      skill("Redis", SiRedis, "#dc382d"),
+      skill("Prisma", SiPrisma, "#ffffff"),
       skill("Firebase", SiFirebase, "#ffca28"),
       skill("DynamoDB", Database, "#4053d6"),
       skill("AWS RDS", FaAws, awsOrange),
@@ -157,9 +187,11 @@ const skillGroups = [
     items: [
       skill("Machine Learning", BrainCircuit, "#fb7185"),
       skill("NLP", BrainCircuit, "#a855f7"),
+      skill("Gemini", SiGooglegemini, "#8e75b2"),
       skill("TensorFlow", SiTensorflow, "#ff6f00"),
       skill("PyTorch", SiPytorch, "#ee4c2c"),
       skill("scikit-learn", SiScikitlearn, "#f7931e"),
+      skill("DVC", SiDvc, "#945dd6"),
     ],
   },
   {
@@ -169,23 +201,39 @@ const skillGroups = [
     items: [
       skill("Power BI", Activity, "#f2c811"),
       skill("Streamlit", SiStreamlit, "#ff4b4b"),
+      skill("Plotly", SiPlotly, "#3f4f75"),
+      skill("Prometheus", SiPrometheus, "#e6522c"),
+      skill("Grafana", SiGrafana, "#f46800"),
       skill("Monitoring", Activity, "#60a5fa"),
       skill("Dashboards", Workflow, "#34d399"),
+    ],
+  },
+  {
+    title: "Automation & Hosting",
+    icon: Workflow,
+    accent: "cyan",
+    items: [
+      skill("n8n", SiN8N, "#ea4b71"),
+      skill("Workflow Automation", Workflow, "#34d399"),
+      skill("Vercel", SiVercel, "#ffffff"),
+      skill("Render", SiRender, "#46e3b7"),
+      skill("CI/CD", SiGithubactions, "#ffffff"),
+      skill("Webhook APIs", ServerCog, "#38bdf8"),
     ],
   },
 ];
 
 const experience = [
   {
-    title: "F1 Race Prediction and Strategy System",
+    title: "Orbis Flow - AI-Assisted Invoice Approval Workflow Platform",
     type: "Freelance Project",
-    duration: "Jan 2025 - Mar 2025",
-    stack: "MLOps, Docker, CI/CD, Machine Learning",
-    github: "https://github.com/ParthrChandurkar/F1-Race-Prediction-Strategy-System",
+    duration: "Mar 2025 - Jun 2025",
+    stack: "Spring Boot, FastAPI, Next.js, PostgreSQL, Redis, Docker, OCR, GitHub Actions",
+    github: "https://github.com/ParthrChandurkar/orbisflow-platform",
     points: [
-      "Built an end-to-end ML pipeline for F1 race outcomes and pit-stop strategy prediction with 78% classification accuracy.",
-      "Implemented DVC, Docker, and GitHub Actions for automated CI/CD model retraining.",
-      "Designed tyre degradation and pit-window simulations that reduced estimated lap-time loss by nearly 12%.",
+      "Built an end-to-end invoice workflow across employee, manager, and finance roles with OCR extraction, JWT auth, RBAC, and audit trails.",
+      "Protected workflow integrity with optimistic locking, append-only events, and state validation to prevent duplicate invoice processing.",
+      "Configured CI for Maven, pytest, Vitest, and Playwright across a three-service Docker Compose stack.",
     ],
   },
   {
@@ -197,14 +245,90 @@ const experience = [
       "https://github.com/ParthrChandurkar/-ZenithMind-AI-Powered-Mental-Health-Assistant",
     paper: researchPaperUrl,
     points: [
-      "Built a CBT-based wellness platform with AI chatbot, sentiment analysis, and virtual therapist escalation.",
-      "Deployed scalable MERN architecture on AWS EC2 with behavioral analytics dashboards.",
-      "Added secure authentication and real-time visualizations, improving retention and self-awareness tracking.",
+      "Built a CBT-informed wellness platform with AI chat, mood analytics, therapist workflows, Google Fit integrations, and gamified self-care.",
+      "Deployed the MERN platform on AWS EC2 with Kubernetes HPA, CloudWatch alarms, JWT authentication, and real-time dashboards.",
+      "Published the associated research work on IEEE Xplore as document 11566649.",
+    ],
+  },
+  {
+    title: "F1 Race Prediction and Strategy System",
+    type: "Freelance Project",
+    duration: "Jan 2025 - Mar 2025",
+    stack: "Python, Streamlit, scikit-learn, DVC, Docker, GitHub Actions, MLOps",
+    github: "https://github.com/ParthrChandurkar/F1-Race-Prediction-Strategy-System",
+    points: [
+      "Built an end-to-end F1 analytics app for race outcome prediction, Monte Carlo grid simulation, and weather-aware pit strategy.",
+      "Used DVC, Docker, and GitHub Actions for reproducible data, model, and deployment workflows.",
+      "Modeled tyre degradation and pit windows to support data-backed race strategy decisions.",
     ],
   },
 ];
 
 const projects = [
+  {
+    title: "Retail IQ",
+    label: "Aug 2026",
+    status: "Retail BI and decision-support platform",
+    stack: "Python, Next.js, TypeScript, PostgreSQL, ETL, Power BI, ML, Docker",
+    github: "https://github.com/ParthrChandurkar/Retail-IQ",
+    icon: Activity,
+    featured: true,
+    points: [
+      "Transforms raw Olist marketplace data into governed KPIs, customer analytics, RFM/CLV views, statistics, and dashboards.",
+      "Adds explainable satisfaction classification and decision-ready reporting without treating ML as the whole product.",
+    ],
+  },
+  {
+    title: "Orbis Flow",
+    label: "Aug 2026",
+    status: "AI-assisted finance workflow automation",
+    stack: "Next.js, Spring Boot, FastAPI, PostgreSQL, Redis, MinIO, Docker Compose",
+    github: "https://github.com/ParthrChandurkar/orbisflow-platform",
+    icon: Workflow,
+    featured: true,
+    points: [
+      "Replaces email and spreadsheet invoice handoffs with upload, OCR validation, manager approval, finance processing, and audit trails.",
+      "Uses a secure multi-service topology with browser-isolated OCR, RBAC, JWT auth, CSRF protection, and traceable workflow states.",
+    ],
+  },
+  {
+    title: "OptiVest",
+    label: "Aug 2026",
+    status: "Quantitative portfolio decision support",
+    stack: "Python, React, optimization, Indian equities, scenario simulation",
+    github: "https://github.com/ParthrChandurkar/quantitative-portfolio-optimization-dss",
+    icon: Activity,
+    featured: true,
+    points: [
+      "Turns investor goals, risk appetite, capital, sector caps, and diversification limits into explainable Nifty 50 allocations.",
+      "Supports stress tests, binding-constraint inspection, projected drawdown analysis, and investment-committee exports.",
+    ],
+  },
+  {
+    title: "ResumeForge",
+    label: "Aug 2026",
+    status: "Private AI resume and cover-letter studio",
+    stack: "FastAPI, React, Gemini, PDF export, LaTeX, private workspaces",
+    github: "https://github.com/ParthrChandurkar/ResumeForge",
+    icon: FileText,
+    featured: true,
+    points: [
+      "Tailors role-specific resumes and cover letters from job descriptions while preserving truthful evidence and document style.",
+      "Supports multiple resume variants, ATS keyword insight, personal history, clickable links, PDF output, and Overleaf-ready LaTeX.",
+    ],
+  },
+  {
+    title: "Six Sigma DMAIC Quality Dashboard",
+    label: "Aug 2026",
+    status: "ML-assisted manufacturing quality analytics",
+    stack: "Python, Streamlit, scikit-learn, Random Forest, DMAIC, quality control",
+    github: "https://github.com/ParthrChandurkar/six-sigma-dmaic-quality-dashboard",
+    icon: Activity,
+    points: [
+      "Combines DMAIC workflow, Pareto analysis, defect severity prediction, risk ranking, and process improvement recommendations.",
+      "Monitors process stability with weekly defect views and c-chart-style control limits.",
+    ],
+  },
   {
     title: "SeatFlow",
     label: "July 2026",
@@ -221,65 +345,103 @@ const projects = [
     ],
   },
   {
+    title: "FlowCraft Pipeline Builder",
+    label: "July 2026",
+    status: "Visual workflow builder",
+    stack: "React Flow, FastAPI, JavaScript, graph validation, drag-and-drop UI",
+    github: "https://github.com/ParthrChandurkar/flowcraft-pipeline-builder",
+    icon: Workflow,
+    points: [
+      "Built a responsive node-canvas builder for composing inputs, outputs, prompts, transforms, API calls, filters, and timers.",
+      "Analyzes submitted graphs through a FastAPI backend with dynamic handles from text variables and workflow validation.",
+    ],
+  },
+  {
     title: "SnapLink",
     label: "June 2026",
-    status: "Live on Vercel",
-    stack: "React, Tailwind, Recharts, Python, AWS SAM, Lambda, DynamoDB, API Gateway",
+    status: "Live serverless URL analytics app",
+    stack: "React, Tailwind CSS, Recharts, Python, AWS SAM, Lambda, DynamoDB, API Gateway",
     github: "https://github.com/ParthrChandurkar/SnapLink",
     live: "https://snaplink-eight.vercel.app",
     icon: Rocket,
     featured: true,
     points: [
-      "Built a serverless URL shortener with redirect tracking, geolocation, device parsing, and browser analytics.",
-      "Designed a clean React dashboard for click trends, country breakdowns, and device distribution.",
-    ],
-  },
-  {
-    title: "Pharmacy Management System",
-    label: "2025",
-    status: "Cloud-ready",
-    stack: "Python, Tkinter, AWS RDS, MySQL, REST APIs",
-    github: "https://github.com/ParthrChandurkar/Pharmenia---Pharmacy-Management-System",
-    icon: Database,
-    points: [
-      "Multi-store inventory, expiry tracking, and vendor coordination on AWS RDS.",
-      "Role-based access for admins and vendors with secure operational workflows.",
-    ],
-  },
-  {
-    title: "Smart Public-Police Communication Portal",
-    label: "Aug 2024",
-    status: "Hackathon",
-    stack: "MERN, AWS, Python, Gemini API",
-    icon: ShieldCheck,
-    points: [
-      "Cloud-based citizen-police communication platform with role-specific dashboards.",
-      "Microservices on AWS EC2 and S3 reduced estimated infrastructure cost by 20%.",
-      "AWS IAM and encryption controls improved data protection and compliance readiness.",
+      "Creates compact short links, redirects visitors with low latency, and tracks clicks by country, device, browser, referrer, and time.",
+      "Showcases cloud deployment, backend architecture, and frontend analytics in one production-style serverless build.",
     ],
   },
   {
     title: "InfraWatch",
     label: "June 2026",
     status: "Zero-touch deployment control plane",
-    stack: "FastAPI, React, TypeScript, Docker, Kubernetes, Terraform, Helm, Prometheus, Grafana, Loki, PostgreSQL, GitHub Actions",
+    stack: "FastAPI, React, TypeScript, Docker, Kubernetes, Terraform, Helm, Prometheus, Grafana, Loki, GitHub Actions",
     github: "https://github.com/ParthrChandurkar/InfraWatch-Zero-Touch-Deployments-with-Full-Infrastructure-Visibility",
+    live: "https://infrawatch-platform.vercel.app",
     icon: Workflow,
     featured: true,
     points: [
-      "Built a cloud-native DevOps command center for service deployments, rollout state, health metrics, logs, and audit events.",
-      "Connected Docker Compose, Kubernetes manifests, Terraform/Helm, Prometheus, Grafana, Loki, and GitHub Actions into one demo-ready platform.",
+      "Built a cloud-native DevOps command center for deployments, service state, health metrics, logs, and audit events.",
+      "Connected Docker Compose, Kubernetes manifests, Terraform/Helm, Prometheus, Grafana, Loki, and GitHub Actions into a demo-ready platform.",
     ],
   },
   {
-    title: "DevPilot",
-    label: "Planned SaaS",
-    status: "Business product",
-    stack: "React, Node.js, AWS SDK, Supabase, Stripe",
-    icon: Rocket,
+    title: "AI-Based Network Route Optimizer",
+    label: "July 2026",
+    status: "Failure-aware network routing dashboard",
+    stack: "Python, Streamlit, Random Forest, Dijkstra, Plotly, network telemetry",
+    github: "https://github.com/ParthrChandurkar/AI-Based-Network-Route-Optimizer",
+    icon: Cloud,
     points: [
-      "AI-powered cloud cost and health monitor for early-stage startups.",
-      "Connects to AWS, finds wasted spend, suggests fixes, and monitors uptime.",
+      "Compares traditional shortest-path routing with ML-assisted routing that penalizes risky links using predicted failure probability.",
+      "Visualizes latency, packet loss, bandwidth, stress simulations, and safer route selection in an interactive dashboard.",
+    ],
+  },
+  {
+    title: "F1 Race Prediction and Strategy System",
+    label: "Aug 2026",
+    status: "MLOps race analytics application",
+    stack: "Python, Streamlit, scikit-learn, DVC, Docker, Monte Carlo simulation, CI",
+    github: "https://github.com/ParthrChandurkar/F1-Race-Prediction-Strategy-System",
+    icon: BrainCircuit,
+    points: [
+      "Predicts race outcomes and simulates strategy using trained models, circuit characteristics, weather, and tyre degradation rules.",
+      "Uses MLOps tooling and CI to keep the data, model, and dashboard workflow reproducible.",
+    ],
+  },
+  {
+    title: "ZenithMind",
+    label: "July 2026",
+    status: "IEEE-published AI mental wellness platform",
+    stack: "React, Express, MongoDB, Gemini, Socket.IO, Google Fit, AWS EC2, Kubernetes",
+    github: "https://github.com/ParthrChandurkar/-ZenithMind-AI-Powered-Mental-Health-Assistant",
+    icon: BrainCircuit,
+    points: [
+      "Combines CBT-informed AI chat, mood and stress analytics, therapist workflows, community features, and gamified mental fitness.",
+      "Associated research paper is published on IEEE Xplore as document 11566649.",
+    ],
+  },
+  {
+    title: "Pharmenia",
+    label: "June 2026",
+    status: "Pharmacy operations and DBMS system",
+    stack: "Python, Tkinter, MySQL, ReportLab, stored procedures, triggers, views",
+    github: "https://github.com/ParthrChandurkar/Pharmenia---Pharmacy-Management-System",
+    icon: Database,
+    points: [
+      "Manages medicine stock, suppliers, customers, purchases, GST invoices, FIFO batch consumption, and PDF invoice exports.",
+      "Demonstrates normalized 3NF database design with stored procedures, triggers, views, and cursor-based invoice processing.",
+    ],
+  },
+  {
+    title: "LexiLog",
+    label: "June 2026",
+    status: "Personal vocabulary journal",
+    stack: "Python, Tkinter, MongoDB, PDF export, quiz workflows",
+    github: "https://github.com/ParthrChandurkar/LexiLog-Your-Personal-Vocabulary-Journal",
+    icon: FileText,
+    points: [
+      "Captures words, phrases, and idioms from films into searchable notes with meanings, context, and difficulty levels.",
+      "Adds quiz practice, learning stats, exportable collections, and a desktop-first workflow for regular vocabulary building.",
     ],
   },
 ];
@@ -300,9 +462,9 @@ const education = [
   },
   {
     title: "Cloud & DevOps Engineering Track",
-    school: "AWS, Kubernetes, Terraform, CI/CD, Linux",
+    school: "AWS, Kubernetes, Terraform, Helm, CI/CD, Linux, observability",
     period: "Current Focus",
-    status: "Building production-grade portfolio systems",
+    status: "Building production-grade cloud and automation systems",
   },
   {
     title: "DevOps & Software Engineering",
@@ -314,6 +476,9 @@ const education = [
 
 const stats = [
   { value: "8.71", label: "CGPA" },
+  { value: "17", label: "Public GitHub repos" },
+  { value: "14", label: "Portfolio projects" },
+  { value: "IEEE", label: "Published research" },
 ];
 
 function App() {
@@ -376,13 +541,13 @@ function App() {
                 <span className="name-accent">Chandurkar</span>
               </h1>
               <p className="hero-role">
-                I am into <span>Cloud Automation</span>
+                I am into <span>Cloud, DevOps & AI Automation</span>
                 <i aria-hidden="true" />
               </p>
               <p className="hero-copy">
-                I build cloud-ready systems, automate delivery pipelines, and connect DevOps,
-                MLOps, and full-stack engineering into products that are measurable, resilient,
-                and useful.
+                I build cloud-native products, deployment systems, AI workflow tools, and
+                analytics dashboards that connect backend engineering with infrastructure,
+                observability, and practical business outcomes.
               </p>
 
               <div className="hero-actions" aria-label="Profile links">
@@ -476,14 +641,14 @@ function App() {
           <div className="about-layout">
             <div className="about-copy">
               <p>
-                I am a B.Tech IT student at VIIT Pune focused on Cloud, DevOps, and scalable
-                product engineering. My work blends AWS infrastructure, CI/CD automation,
-                containers, monitoring, and practical ML systems.
+                I am a B.Tech IT student at VIIT Pune focused on Cloud, DevOps, full-stack
+                systems, and AI automation. My work spans AWS infrastructure, Kubernetes,
+                CI/CD, observability, workflow automation, analytics, and practical ML systems.
               </p>
               <p>
-                I am building toward production-grade DevOps ownership: shipping reliable
-                pipelines, monitoring real services, and turning cloud complexity into systems
-                teams can operate with confidence.
+                My current GitHub portfolio includes public builds across deployment control
+                planes, invoice automation, retail BI, quantitative decision support, resume AI,
+                serverless analytics, quality dashboards, and MLOps products.
               </p>
             </div>
             <div className="identity-panel">
@@ -493,11 +658,11 @@ function App() {
               </div>
               <div>
                 <span>Current focus</span>
-                <strong>Kubernetes, Terraform, MLOps, AWS automation</strong>
+                <strong>Kubernetes, Terraform, observability, AI automation, analytics systems</strong>
               </div>
               <div>
-                <span>Building next</span>
-                <strong>InfraWatch and DevPilot</strong>
+                <span>Latest refresh</span>
+                <strong>GitHub projects and resume updated in {portfolioUpdated}</strong>
               </div>
             </div>
           </div>
@@ -597,8 +762,8 @@ function App() {
 
         <section className="section projects-section" id="work">
           <div className="section-heading">
-            <span className="section-kicker">Work</span>
-            <h2>Projects built for operations, visibility, and scale.</h2>
+            <span className="section-kicker">Work - GitHub synced {portfolioUpdated}</span>
+            <h2>Current public projects across cloud, automation, analytics, and AI.</h2>
           </div>
           <div className="project-grid">
             {projects.map(({ title, label, status, stack, github, live, icon: Icon, points, featured }) => (
