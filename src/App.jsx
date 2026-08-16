@@ -17,6 +17,7 @@ import {
   Menu,
   Phone,
   Rocket,
+  Search,
   Send,
   ServerCog,
   ShieldCheck,
@@ -498,10 +499,38 @@ const stats = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState("/profile.jpeg");
+  const [projectQuery, setProjectQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
+  const projectCategories = useMemo(
+    () => ["All", ...Array.from(new Set(projects.map((project) => project.category)))],
+    [],
+  );
+  const filteredProjects = useMemo(() => {
+    const query = projectQuery.trim().toLowerCase();
+
+    return projects.filter((project) => {
+      const matchesCategory = activeCategory === "All" || project.category === activeCategory;
+      const searchable = [
+        project.title,
+        project.status,
+        project.stack,
+        project.category,
+        ...project.points,
+      ]
+        .join(" ")
+        .toLowerCase();
+
+      return matchesCategory && (!query || searchable.includes(query));
+    });
+  }, [activeCategory, projectQuery]);
 
   const closeMenu = () => setMenuOpen(false);
+  const resetProjectFilters = () => {
+    setProjectQuery("");
+    setActiveCategory("All");
+  };
 
   const handleContact = (event) => {
     event.preventDefault();
@@ -779,12 +808,41 @@ function App() {
             <span className="section-kicker">Work - GitHub synced {portfolioUpdated}</span>
             <h2>Current public projects across cloud, automation, analytics, and AI.</h2>
           </div>
+          <div className="project-finder" aria-label="Project finder">
+            <label className="project-search">
+              <Search size={18} />
+              <input
+                type="search"
+                value={projectQuery}
+                onChange={(event) => setProjectQuery(event.target.value)}
+                placeholder="Search projects, stacks, or outcomes"
+              />
+            </label>
+            <div className="project-filter-group" aria-label="Filter projects by category">
+              {projectCategories.map((category) => (
+                <button
+                  className={`filter-chip ${activeCategory === category ? "is-active" : ""}`}
+                  key={category}
+                  type="button"
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="project-result-bar" aria-live="polite">
+            <span>{filteredProjects.length} of {projects.length} projects shown</span>
+            {(projectQuery || activeCategory !== "All") && (
+              <button type="button" onClick={resetProjectFilters}>Reset</button>
+            )}
+          </div>
           <div className="project-grid">
-            {projects.map(({ title, label, status, stack, github, live, icon: Icon, points, featured }) => (
+            {filteredProjects.map(({ title, label, status, category, stack, github, live, icon: Icon, points, featured }) => (
               <article className={`project-card ${featured ? "is-featured" : ""}`} key={title}>
                 <div className="project-topline">
                   <Icon size={22} />
-                  <span>{label}</span>
+                  <span>{category} / {label}</span>
                 </div>
                 <h3>{title}</h3>
                 <p className="project-status">{status}</p>
