@@ -810,6 +810,7 @@ function App() {
           </div>
           <div className="project-finder" aria-label="Project finder">
             <label className="project-search">
+              <span className="sr-only">Search projects</span>
               <Search size={18} />
               <input
                 type="search"
@@ -824,6 +825,7 @@ function App() {
                   className={`filter-chip ${activeCategory === category ? "is-active" : ""}`}
                   key={category}
                   type="button"
+                  aria-pressed={activeCategory === category}
                   onClick={() => setActiveCategory(category)}
                 >
                   {category}
@@ -837,38 +839,48 @@ function App() {
               <button type="button" onClick={resetProjectFilters}>Reset</button>
             )}
           </div>
-          <div className="project-grid">
-            {filteredProjects.map(({ title, label, status, category, stack, github, live, icon: Icon, points, featured }) => (
-              <article className={`project-card ${featured ? "is-featured" : ""}`} key={title}>
-                <div className="project-topline">
-                  <Icon size={22} />
-                  <span>{category} / {label}</span>
-                </div>
-                <h3>{title}</h3>
-                <p className="project-status">{status}</p>
-                <p className="stack-line">{stack}</p>
-                <ul>
-                  {points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-                <div className="project-links">
-                  {github && (
-                    <a className="card-link" href={github} target="_blank" rel="noreferrer">
-                      View repository
-                      <ExternalLink size={15} />
-                    </a>
-                  )}
-                  {live && (
-                    <a className="card-link" href={live} target="_blank" rel="noreferrer">
-                      Live demo
-                      <ExternalLink size={15} />
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
+          {filteredProjects.length > 0 ? (
+            <div className="project-grid">
+              {filteredProjects.map(({ title, label, status, category, stack, github, live, icon: Icon, points, featured }) => (
+                <article className={`project-card ${featured ? "is-featured" : ""}`} key={title}>
+                  <div className="project-topline">
+                    <Icon size={22} />
+                    <span>{category} / {label}</span>
+                  </div>
+                  <h3>{title}</h3>
+                  <p className="project-status">{status}</p>
+                  <p className="stack-line">{stack}</p>
+                  <ul>
+                    {points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                  <div className="project-links">
+                    {github && (
+                      <a className="card-link" href={github} target="_blank" rel="noreferrer">
+                        View repository
+                        <ExternalLink size={15} />
+                      </a>
+                    )}
+                    {live && (
+                      <a className="card-link" href={live} target="_blank" rel="noreferrer">
+                        Live demo
+                        <ExternalLink size={15} />
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="empty-project-state">
+              <h3>No matching projects</h3>
+              <p>Try a broader stack, outcome, or category.</p>
+              <button className="button button-ghost" type="button" onClick={resetProjectFilters}>
+                Reset filters
+              </button>
+            </div>
+          )}
         </section>
 
         <section className="section research-section" id="research">
