@@ -32,6 +32,17 @@ The portfolio is built as a single-page React experience for recruiters, hiring 
 | Research | ZenithMind IEEE Xplore publication link |
 | Contact | Direct email, phone, GitHub, LinkedIn, and location details |
 
+## Project Finder Feature
+
+The Work section includes an interactive project finder:
+
+- Search across project names, statuses, stacks, categories, and project outcomes
+- Filter projects by category such as `Analytics`, `Automation`, `AI`, `Full Stack`, `Cloud`, `DevOps`, `MLOps`, and `Desktop`
+- Show a live result count so visitors know how much of the portfolio is visible
+- Provide a reset action and empty-result state for clean navigation
+
+Project filtering is data-driven. Each project object in [src/App.jsx](src/App.jsx) includes a `category` field, and the category buttons are generated from the project list automatically.
+
 ## Tech Stack
 
 | Layer | Tools |
@@ -103,6 +114,15 @@ Most portfolio content lives in [src/App.jsx](src/App.jsx):
 - `stats`
 
 Global layout and responsive styling live in [src/styles.css](src/styles.css). Static assets such as the profile photo, fallback image, and resume PDF live in [public/](public/).
+
+Recommended update flow:
+
+1. Add or update project data in `projects`
+2. Set a clear `category`, `status`, `stack`, and measurable `points`
+3. Add `github` and `live` links when available
+4. Run `npm run build`
+5. Check the project finder with at least one search and one category filter
+6. Push to `main` and verify the Vercel deployment
 
 ## Quality Checks
 
