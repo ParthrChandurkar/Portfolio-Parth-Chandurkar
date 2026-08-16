@@ -1,114 +1,73 @@
-# Parth Rajesh Chandurkar - Portfolio
+# Parth Rajesh Chandurkar Portfolio
 
 [![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-Visit-22c55e?style=for-the-badge&logo=vercel&logoColor=white)](https://parth-chandurkar.vercel.app)
 [![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
 
-A responsive, cloud-and-DevOps-focused portfolio showcasing my engineering experience, technical skills, research, certifications, resume, and current public GitHub projects. It is designed as a fast single-page experience with clear navigation and direct access to my work.
+A fast, responsive portfolio for Parth Rajesh Chandurkar, focused on Cloud, DevOps, AI automation, analytics, MLOps, and full-stack engineering.
 
-### [View the live portfolio ->](https://parth-chandurkar.vercel.app)
+Live site: [parth-chandurkar.vercel.app](https://parth-chandurkar.vercel.app)
 
-This repository contains the source code for the live Vercel deployment and is maintained as the central place for portfolio content updates.
+## Why This Repo Exists
 
-## Quick Links
+This repository is the source of truth for the live portfolio. It keeps the portfolio content, resume asset, project links, styling, and deployment setup version-controlled so every public update can be reviewed, built, and deployed safely.
 
-- [About the Portfolio](#about-the-portfolio)
-- [Repository Purpose](#repository-purpose)
-- [Highlights](#highlights)
-- [Feature Snapshot](#feature-snapshot)
-- [Portfolio Sections](#portfolio-sections)
-- [Tech Stack](#tech-stack)
-- [Run Locally](#run-locally)
-- [Development Notes](#development-notes)
-- [Quality Checks](#quality-checks)
-- [Maintenance Workflow](#maintenance-workflow)
-- [Troubleshooting](#troubleshooting)
-- [Deployment](#deployment)
-- [Connect](#connect)
+The portfolio is built as a single-page React experience for recruiters, hiring managers, and technical reviewers who need quick access to:
 
-## About the Portfolio
+- Current public GitHub projects
+- Cloud, DevOps, automation, AI/ML, analytics, and full-stack skills
+- Freelance, capstone, and research work
+- Downloadable CV
+- Contact, GitHub, LinkedIn, LeetCode, and IEEE research links
 
-This site presents my path as a B.Tech Information Technology student and aspiring Cloud & DevOps Engineer. The content brings together practical infrastructure work, full-stack development, MLOps projects, and research in one recruiter-friendly experience.
+## Portfolio Highlights
 
-## Repository Purpose
-
-The repository is organized so portfolio content, visual polish, and deployment settings can be updated quickly without changing the core app structure. It is useful for:
-
-- Keeping public portfolio information version-controlled
-- Reviewing resume, project, and certification updates before deployment
-- Maintaining a reproducible local setup for design and content checks
-- Sharing a clear technical snapshot of the portfolio implementation
-
-## Highlights
-
-- Responsive desktop and mobile layouts
-- Cloud and DevOps-oriented visual identity
-- Categorized skills with recognizable technology icons
-- Experience and education timelines
-- GitHub-synced project cards with repositories, live demos, and measurable outcomes
-- Research and certification showcases
-- Updated downloadable Cloud & DevOps CV and mail-based contact form
-- Accessible navigation, labels, and semantic sections
-
-## Feature Snapshot
-
-| Experience Area | What It Supports |
+| Area | What Visitors Get |
 | --- | --- |
-| Recruiter review | Fast access to projects, resume, education, and contact routes |
-| Technical depth | Cloud, DevOps, MLOps, full-stack, and research work in one flow |
-| Content updates | Centralized React data collections for portfolio copy and links |
-| Deployment | Vercel-ready Vite build with static assets served from `public/` |
-
-## What Visitors Can Explore
-
-- Cloud, DevOps, MLOps, and full-stack projects in one place
-- Skills grouped by practical engineering areas
-- Timeline-based education and experience details
-- Research, certifications, resume, and contact links for quick review
-
-## Portfolio Sections
-
-- Hero section with profile summary and primary links
-- About section focused on education and career direction
-- Skills section organized across cloud, DevOps, programming, and tools
-- Experience, projects, research, certifications, and education timelines
-- Contact section with direct social and email routes
+| Hero | Direct GitHub, LinkedIn, and resume actions |
+| Skills | Categorized technology chips with recognizable icons |
+| Experience | Applied engineering work with links and measurable outcomes |
+| Work | Current GitHub projects with repositories, live demos, and project categories |
+| Research | ZenithMind IEEE Xplore publication link |
+| Contact | Direct email, phone, GitHub, LinkedIn, and location details |
 
 ## Tech Stack
 
-| Area | Technologies |
+| Layer | Tools |
 | --- | --- |
 | Frontend | React 19, JavaScript, HTML5, CSS3 |
-| Build tooling | Vite 8 |
-| UI and icons | Lucide React, React Icons |
+| Build | Vite 8 |
+| UI Icons | Lucide React, React Icons |
 | Hosting | Vercel |
-| Development | npm, Git, GitHub |
-
-The portfolio content also highlights hands-on work with AWS, Docker, Kubernetes, Terraform, Jenkins, Ansible, GitHub Actions, Python, Node.js, Flask, SQL, and machine learning tooling.
+| Workflow | npm, Git, GitHub |
 
 ## Project Structure
 
 ```text
 Portfolio/
-|-- public/              # Profile image, fallback image, and resume
+|-- public/
+|   |-- profile.jpeg
+|   |-- profile-fallback.bmp
+|   `-- Parth_Rajesh_Chandurkar_Resume.pdf
 |-- src/
-|   |-- App.jsx          # Portfolio content and React components
-|   |-- main.jsx         # Application entry point
-|   `-- styles.css       # Layout, visual system, and responsive styles
-|-- index.html           # Vite HTML shell
-|-- package.json         # Scripts and dependencies
-`-- vite.config.js       # Vite configuration
+|   |-- App.jsx
+|   |-- main.jsx
+|   `-- styles.css
+|-- index.html
+|-- package.json
+|-- package-lock.json
+`-- vite.config.js
 ```
 
 ## Run Locally
 
-### Prerequisites
+Prerequisites:
 
 - Node.js 20.19+ or 22.12+
-- npm 10 or newer
+- npm 10+
 
-### Setup
+Setup:
 
 ```bash
 git clone https://github.com/ParthrChandurkar/Portfolio-Parth-Chandurkar.git
@@ -117,93 +76,71 @@ npm install
 npm run dev
 ```
 
-Open `http://127.0.0.1:5173` in your browser.
+Open the local URL printed by Vite, usually:
 
-The development script binds to `127.0.0.1` for a local-only preview. If port `5173` is already in use, Vite may choose the next available port and print the active URL in the terminal.
+```text
+http://127.0.0.1:5173
+```
 
-When checking profile images, resume downloads, or fallback assets, use the local preview instead of opening `index.html` directly so Vite can serve files from `public/` correctly.
-
-### Production Build
+Production build:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Available Scripts
+## Content Maintenance
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Starts the local Vite development server |
-| `npm run build` | Creates the optimized production build |
-| `npm run preview` | Serves the production build locally for review |
+Most portfolio content lives in [src/App.jsx](src/App.jsx):
 
-## Development Notes
+- `profile`
+- `featuredStack`
+- `skillGroups`
+- `experience`
+- `projects`
+- `certifications`
+- `education`
+- `stats`
 
-- Main portfolio data and section rendering live in `src/App.jsx`
-- Global styling, responsive rules, and visual tokens live in `src/styles.css`
-- Static assets such as profile images, resume files, and fallbacks live in `public/`
-- Vite serves the app locally and creates the production-ready `dist/` output
-
-## Customize
-
-Most portfolio content is stored in the data collections at the top of `src/App.jsx`. Update those collections to change profile details, navigation, skills, experience, projects, certifications, or education without restructuring the page.
-
-Replace these files to use your own personal assets:
-
-```text
-public/profile.jpeg
-public/Parth_Rajesh_Chandurkar_Resume.pdf
-```
-
-If the main portrait cannot load, the interface automatically uses `public/profile-fallback.bmp`.
-
-## Content Update Checklist
-
-- Update profile details, project data, and timeline entries in `src/App.jsx`
-- Replace the resume PDF in `public/` after every major resume revision
-- Confirm all project, certification, and social links open correctly
-- Run `npm run build` before deployment to catch production build issues
+Global layout and responsive styling live in [src/styles.css](src/styles.css). Static assets such as the profile photo, fallback image, and resume PDF live in [public/](public/).
 
 ## Quality Checks
 
-Before publishing major content changes, review these items:
+Before publishing content changes:
 
-- Verify the live links, resume download, and contact email
-- Check desktop and mobile layouts through the browser preview
-- Confirm project descriptions are current and measurable
-- Run a production build to catch dependency or bundling issues
+```bash
+npm run build
+```
 
-## Maintenance Workflow
+Also verify:
 
-Use this order for routine portfolio updates:
-
-1. Update profile copy, projects, skills, or timeline entries in `src/App.jsx`
-2. Replace supporting files such as the resume PDF or profile image in `public/`
-3. Review the site locally with `npm run dev`
-4. Run `npm run build` before pushing deployment-ready changes
-5. Push to `main` so the connected Vercel project can publish the update
-
-## Troubleshooting
-
-| Issue | Check |
-| --- | --- |
-| Local preview does not open | Confirm the terminal URL printed by Vite and verify the selected port is available |
-| Profile image is missing | Confirm `public/profile.jpeg` exists and the fallback image remains in `public/` |
-| Resume link fails | Confirm `public/Parth_Rajesh_Chandurkar_Resume.pdf` exists with the same filename |
-| Deployment looks outdated | Check that the latest commit reached `main` and review the Vercel deployment log |
+- Resume opens from `/Parth_Rajesh_Chandurkar_Resume.pdf`
+- Project repository and live demo links are current
+- Mobile layout does not overflow
+- Contact email and social links are correct
+- Vercel production deployment points to the latest `main` commit
 
 ## Deployment
 
-The site is deployed on Vercel. Every push to the production branch can trigger a new deployment after Vercel is connected to the repository. For another static host, run `npm run build` and publish the generated `dist/` directory.
+The site is deployed on Vercel. The connected production URL is:
+
+```text
+https://parth-chandurkar.vercel.app
+```
+
+Every pushed `main` update can be deployed through the linked Vercel project. For manual deployment:
+
+```bash
+npx vercel deploy --prod
+```
 
 ## Connect
 
-- [GitHub](https://github.com/ParthrChandurkar)
-- [LinkedIn](https://www.linkedin.com/in/parth-chandurkar)
-- [LeetCode](https://leetcode.com/u/parthchn28)
-- [Email](mailto:parthrchn27@gmail.com)
+- GitHub: [github.com/ParthrChandurkar](https://github.com/ParthrChandurkar)
+- LinkedIn: [linkedin.com/in/parth-chandurkar](https://www.linkedin.com/in/parth-chandurkar)
+- LeetCode: [leetcode.com/u/parthchn28](https://leetcode.com/u/parthchn28)
+- Email: [parthrchn27@gmail.com](mailto:parthrchn27@gmail.com)
 
 ---
 
-Built by [Parth Rajesh Chandurkar](https://github.com/ParthrChandurkar).
+Built and maintained by [Parth Rajesh Chandurkar](https://github.com/ParthrChandurkar).
