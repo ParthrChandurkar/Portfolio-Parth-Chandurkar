@@ -136,6 +136,7 @@ Also verify:
 
 - Resume opens from `/Parth_Rajesh_Chandurkar_Resume.pdf`
 - Project repository and live demo links are current
+- Project finder count changes correctly after search and category filtering
 - Mobile layout does not overflow
 - Contact email and social links are correct
 - Vercel production deployment points to the latest `main` commit

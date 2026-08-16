@@ -525,6 +525,10 @@ function App() {
       return matchesCategory && (!query || searchable.includes(query));
     });
   }, [activeCategory, projectQuery]);
+  const visibleFeaturedCount = useMemo(
+    () => filteredProjects.filter((project) => project.featured).length,
+    [filteredProjects],
+  );
 
   const closeMenu = () => setMenuOpen(false);
   const resetProjectFilters = () => {
@@ -834,7 +838,7 @@ function App() {
             </div>
           </div>
           <div className="project-result-bar" aria-live="polite">
-            <span>{filteredProjects.length} of {projects.length} projects shown</span>
+            <span>{filteredProjects.length} of {projects.length} projects shown / {visibleFeaturedCount} featured visible</span>
             {(projectQuery || activeCategory !== "All") && (
               <button type="button" onClick={resetProjectFilters}>Reset</button>
             )}
