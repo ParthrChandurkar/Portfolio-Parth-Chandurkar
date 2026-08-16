@@ -1100,6 +1100,89 @@ li::before {
   margin-top: 0;
 }
 
+.project-finder {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.4fr);
+  gap: 0.85rem;
+  align-items: center;
+  margin: -0.4rem 0 1rem;
+}
+
+.project-search {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 48px;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(48, 54, 61, 0.86);
+  border-radius: 8px;
+  background: rgba(13, 17, 23, 0.76);
+  color: var(--sky);
+}
+
+.project-search input {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  color: #ffffff;
+  outline: none;
+}
+
+.project-search input::placeholder {
+  color: var(--muted);
+}
+
+.project-filter-group,
+.project-result-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.filter-chip,
+.project-result-bar button {
+  min-height: 38px;
+  padding: 0.48rem 0.68rem;
+  border: 1px solid rgba(139, 148, 158, 0.28);
+  border-radius: 8px;
+  background: rgba(22, 27, 34, 0.7);
+  color: #dbeafe;
+  font-size: 0.75rem;
+  font-weight: 800;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.filter-chip:hover,
+.filter-chip:focus-visible,
+.filter-chip.is-active,
+.project-result-bar button:hover,
+.project-result-bar button:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(34, 211, 238, 0.62);
+  background: rgba(34, 211, 238, 0.14);
+  color: #ffffff;
+}
+
+.project-result-bar {
+  justify-content: space-between;
+  min-height: 42px;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.project-result-bar button {
+  color: #fde68a;
+  border-color: rgba(251, 191, 36, 0.42);
+  background: rgba(251, 191, 36, 0.1);
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1444,6 +1527,10 @@ li::before {
   .about-layout,
   .contact-layout,
   .research-band {
+    grid-template-columns: 1fr;
+  }
+
+  .project-finder {
     grid-template-columns: 1fr;
   }
 }
