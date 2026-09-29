@@ -206,6 +206,9 @@ svg {
   display: grid;
   min-height: 100svh;
   grid-template-columns: minmax(0, 1.03fr) minmax(380px, 0.97fr);
+  grid-template-areas:
+    "content visual"
+    "facts visual";
   align-items: center;
   gap: 56px;
   padding-top: 148px;
@@ -215,6 +218,8 @@ svg {
 .hero-content {
   position: relative;
   z-index: 2;
+  grid-area: content;
+  align-self: end;
   min-width: 0;
 }
 
@@ -319,10 +324,12 @@ svg {
 
 .hero-signals span,
 .tag-row span {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 32px;
   padding: 6px 10px;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 7px;
   color: var(--muted-strong);
@@ -330,12 +337,23 @@ svg {
   font-size: 0.85rem;
 }
 
+.hero-signals span::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.18) 45%, transparent 72%);
+  transform: translateX(-120%);
+  animation: signal-sweep 5s ease-in-out infinite;
+}
+
 .quick-facts {
+  grid-area: facts;
+  align-self: start;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   max-width: 690px;
-  margin-top: 26px;
+  margin-top: -28px;
 }
 
 .quick-fact {
@@ -360,155 +378,260 @@ svg {
   line-height: 1.45;
 }
 
-.hero-topology {
+.hero-visual {
   position: relative;
-  min-height: 570px;
-  overflow: hidden;
-  border: 1px solid var(--line);
+  grid-area: visual;
+  min-height: 640px;
+  isolation: isolate;
+}
+
+.hero-visual::before {
+  position: absolute;
+  inset: 28px 0 24px 34px;
+  z-index: -2;
+  content: "";
+  border: 1px solid rgba(220, 235, 255, 0.1);
   border-radius: var(--radius);
   background:
-    linear-gradient(145deg, rgba(20, 28, 37, 0.96), rgba(7, 11, 17, 0.96)),
-    #0d131b;
+    linear-gradient(135deg, rgba(98, 217, 255, 0.08), transparent 34%),
+    linear-gradient(315deg, rgba(114, 240, 165, 0.07), transparent 38%),
+    rgba(255, 255, 255, 0.035);
   box-shadow: var(--shadow);
 }
 
-.topology-grid {
+.hero-visual::after {
   position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(98, 217, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(98, 217, 255, 0.08) 1px, transparent 1px);
-  background-size: 38px 38px;
-  opacity: 0.5;
-}
-
-.topology-ring {
-  position: absolute;
-  border: 1px solid rgba(114, 240, 165, 0.15);
-  border-radius: 50%;
-}
-
-.ring-one {
-  width: 420px;
-  height: 420px;
-  top: 70px;
-  left: 44px;
-}
-
-.ring-two {
-  width: 290px;
-  height: 290px;
-  right: 52px;
-  bottom: 86px;
-  border-color: rgba(255, 209, 102, 0.13);
-}
-
-.topology-lines span {
-  position: absolute;
-  height: 2px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.08);
-  transform-origin: left center;
-}
-
-.topology-lines span::after {
-  position: absolute;
-  inset: 0;
+  inset: 72px 28px 46px 0;
+  z-index: -1;
   content: "";
-  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-  animation: data-run 3.2s linear infinite;
+  background-image:
+    linear-gradient(rgba(98, 217, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(98, 217, 255, 0.1) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(125deg, transparent, #000 22%, #000 74%, transparent);
+  opacity: 0.48;
 }
 
-.line-one {
-  top: 162px;
-  left: 100px;
-  width: 292px;
-  transform: rotate(18deg);
-}
-
-.line-two {
-  top: 248px;
-  left: 192px;
-  width: 270px;
-  transform: rotate(-12deg);
-}
-
-.line-three {
-  right: 106px;
-  bottom: 214px;
-  width: 236px;
-  transform: rotate(26deg);
-}
-
-.line-four {
-  left: 112px;
-  bottom: 162px;
-  width: 360px;
-  transform: rotate(-8deg);
-}
-
-.topology-node {
+.hero-circuit {
   position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 42px;
-  padding: 9px 12px;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.circuit-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 2.5;
+  stroke-dasharray: 16 14;
+  opacity: 0.62;
+  animation: circuit-flow 8s linear infinite;
+}
+
+.line-primary {
+  stroke: url(#circuitBlue);
+}
+
+.line-secondary {
+  stroke: url(#circuitAmber);
+  animation-duration: 9.5s;
+}
+
+.line-tertiary {
+  stroke: rgba(220, 235, 255, 0.28);
+  animation-duration: 11s;
+}
+
+.circuit-node {
+  fill: #081018;
+  stroke: var(--green);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 12px rgba(114, 240, 165, 0.5));
+  animation: node-pulse 3.8s ease-in-out infinite;
+}
+
+.node-two,
+.node-four {
+  stroke: var(--cyan);
+  animation-delay: 1s;
+}
+
+.portrait-card {
+  position: absolute;
+  left: 58px;
+  bottom: 44px;
+  z-index: 3;
+  width: min(410px, calc(100% - 138px));
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid rgba(220, 235, 255, 0.18);
+  border-radius: var(--radius);
+  background: rgba(6, 9, 14, 0.9);
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.44),
+    0 0 0 8px rgba(98, 217, 255, 0.035);
+}
+
+.portrait-card::before {
+  position: absolute;
+  inset: 12px;
+  z-index: 2;
+  pointer-events: none;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+}
+
+.portrait-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(to top, rgba(6, 8, 13, 0.86), transparent 42%),
+    linear-gradient(135deg, rgba(98, 217, 255, 0.16), transparent 34%, rgba(114, 240, 165, 0.1));
+}
+
+.portrait-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.92) contrast(1.04);
+}
+
+.portrait-scan {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: -28%;
+  z-index: 2;
+  height: 22%;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(98, 217, 255, 0.24), transparent);
+  mix-blend-mode: screen;
+  animation: portrait-scan 5.8s ease-in-out infinite;
+}
+
+.portrait-caption {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  left: 24px;
+  z-index: 3;
+  padding: 14px;
   border: 1px solid rgba(220, 235, 255, 0.16);
   border-radius: var(--radius);
+  background: rgba(5, 8, 12, 0.76);
+  backdrop-filter: blur(14px);
+}
+
+.portrait-caption span,
+.portrait-caption strong {
+  display: block;
+}
+
+.portrait-caption span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.portrait-caption strong {
+  margin-top: 5px;
   color: var(--text);
-  background: rgba(6, 9, 14, 0.78);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
-  font: 700 0.82rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1rem;
 }
 
-.topology-node span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 18px rgba(114, 240, 165, 0.72);
+.orbit-chip {
+  position: absolute;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid rgba(98, 217, 255, 0.2);
+  border-radius: var(--radius);
+  color: var(--text);
+  background: rgba(5, 8, 12, 0.76);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  font: 700 0.78rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-.node-a {
-  top: 86px;
-  left: 58px;
+.chip-a {
+  top: 72px;
+  left: 36px;
 }
 
-.node-b {
-  top: 170px;
+.chip-b {
+  top: 118px;
   right: 86px;
 }
 
-.node-c {
-  top: 276px;
-  left: 190px;
+.chip-c {
+  top: 292px;
+  right: 18px;
 }
 
-.node-d {
-  right: 70px;
-  bottom: 134px;
+.chip-d {
+  left: 22px;
+  bottom: 162px;
 }
 
-.node-e {
-  left: 74px;
-  bottom: 112px;
+.chip-e {
+  right: 132px;
+  bottom: 32px;
 }
 
-.node-f {
-  right: 172px;
-  bottom: 248px;
-}
-
-.terminal-card {
+.ops-card,
+.command-card {
   position: absolute;
-  right: 38px;
-  bottom: 34px;
-  width: min(370px, calc(100% - 76px));
-  overflow: hidden;
-  border: 1px solid rgba(98, 217, 255, 0.2);
+  z-index: 5;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(4, 8, 12, 0.9);
+  background: rgba(5, 8, 12, 0.82);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(16px);
+}
+
+.ops-card {
+  top: 52px;
+  right: 0;
+  width: min(274px, 48%);
+  padding: 14px;
+}
+
+.ops-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ops-row:last-child {
+  border-bottom: 0;
+}
+
+.ops-row span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.ops-row strong {
+  color: var(--text);
+  font-size: 0.86rem;
+  text-align: right;
+}
+
+.command-card {
+  right: 34px;
+  bottom: 86px;
+  width: min(342px, 50%);
+  overflow: hidden;
 }
 
 .terminal-bar {
@@ -533,17 +656,18 @@ svg {
   background: var(--green);
 }
 
-.terminal-lines {
-  padding: 14px 16px 18px;
-}
-
-.terminal-lines p {
+.command-card p {
   margin: 0;
+  padding: 0 16px;
   color: var(--muted-strong);
   font: 0.82rem/1.9 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-.terminal-lines span {
+.command-card p:last-child {
+  padding-bottom: 14px;
+}
+
+.command-card p span {
   color: var(--green);
 }
 
@@ -1212,24 +1336,69 @@ svg {
   color: var(--green);
 }
 
-@keyframes data-run {
+@keyframes signal-sweep {
+  0%,
+  38% {
+    transform: translateX(-120%);
+  }
+
+  62%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes circuit-flow {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.62;
+    filter: drop-shadow(0 0 8px rgba(114, 240, 165, 0.3));
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(114, 240, 165, 0.7));
+  }
+}
+
+@keyframes portrait-scan {
   0% {
-    transform: translateX(-100%);
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 0.55;
+  }
+
+  56% {
+    opacity: 0.35;
   }
 
   100% {
-    transform: translateX(100%);
+    transform: translateY(620%);
+    opacity: 0;
   }
 }
 
 @media (max-width: 1100px) {
   .hero {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "content"
+      "visual"
+      "facts";
     gap: 34px;
   }
 
-  .hero-topology {
-    min-height: 520px;
+  .hero-visual {
+    min-height: 620px;
   }
 
   .about-grid,
@@ -1319,6 +1488,10 @@ svg {
     grid-template-columns: 1fr;
   }
 
+  .quick-facts {
+    margin-top: 0;
+  }
+
   .section-header h2,
   .github-panel h2,
   .contact-panel h2 {
@@ -1348,7 +1521,9 @@ svg {
 
   .hero-actions {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 26px;
   }
 
   .hero-actions .button {
@@ -1356,50 +1531,70 @@ svg {
     min-width: 0;
   }
 
+  .hero-actions .button.ghost {
+    grid-column: 1 / -1;
+  }
+
   .hero-copy {
     max-width: 100%;
   }
 
-  .hero-topology {
-    min-height: 470px;
+  .hero-visual {
+    min-height: 640px;
+    overflow: hidden;
   }
 
-  .ring-one {
-    left: -110px;
+  .hero-visual::before {
+    inset: 18px 0 16px 0;
   }
 
-  .ring-two {
-    right: -90px;
+  .hero-visual::after {
+    inset: 54px 0 30px;
   }
 
-  .node-a {
-    left: 22px;
+  .hero-circuit {
+    width: 118%;
+    height: 118%;
+    transform: translate(-8%, -6%);
   }
 
-  .node-b {
+  .portrait-card {
     right: 22px;
+    bottom: auto;
+    left: 22px;
+    top: 0;
+    width: auto;
   }
 
-  .node-c {
-    left: 92px;
+  .ops-card {
+    top: auto;
+    right: 12px;
+    bottom: 112px;
+    left: 12px;
+    width: auto;
   }
 
-  .node-d {
-    right: 24px;
-  }
-
-  .node-e {
-    left: 28px;
-  }
-
-  .node-f {
-    right: 76px;
-  }
-
-  .terminal-card {
+  .command-card {
     right: 18px;
     bottom: 18px;
-    width: calc(100% - 36px);
+    left: 18px;
+    width: auto;
+  }
+
+  .chip-a {
+    top: 138px;
+    left: 14px;
+  }
+
+  .chip-b {
+    top: 170px;
+    right: 18px;
+  }
+
+  .chip-c,
+  .chip-d,
+  .chip-e {
+    display: none;
   }
 
   .stack-panel,
@@ -1449,21 +1644,26 @@ svg {
     font-size: 2.45rem;
   }
 
-  .hero-topology {
-    min-height: 440px;
+  .hero-visual {
+    min-height: 610px;
   }
 
-  .topology-node {
+  .portrait-card {
+    right: 16px;
+    bottom: 112px;
+    left: 16px;
+  }
+
+  .portrait-caption {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+  }
+
+  .orbit-chip {
+    min-height: 34px;
+    padding: 0 10px;
     font-size: 0.72rem;
-    padding: 8px 9px;
-  }
-
-  .node-c {
-    left: 62px;
-  }
-
-  .node-f {
-    right: 48px;
   }
 }
 

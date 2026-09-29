@@ -100,6 +100,27 @@ const quickFacts = [
   },
 ];
 
+const heroOps = [
+  {
+    label: "Target role",
+    value: "Cloud / DevOps",
+  },
+  {
+    label: "Current build",
+    value: "InfraWatch",
+  },
+  {
+    label: "Learning path",
+    value: "RHEL + OpenShift",
+  },
+];
+
+const heroCommands = [
+  "terraform plan",
+  "kubectl rollout status",
+  "prometheus targets",
+];
+
 const stackGroups = [
   {
     id: "cloud",
@@ -516,74 +537,119 @@ function SectionHeader({ eyebrow, title, children, align = "left", headingId }) 
   );
 }
 
-function HeroTopology() {
+function HeroVisual() {
   const reduceMotion = useReducedMotion();
   const nodes = [
-    { label: "AWS", className: "node-a" },
-    { label: "Docker", className: "node-b" },
-    { label: "K8s", className: "node-c" },
-    { label: "Terraform", className: "node-d" },
-    { label: "CI/CD", className: "node-e" },
-    { label: "Metrics", className: "node-f" },
+    { label: "AWS", className: "chip-a" },
+    { label: "K8s", className: "chip-b" },
+    { label: "Docker", className: "chip-c" },
+    { label: "IaC", className: "chip-d" },
+    { label: "Metrics", className: "chip-e" },
   ];
 
   return (
     <motion.div
-      className="hero-topology"
-      initial={reduceMotion ? false : { opacity: 0, scale: 0.96 }}
-      animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
-      transition={{ duration: 0.9, ease: "easeOut" }}
-      aria-label="Animated cloud infrastructure topology"
+      className="hero-visual"
+      initial={reduceMotion ? false : { opacity: 0, x: 36 }}
+      animate={reduceMotion ? undefined : { opacity: 1, x: 0 }}
+      transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+      aria-label="Animated portfolio identity and cloud infrastructure visual"
     >
-      <div className="topology-grid" aria-hidden="true" />
-      <div className="topology-ring ring-one" aria-hidden="true" />
-      <div className="topology-ring ring-two" aria-hidden="true" />
-      <div className="topology-lines" aria-hidden="true">
-        <span className="line line-one" />
-        <span className="line line-two" />
-        <span className="line line-three" />
-        <span className="line line-four" />
-      </div>
+      <svg
+        className="hero-circuit"
+        viewBox="0 0 620 620"
+        role="img"
+        aria-label="Cloud deployment pipeline diagram"
+      >
+        <defs>
+          <linearGradient id="circuitBlue" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stopColor="#62d9ff" />
+            <stop offset="100%" stopColor="#72f0a5" />
+          </linearGradient>
+          <linearGradient id="circuitAmber" x1="0" x2="1" y1="1" y2="0">
+            <stop offset="0%" stopColor="#ffd166" />
+            <stop offset="100%" stopColor="#62d9ff" />
+          </linearGradient>
+        </defs>
+        <path
+          className="circuit-line line-primary"
+          d="M78 122 H222 C292 122 290 220 358 220 H544"
+        />
+        <path
+          className="circuit-line line-secondary"
+          d="M102 484 H250 C314 484 306 394 372 394 H540"
+        />
+        <path
+          className="circuit-line line-tertiary"
+          d="M312 78 V170 C312 260 434 266 434 352 V548"
+        />
+        <circle className="circuit-node node-one" cx="78" cy="122" r="9" />
+        <circle className="circuit-node node-two" cx="544" cy="220" r="9" />
+        <circle className="circuit-node node-three" cx="102" cy="484" r="9" />
+        <circle className="circuit-node node-four" cx="434" cy="548" r="9" />
+      </svg>
 
       {nodes.map((node, index) => (
         <motion.div
           key={node.label}
-          className={`topology-node ${node.className}`}
+          className={`orbit-chip ${node.className}`}
           animate={
             reduceMotion
               ? undefined
               : {
-                  y: [0, index % 2 === 0 ? -8 : 8, 0],
+                  y: [0, index % 2 === 0 ? -10 : 10, 0],
+                  opacity: [0.78, 1, 0.78],
                 }
           }
           transition={{
-            duration: 4 + index * 0.35,
+            duration: 4.4 + index * 0.32,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         >
-          <span />
           {node.label}
         </motion.div>
       ))}
 
-      <div className="terminal-card">
+      <motion.div
+        className="portrait-card"
+        animate={reduceMotion ? undefined : { y: [0, -9, 0] }}
+        transition={{ repeat: Infinity, duration: 5.8, ease: "easeInOut" }}
+      >
+        <img
+          src={profile.photo}
+          alt="Parth Rajesh Chandurkar"
+          width="420"
+          height="520"
+          loading="eager"
+        />
+        <span className="portrait-scan" aria-hidden="true" />
+        <div className="portrait-caption">
+          <span>Parth Rajesh Chandurkar</span>
+          <strong>Cloud & DevOps Engineer</strong>
+        </div>
+      </motion.div>
+
+      <div className="ops-card">
+        {heroOps.map((item) => (
+          <div className="ops-row" key={item.label}>
+            <span>{item.label}</span>
+            <strong>{item.value}</strong>
+          </div>
+        ))}
+      </div>
+
+      <div className="command-card">
         <div className="terminal-bar">
           <span />
           <span />
           <span />
         </div>
-        <div className="terminal-lines">
-          <p>
-            <span>$</span> terraform plan
+        {heroCommands.map((command) => (
+          <p key={command}>
+            <span>$</span> {command}
           </p>
-          <p>
-            <span>$</span> kubectl rollout status
-          </p>
-          <p>
-            <span>$</span> prometheus targets healthy
-          </p>
-        </div>
+        ))}
       </div>
     </motion.div>
   );
@@ -867,18 +933,18 @@ function App() {
                 <span key={signal}>{signal}</span>
               ))}
             </Reveal>
-
-            <Reveal className="quick-facts" delay={0.18}>
-              {quickFacts.map((fact) => (
-                <div className="quick-fact" key={fact.label}>
-                  <strong>{fact.value}</strong>
-                  <span>{fact.label}</span>
-                </div>
-              ))}
-            </Reveal>
           </div>
 
-          <HeroTopology />
+          <HeroVisual />
+
+          <Reveal className="quick-facts" delay={0.18}>
+            {quickFacts.map((fact) => (
+              <div className="quick-fact" key={fact.label}>
+                <strong>{fact.value}</strong>
+                <span>{fact.label}</span>
+              </div>
+            ))}
+          </Reveal>
 
           <motion.a
             className="scroll-cue"
