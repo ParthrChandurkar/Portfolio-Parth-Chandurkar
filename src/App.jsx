@@ -1,1200 +1,991 @@
-import { useEffect, useMemo, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useMemo, useState } from "react";
 import {
   Activity,
-  ArrowRight,
-  ArrowUpRight,
   Award,
-  BookOpen,
-  Box,
-  Braces,
-  CheckCircle2,
+  BrainCircuit,
+  CalendarDays,
+  ChevronRight,
   Cloud,
+  Code2,
   Database,
   Download,
   ExternalLink,
-  Eye,
   FileText,
-  Gauge,
   GitBranch,
-  Layers,
   Mail,
+  MapPin,
   Menu,
-  Network,
   Phone,
-  Server,
+  Rocket,
+  Search,
+  Send,
+  ServerCog,
   ShieldCheck,
   Terminal,
   Workflow,
   X,
-  Zap,
 } from "lucide-react";
 import { FaAws, FaGithub, FaJava, FaLinkedinIn } from "react-icons/fa6";
 import {
+  SiAnsible,
+  SiC,
+  SiCplusplus,
   SiDocker,
+  SiDvc,
   SiFastapi,
+  SiFirebase,
+  SiFlask,
   SiGit,
   SiGithubactions,
-  SiGnubash,
+  SiGooglegemini,
   SiGrafana,
+  SiGnubash,
   SiHelm,
   SiJenkins,
   SiKubernetes,
   SiLinux,
   SiMongodb,
   SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiN8N,
+  SiPostman,
+  SiPlotly,
   SiPostgresql,
+  SiPrisma,
   SiPrometheus,
   SiPython,
-  SiSplunk,
+  SiPytorch,
+  SiRedis,
+  SiReact,
+  SiRender,
+  SiScikitlearn,
+  SiSelenium,
   SiSpringboot,
+  SiStreamlit,
+  SiTailwindcss,
+  SiTensorflow,
   SiTerraform,
+  SiTypescript,
+  SiVercel,
 } from "react-icons/si";
 
 const profile = {
   name: "Parth Rajesh Chandurkar",
+  shortName: "ParthChandurkar",
   role: "Cloud & DevOps Engineer",
-  summary:
-    "Building cloud-native infrastructure, automating deployments, and making systems observable.",
+  college: "VIIT Pune | B.Tech IT | CGPA 8.71",
   email: "parthrchn27@gmail.com",
   phone: "+91-7057252266",
+  location: "Pune, India",
   github: "https://github.com/ParthrChandurkar",
   linkedin: "https://www.linkedin.com/in/parth-chandurkar",
+  leetcode: "https://leetcode.com/u/parthchn28",
   resume: "/Parth_Rajesh_Chandurkar_Resume.pdf",
-  photo: "/profile.jpeg",
-  ieee: "https://ieeexplore.ieee.org/document/11566649/",
 };
 
+const portfolioUpdated = "August 2026";
+
 const navItems = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "stack", label: "Stack" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "certifications", label: "Certifications" },
-  { id: "contact", label: "Contact" },
+  { label: "Home", id: "top" },
+  { label: "About", id: "about" },
+  { label: "Skills", id: "skills" },
+  { label: "Education", id: "education" },
+  { label: "Experience", id: "experience" },
+  { label: "Work", id: "work" },
+  { label: "Contact", id: "contact" },
 ];
 
-const heroSignals = [
-  "AWS",
-  "Kubernetes",
-  "Terraform",
-  "Docker",
-  "CI/CD",
-  "Observability",
-  "Linux",
+const skill = (name, icon, color) => ({ name, icon, color });
+const awsOrange = "#ff9900";
+const researchPaperUrl = "https://ieeexplore.ieee.org/document/11566649";
+
+const featuredStack = [
+  skill("AWS", FaAws, awsOrange),
+  skill("Docker", SiDocker, "#2496ed"),
+  skill("Kubernetes", SiKubernetes, "#326ce5"),
+  skill("Terraform", SiTerraform, "#844fba"),
+  skill("FastAPI", SiFastapi, "#009688"),
+  skill("TypeScript", SiTypescript, "#3178c6"),
+  skill("GitHub Actions", SiGithubactions, "#ffffff"),
 ];
 
-const quickFacts = [
+const skillGroups = [
   {
-    value: "Final-year",
-    label: "Information Technology student",
+    title: "Languages",
+    icon: Code2,
+    accent: "cyan",
+    items: [
+      skill("C", SiC, "#a8b9cc"),
+      skill("C++", SiCplusplus, "#659ad2"),
+      skill("Python", SiPython, "#ffd43b"),
+      skill("Java", FaJava, "#f89820"),
+      skill("SQL", Database, "#38bdf8"),
+      skill("Bash", SiGnubash, "#4eaa25"),
+    ],
   },
   {
-    value: "8.71/10",
-    label: "Current CGPA at VIIT Pune",
+    title: "Cloud & DevOps",
+    icon: Cloud,
+    accent: "violet",
+    items: [
+      skill("AWS EC2", FaAws, awsOrange),
+      skill("S3", FaAws, awsOrange),
+      skill("RDS", Database, "#527fff"),
+      skill("Lambda", FaAws, awsOrange),
+      skill("IAM", ShieldCheck, "#a855f7"),
+      skill("DynamoDB", Database, "#4053d6"),
+      skill("Athena", Activity, "#38bdf8"),
+      skill("CloudWatch", Activity, "#ff4f8b"),
+      skill("Docker", SiDocker, "#2496ed"),
+      skill("Kubernetes", SiKubernetes, "#326ce5"),
+      skill("Helm", SiHelm, "#0f1689"),
+      skill("Jenkins", SiJenkins, "#d24939"),
+      skill("Terraform", SiTerraform, "#844fba"),
+      skill("Ansible", SiAnsible, "#ee0000"),
+      skill("Linux", SiLinux, "#fcc624"),
+      skill("GitHub Actions", SiGithubactions, "#ffffff"),
+      skill("Git", SiGit, "#f05032"),
+    ],
   },
   {
-    value: "IEEE",
-    label: "Published capstone research",
+    title: "Web & APIs",
+    icon: ServerCog,
+    accent: "green",
+    items: [
+      skill("React", SiReact, "#61dafb"),
+      skill("TypeScript", SiTypescript, "#3178c6"),
+      skill("Next.js", SiNextdotjs, "#ffffff"),
+      skill("Node.js", SiNodedotjs, "#5fa04e"),
+      skill("Spring Boot", SiSpringboot, "#6db33f"),
+      skill("FastAPI", SiFastapi, "#009688"),
+      skill("Flask", SiFlask, "#ffffff"),
+      skill("REST APIs", ServerCog, "#34d399"),
+      skill("Tailwind CSS", SiTailwindcss, "#06b6d4"),
+      skill("Postman", SiPostman, "#ff6c37"),
+      skill("Selenium", SiSelenium, "#43b02a"),
+    ],
+  },
+  {
+    title: "Databases",
+    icon: Database,
+    accent: "amber",
+    items: [
+      skill("MongoDB", SiMongodb, "#47a248"),
+      skill("MySQL", SiMysql, "#4479a1"),
+      skill("PostgreSQL", SiPostgresql, "#4169e1"),
+      skill("Redis", SiRedis, "#dc382d"),
+      skill("Prisma", SiPrisma, "#ffffff"),
+      skill("Firebase", SiFirebase, "#ffca28"),
+      skill("DynamoDB", Database, "#4053d6"),
+      skill("AWS RDS", FaAws, awsOrange),
+    ],
+  },
+  {
+    title: "AI / ML",
+    icon: BrainCircuit,
+    accent: "rose",
+    items: [
+      skill("Machine Learning", BrainCircuit, "#fb7185"),
+      skill("NLP", BrainCircuit, "#a855f7"),
+      skill("Gemini", SiGooglegemini, "#8e75b2"),
+      skill("TensorFlow", SiTensorflow, "#ff6f00"),
+      skill("PyTorch", SiPytorch, "#ee4c2c"),
+      skill("scikit-learn", SiScikitlearn, "#f7931e"),
+      skill("DVC", SiDvc, "#945dd6"),
+    ],
+  },
+  {
+    title: "Analytics",
+    icon: Activity,
+    accent: "blue",
+    items: [
+      skill("Power BI", Activity, "#f2c811"),
+      skill("Streamlit", SiStreamlit, "#ff4b4b"),
+      skill("Plotly", SiPlotly, "#3f4f75"),
+      skill("Prometheus", SiPrometheus, "#e6522c"),
+      skill("Grafana", SiGrafana, "#f46800"),
+      skill("Monitoring", Activity, "#60a5fa"),
+      skill("Dashboards", Workflow, "#34d399"),
+    ],
+  },
+  {
+    title: "Automation & Hosting",
+    icon: Workflow,
+    accent: "cyan",
+    items: [
+      skill("n8n", SiN8N, "#ea4b71"),
+      skill("Workflow Automation", Workflow, "#34d399"),
+      skill("Vercel", SiVercel, "#ffffff"),
+      skill("Render", SiRender, "#46e3b7"),
+      skill("CI/CD", SiGithubactions, "#ffffff"),
+      skill("Webhook APIs", ServerCog, "#38bdf8"),
+    ],
   },
 ];
 
-const heroOps = [
+const experience = [
   {
-    label: "Target role",
-    value: "Cloud / DevOps",
-  },
-  {
-    label: "Current build",
-    value: "InfraWatch",
-  },
-  {
-    label: "Learning path",
-    value: "RHEL + OpenShift",
-  },
-];
-
-const heroCommands = [
-  "terraform plan",
-  "kubectl rollout status",
-  "prometheus targets",
-];
-
-const stackGroups = [
-  {
-    id: "cloud",
-    label: "Cloud",
-    Icon: Cloud,
-    summary:
-      "AWS fundamentals across compute, storage, identity, serverless, database, and monitoring services.",
-    items: [
-      {
-        name: "AWS",
-        Icon: FaAws,
-        note: "Primary cloud platform for infrastructure and application deployment work.",
-      },
-      {
-        name: "EC2",
-        Icon: Server,
-        note: "Compute target used for deployed application workloads and cloud experiments.",
-      },
-      {
-        name: "S3",
-        Icon: Box,
-        note: "Object storage for documents, artifacts, and pipeline outputs.",
-      },
-      {
-        name: "RDS",
-        Icon: Database,
-        note: "Managed relational database service in the cloud skill set.",
-      },
-      {
-        name: "Lambda",
-        Icon: Zap,
-        note: "Serverless execution model within the AWS ecosystem.",
-      },
-      {
-        name: "IAM",
-        Icon: ShieldCheck,
-        note: "Identity and access management for cloud permissions.",
-      },
-      {
-        name: "CloudWatch",
-        Icon: Gauge,
-        note: "AWS monitoring and alarms for workload visibility.",
-      },
+    title: "Orbis Flow - AI-Assisted Invoice Approval Workflow Platform",
+    type: "Freelance Project",
+    duration: "Mar 2025 - Jun 2025",
+    stack: "Spring Boot, FastAPI, Next.js, PostgreSQL, Redis, Docker, OCR, GitHub Actions",
+    github: "https://github.com/ParthrChandurkar/orbisflow-platform",
+    points: [
+      "Built an end-to-end invoice workflow across employee, manager, and finance roles with OCR extraction, JWT auth, RBAC, and audit trails.",
+      "Protected workflow integrity with optimistic locking, append-only events, and state validation to prevent duplicate invoice processing.",
+      "Configured CI for Maven, pytest, Vitest, and Playwright across a three-service Docker Compose stack.",
     ],
   },
   {
-    id: "containers",
-    label: "Containers & Orchestration",
-    Icon: Layers,
-    summary:
-      "Container packaging and Kubernetes-based workload deployment for reproducible systems.",
-    items: [
-      {
-        name: "Docker",
-        Icon: SiDocker,
-        note: "Container images for local and cloud application workflows.",
-      },
-      {
-        name: "Kubernetes",
-        Icon: SiKubernetes,
-        note: "Deployment, orchestration, validation, and workload scaling concepts.",
-      },
-      {
-        name: "Helm",
-        Icon: SiHelm,
-        note: "Kubernetes package management and release configuration.",
-      },
+    title: "ZenithMind - AI-Powered Mental Health Assistant",
+    type: "Capstone Research Project",
+    duration: "Nov 2024 - Feb 2025",
+    stack: "React, Node.js, AWS EC2, NLP, Google API",
+    github:
+      "https://github.com/ParthrChandurkar/-ZenithMind-AI-Powered-Mental-Health-Assistant",
+    paper: researchPaperUrl,
+    points: [
+      "Built a CBT-informed wellness platform with AI chat, mood analytics, therapist workflows, Google Fit integrations, and gamified self-care.",
+      "Deployed the MERN platform on AWS EC2 with Kubernetes HPA, CloudWatch alarms, JWT authentication, and real-time dashboards.",
+      "Published the associated research work on IEEE Xplore as document 11566649.",
     ],
   },
   {
-    id: "devops",
-    label: "DevOps",
-    Icon: Workflow,
-    summary:
-      "Version control, automation, and CI/CD pipelines for repeatable delivery.",
-    items: [
-      {
-        name: "Git",
-        Icon: SiGit,
-        note: "Version control and collaborative engineering workflow.",
-      },
-      {
-        name: "GitHub Actions",
-        Icon: SiGithubactions,
-        note: "Automation for builds, deployment tasks, and retraining workflows.",
-      },
-      {
-        name: "Jenkins",
-        Icon: SiJenkins,
-        note: "CI/CD server concepts and pipeline automation.",
-      },
-      {
-        name: "CI/CD",
-        Icon: GitBranch,
-        note: "Build, test, package, and deployment automation.",
-      },
-    ],
-  },
-  {
-    id: "infrastructure",
-    label: "Infrastructure",
-    Icon: Terminal,
-    summary:
-      "Infrastructure as code, Linux operations, and shell scripting for system-level work.",
-    items: [
-      {
-        name: "Terraform",
-        Icon: SiTerraform,
-        note: "Infrastructure as code for declarative cloud and platform configuration.",
-      },
-      {
-        name: "Linux",
-        Icon: SiLinux,
-        note: "Operating system foundation for servers, containers, and tooling.",
-      },
-      {
-        name: "Bash",
-        Icon: SiGnubash,
-        note: "Shell scripting for repeatable local and infrastructure workflows.",
-      },
-    ],
-  },
-  {
-    id: "observability",
-    label: "Observability",
-    Icon: Eye,
-    summary:
-      "Metrics, dashboards, alerts, and logs for understanding workload behavior.",
-    items: [
-      {
-        name: "Prometheus",
-        Icon: SiPrometheus,
-        note: "Metric collection and alerting foundation for Kubernetes workloads.",
-      },
-      {
-        name: "Grafana",
-        Icon: SiGrafana,
-        note: "Dashboards for infrastructure and application visibility.",
-      },
-      {
-        name: "Alertmanager",
-        Icon: Activity,
-        note: "Alert routing and notification coordination in a Prometheus stack.",
-      },
-      {
-        name: "Splunk",
-        Icon: SiSplunk,
-        note: "Log search and operational visibility tooling.",
-      },
-    ],
-  },
-  {
-    id: "development",
-    label: "Development",
-    Icon: Braces,
-    summary:
-      "Backend and API skills used to understand the applications that infrastructure supports.",
-    items: [
-      {
-        name: "Python",
-        Icon: SiPython,
-        note: "Scripting, automation, backend services, and MLOps workflow support.",
-      },
-      {
-        name: "Java",
-        Icon: FaJava,
-        note: "Backend engineering with Spring Boot services.",
-      },
-      {
-        name: "Spring Boot",
-        Icon: SiSpringboot,
-        note: "Java service framework used in microservice workflow projects.",
-      },
-      {
-        name: "FastAPI",
-        Icon: SiFastapi,
-        note: "Python API framework used for service and workflow components.",
-      },
-      {
-        name: "REST APIs",
-        Icon: Network,
-        note: "HTTP service interfaces for application and platform communication.",
-      },
-      {
-        name: "SQL",
-        Icon: Database,
-        note: "Relational data querying and schema interaction.",
-      },
-    ],
-  },
-  {
-    id: "databases",
-    label: "Databases",
-    Icon: Database,
-    summary:
-      "Relational and document database foundations for application data layers.",
-    items: [
-      {
-        name: "PostgreSQL",
-        Icon: SiPostgresql,
-        note: "Relational database in the core database skill set.",
-      },
-      {
-        name: "MySQL",
-        Icon: SiMysql,
-        note: "Relational database for structured application data.",
-      },
-      {
-        name: "MongoDB",
-        Icon: SiMongodb,
-        note: "Document database for flexible application data models.",
-      },
-    ],
-  },
-  {
-    id: "learning",
-    label: "Currently Learning",
-    Icon: BookOpen,
-    summary:
-      "Current learning focus for strengthening Linux enterprise and platform engineering foundations.",
-    items: [
-      {
-        name: "RHEL",
-        Icon: SiLinux,
-        note: "Enterprise Linux administration learning path.",
-      },
-      {
-        name: "OpenShift",
-        Icon: SiKubernetes,
-        note: "Kubernetes platform learning path.",
-      },
+    title: "F1 Race Prediction and Strategy System",
+    type: "Freelance Project",
+    duration: "Jan 2025 - Mar 2025",
+    stack: "Python, Streamlit, scikit-learn, DVC, Docker, GitHub Actions, MLOps",
+    github: "https://github.com/ParthrChandurkar/F1-Race-Prediction-Strategy-System",
+    points: [
+      "Built an end-to-end F1 analytics app for race outcome prediction, Monte Carlo grid simulation, and weather-aware pit strategy.",
+      "Used DVC, Docker, and GitHub Actions for reproducible data, model, and deployment workflows.",
+      "Modeled tyre degradation and pit windows to support data-backed race strategy decisions.",
     ],
   },
 ];
 
 const projects = [
   {
-    number: "01",
-    name: "InfraWatch",
-    title: "Open-Source Local Kubernetes Deployment & Observability Platform",
-    repo: "https://github.com/ParthrChandurkar/InfraWatch-Zero-Touch-Deployments-with-Full-Infrastructure-Visibility",
-    intro:
-      "A local-first Kubernetes deployment and observability platform with a React dashboard for validating workloads and watching infrastructure behavior.",
-    scope:
-      "Positioned as an open-source local Kubernetes workflow for deployment validation and observability practice.",
-    tags: [
-      "Kubernetes",
-      "Minikube",
-      "Prometheus",
-      "Grafana",
-      "Alertmanager",
-      "Terraform",
-      "GitHub Actions",
-      "Docker",
+    title: "Retail IQ",
+    label: "Aug 2026",
+    status: "Retail BI and decision-support platform",
+    category: "Analytics",
+    stack: "Python, Next.js, TypeScript, PostgreSQL, ETL, Power BI, ML, Docker",
+    github: "https://github.com/ParthrChandurkar/Retail-IQ",
+    icon: Activity,
+    featured: true,
+    points: [
+      "Transforms raw Olist marketplace data into governed KPIs, customer analytics, RFM/CLV views, statistics, and dashboards.",
+      "Adds explainable satisfaction classification and decision-ready reporting without treating ML as the whole product.",
     ],
-    highlights: [
-      "Pod health, rollout status, live logs, and application metrics in a React dashboard.",
-      "Automated container image builds and Kubernetes manifest deployment workflow.",
-      "Local Kubernetes and Minikube workload validation with observability components.",
-    ],
-    flow: [
-      "Developer",
-      "GitHub Actions",
-      "Docker Image",
-      "Kubernetes / Minikube",
-      "Prometheus / Grafana / Alertmanager",
-      "Dashboard",
-    ],
-    accent: "green",
   },
   {
-    number: "02",
-    name: "OrbisFlow",
-    title: "AI-Assisted Invoice Approval Workflow Platform",
-    repo: "https://github.com/ParthrChandurkar/orbisflow-platform",
-    intro:
-      "A multi-role invoice approval workflow platform with Spring Boot and FastAPI microservices, AWS storage, OCR, and audit-focused controls.",
-    scope:
-      "Focused on secure approval flow design, document handling, authentication, and concurrent approval safety.",
-    tags: [
-      "Spring Boot",
-      "FastAPI",
-      "AWS",
-      "Docker",
-      "Tesseract OCR",
-      "Amazon S3",
-      "JWT",
-      "RBAC",
+    title: "Orbis Flow",
+    label: "Aug 2026",
+    status: "AI-assisted finance workflow automation",
+    category: "Automation",
+    stack: "Next.js, Spring Boot, FastAPI, PostgreSQL, Redis, MinIO, Docker Compose",
+    github: "https://github.com/ParthrChandurkar/orbisflow-platform",
+    icon: Workflow,
+    featured: true,
+    points: [
+      "Replaces email and spreadsheet invoice handoffs with upload, OCR validation, manager approval, finance processing, and audit trails.",
+      "Uses a secure multi-service topology with browser-isolated OCR, RBAC, JWT auth, CSRF protection, and traceable workflow states.",
     ],
-    highlights: [
-      "Employee, Manager, and Finance approval paths with role-based access control.",
-      "Invoice documents stored in Amazon S3 and processed through Tesseract OCR.",
-      "Subject-bound CSRF protection, append-only audit trail, and optimistic locking.",
-    ],
-    flow: [
-      "Invoice",
-      "S3",
-      "OCR / Tesseract",
-      "Spring Boot / FastAPI",
-      "Employee -> Manager -> Finance",
-      "Audit Trail",
-    ],
-    accent: "amber",
   },
   {
-    number: "03",
-    name: "F1 Race Prediction and Strategy System",
-    title: "Reproducible ML/MLOps Pipeline for F1 Telemetry Experiments",
-    repo: "https://github.com/ParthrChandurkar/F1-Race-Prediction-Strategy-System",
-    intro:
-      "An ML/MLOps pipeline built around historical F1 telemetry, dataset versioning, reproducible workloads, and automated model retraining.",
-    scope:
-      "A learning and engineering pipeline project using motorsport data, not a system used by an actual Formula 1 team.",
-    tags: [
-      "AWS EC2",
-      "Docker",
-      "Kubernetes",
-      "DVC",
-      "GitHub Actions",
-      "Amazon S3",
-      "MLOps",
+    title: "OptiVest",
+    label: "Aug 2026",
+    status: "Quantitative portfolio decision support",
+    category: "Analytics",
+    stack: "Python, React, optimization, Indian equities, scenario simulation",
+    github: "https://github.com/ParthrChandurkar/quantitative-portfolio-optimization-dss",
+    icon: Activity,
+    featured: true,
+    points: [
+      "Turns investor goals, risk appetite, capital, sector caps, and diversification limits into explainable Nifty 50 allocations.",
+      "Supports stress tests, binding-constraint inspection, projected drawdown analysis, and investment-committee exports.",
     ],
-    highlights: [
-      "Docker-based training and inference workloads for repeatable execution.",
-      "Kubernetes batch execution with DVC-backed dataset versioning.",
-      "GitHub Actions workflow for automated retraining when datasets change.",
+  },
+  {
+    title: "ResumeForge",
+    label: "Aug 2026",
+    status: "Private AI resume and cover-letter studio",
+    category: "AI",
+    stack: "FastAPI, React, Gemini, PDF export, LaTeX, private workspaces",
+    github: "https://github.com/ParthrChandurkar/ResumeForge",
+    icon: FileText,
+    featured: true,
+    points: [
+      "Tailors role-specific resumes and cover letters from job descriptions while preserving truthful evidence and document style.",
+      "Supports multiple resume variants, ATS keyword insight, personal history, clickable links, PDF output, and Overleaf-ready LaTeX.",
     ],
-    flow: [
-      "Historical F1 Telemetry",
-      "DVC",
-      "Training",
-      "Docker / Kubernetes",
-      "Model",
-      "GitHub Actions",
-      "S3 Outputs",
+  },
+  {
+    title: "Six Sigma DMAIC Quality Dashboard",
+    label: "Aug 2026",
+    status: "ML-assisted manufacturing quality analytics",
+    category: "Analytics",
+    stack: "Python, Streamlit, scikit-learn, Random Forest, DMAIC, quality control",
+    github: "https://github.com/ParthrChandurkar/six-sigma-dmaic-quality-dashboard",
+    icon: Activity,
+    points: [
+      "Combines DMAIC workflow, Pareto analysis, defect severity prediction, risk ranking, and process improvement recommendations.",
+      "Monitors process stability with weekly defect views and c-chart-style control limits.",
     ],
-    accent: "red",
+  },
+  {
+    title: "SeatFlow",
+    label: "July 2026",
+    status: "Live full-stack deployment",
+    category: "Full Stack",
+    stack: "React, Vite, TypeScript, Node.js, Express, Prisma, PostgreSQL, JWT, Resend, Render, Vercel, Neon",
+    github: "https://github.com/ParthrChandurkar/Ticket-Booking-System",
+    live: "https://seatflow-ticket-booking-tawny.vercel.app",
+    icon: ServerCog,
+    featured: true,
+    points: [
+      "Built a production-style movie and concert booking system with role-based admin, organiser, and customer workflows.",
+      "Implemented concurrency-safe seat holds with atomic SQL updates, TTL expiry jobs, waitlist auto-assignment, and QR email tickets.",
+      "Deployed the full stack on Vercel, Render, and Neon with seeded demo data, verified email delivery, and automated Jest/Supertest coverage.",
+    ],
+  },
+  {
+    title: "FlowCraft Pipeline Builder",
+    label: "July 2026",
+    status: "Visual workflow builder",
+    category: "Automation",
+    stack: "React Flow, FastAPI, JavaScript, graph validation, drag-and-drop UI",
+    github: "https://github.com/ParthrChandurkar/flowcraft-pipeline-builder",
+    icon: Workflow,
+    points: [
+      "Built a responsive node-canvas builder for composing inputs, outputs, prompts, transforms, API calls, filters, and timers.",
+      "Analyzes submitted graphs through a FastAPI backend with dynamic handles from text variables and workflow validation.",
+    ],
+  },
+  {
+    title: "SnapLink",
+    label: "June 2026",
+    status: "Live serverless URL analytics app",
+    category: "Cloud",
+    stack: "React, Tailwind CSS, Recharts, Python, AWS SAM, Lambda, DynamoDB, API Gateway",
+    github: "https://github.com/ParthrChandurkar/SnapLink",
+    live: "https://snaplink-eight.vercel.app",
+    icon: Rocket,
+    featured: true,
+    points: [
+      "Creates compact short links, redirects visitors with low latency, and tracks clicks by country, device, browser, referrer, and time.",
+      "Showcases cloud deployment, backend architecture, and frontend analytics in one production-style serverless build.",
+    ],
+  },
+  {
+    title: "InfraWatch",
+    label: "June 2026",
+    status: "Zero-touch deployment control plane",
+    category: "DevOps",
+    stack: "FastAPI, React, TypeScript, Docker, Kubernetes, Terraform, Helm, Prometheus, Grafana, Loki, GitHub Actions",
+    github: "https://github.com/ParthrChandurkar/InfraWatch-Zero-Touch-Deployments-with-Full-Infrastructure-Visibility",
+    live: "https://infrawatch-platform.vercel.app",
+    icon: Workflow,
+    featured: true,
+    points: [
+      "Built a cloud-native DevOps command center for deployments, service state, health metrics, logs, and audit events.",
+      "Connected Docker Compose, Kubernetes manifests, Terraform/Helm, Prometheus, Grafana, Loki, and GitHub Actions into a demo-ready platform.",
+    ],
+  },
+  {
+    title: "AI-Based Network Route Optimizer",
+    label: "July 2026",
+    status: "Failure-aware network routing dashboard",
+    category: "AI",
+    stack: "Python, Streamlit, Random Forest, Dijkstra, Plotly, network telemetry",
+    github: "https://github.com/ParthrChandurkar/AI-Based-Network-Route-Optimizer",
+    icon: Cloud,
+    points: [
+      "Compares traditional shortest-path routing with ML-assisted routing that penalizes risky links using predicted failure probability.",
+      "Visualizes latency, packet loss, bandwidth, stress simulations, and safer route selection in an interactive dashboard.",
+    ],
+  },
+  {
+    title: "F1 Race Prediction and Strategy System",
+    label: "Aug 2026",
+    status: "MLOps race analytics application",
+    category: "MLOps",
+    stack: "Python, Streamlit, scikit-learn, DVC, Docker, Monte Carlo simulation, CI",
+    github: "https://github.com/ParthrChandurkar/F1-Race-Prediction-Strategy-System",
+    icon: BrainCircuit,
+    points: [
+      "Predicts race outcomes and simulates strategy using trained models, circuit characteristics, weather, and tyre degradation rules.",
+      "Uses MLOps tooling and CI to keep the data, model, and dashboard workflow reproducible.",
+    ],
+  },
+  {
+    title: "ZenithMind",
+    label: "July 2026",
+    status: "IEEE-published AI mental wellness platform",
+    category: "AI",
+    stack: "React, Express, MongoDB, Gemini, Socket.IO, Google Fit, AWS EC2, Kubernetes",
+    github: "https://github.com/ParthrChandurkar/-ZenithMind-AI-Powered-Mental-Health-Assistant",
+    icon: BrainCircuit,
+    points: [
+      "Combines CBT-informed AI chat, mood and stress analytics, therapist workflows, community features, and gamified mental fitness.",
+      "Associated research paper is published on IEEE Xplore as document 11566649.",
+    ],
+  },
+  {
+    title: "Pharmenia",
+    label: "June 2026",
+    status: "Pharmacy operations and DBMS system",
+    category: "Desktop",
+    stack: "Python, Tkinter, MySQL, ReportLab, stored procedures, triggers, views",
+    github: "https://github.com/ParthrChandurkar/Pharmenia---Pharmacy-Management-System",
+    icon: Database,
+    points: [
+      "Manages medicine stock, suppliers, customers, purchases, GST invoices, FIFO batch consumption, and PDF invoice exports.",
+      "Demonstrates normalized 3NF database design with stored procedures, triggers, views, and cursor-based invoice processing.",
+    ],
+  },
+  {
+    title: "LexiLog",
+    label: "June 2026",
+    status: "Personal vocabulary journal",
+    category: "Desktop",
+    stack: "Python, Tkinter, MongoDB, PDF export, quiz workflows",
+    github: "https://github.com/ParthrChandurkar/LexiLog-Your-Personal-Vocabulary-Journal",
+    icon: FileText,
+    points: [
+      "Captures words, phrases, and idioms from films into searchable notes with meanings, context, and difficulty levels.",
+      "Adds quiz practice, learning stats, exportable collections, and a desktop-first workflow for regular vocabulary building.",
+    ],
   },
 ];
-
-const research = {
-  name: "ZenithMind",
-  title: "AI-Powered Mental Health Assistant",
-  type: "Capstone Research Project",
-  timeline: "Oct 2025 - May 2026",
-  distinction: "IEEE Published Paper",
-  link: profile.ieee,
-  stack: [
-    "AWS EC2",
-    "Docker",
-    "Kubernetes",
-    "HPA",
-    "CloudWatch",
-    "React",
-    "Node.js",
-  ],
-  points: [
-    "Collaborated with a team to deploy a React and Node.js application on AWS EC2 using Docker and Kubernetes.",
-    "Made the platform available to approximately 300-400 students across the research cohort.",
-    "Configured Kubernetes Horizontal Pod Autoscaler and AWS CloudWatch alarms for workload scaling and monitoring.",
-    "Focused on application reliability and operational visibility for the research deployment.",
-  ],
-};
 
 const certifications = [
+  "IBM DevOps and Software Engineering - Coursera",
+  "CCNA v7: Introduction to Networks - Cisco Networking Academy",
+  "AWS Certified Cloud Practitioner Specialization - Udemy",
+  "Career Essentials in Project Management - Microsoft & LinkedIn Learning",
+];
+
+const education = [
   {
-    name: "IBM DevOps and Software Engineering Professional Certificate",
-    issuer: "Coursera",
+    title: "B.Tech in Information Technology",
+    school: "Vishwakarma Institute of Information Technology, Pune",
+    period: "2023 - 2027",
+    status: "Pursuing | CGPA 8.71",
   },
   {
-    name: "AWS Cloud Practitioner Specialization",
-    issuer: "Udemy",
+    title: "Cloud & DevOps Engineering Track",
+    school: "AWS, Kubernetes, Terraform, Helm, CI/CD, Linux, observability",
+    period: "Current Focus",
+    status: "Building production-grade cloud and automation systems",
   },
   {
-    name: "CCNA v7: Introduction to Networks",
-    issuer: "Cisco Networking Academy",
+    title: "DevOps & Software Engineering",
+    school: "IBM, Cisco, AWS, Microsoft Learning",
+    period: "Certifications",
+    status: "Validated fundamentals across delivery, networks, and cloud",
   },
 ];
 
-const learningPath = [
-  {
-    label: "RHEL",
-    detail: "Building enterprise Linux administration depth.",
-  },
-  {
-    label: "OpenShift",
-    detail: "Extending Kubernetes learning toward platform engineering.",
-  },
+const stats = [
+  { value: "8.71", label: "CGPA" },
+  { value: "17", label: "Public GitHub repos" },
+  { value: "14", label: "Portfolio projects" },
+  { value: "IEEE", label: "Published research" },
 ];
-
-function Reveal({ children, className = "", delay = 0 }) {
-  const reduceMotion = useReducedMotion();
-
-  return (
-    <motion.div
-      className={className}
-      initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.22 }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function SectionHeader({ eyebrow, title, children, align = "left", headingId }) {
-  return (
-    <Reveal className={`section-header ${align === "center" ? "center" : ""}`}>
-      <p className="eyebrow">{eyebrow}</p>
-      <h2 id={headingId}>{title}</h2>
-      {children ? <p className="section-copy">{children}</p> : null}
-    </Reveal>
-  );
-}
-
-function HeroVisual() {
-  const reduceMotion = useReducedMotion();
-  const nodes = [
-    { label: "AWS", className: "chip-a" },
-    { label: "K8s", className: "chip-b" },
-    { label: "Docker", className: "chip-c" },
-    { label: "IaC", className: "chip-d" },
-    { label: "Metrics", className: "chip-e" },
-  ];
-
-  return (
-    <motion.div
-      className="hero-visual"
-      initial={reduceMotion ? false : { opacity: 0, x: 36 }}
-      animate={reduceMotion ? undefined : { opacity: 1, x: 0 }}
-      transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-      aria-label="Animated portfolio identity and cloud infrastructure visual"
-    >
-      <svg
-        className="hero-circuit"
-        viewBox="0 0 620 620"
-        role="img"
-        aria-label="Cloud deployment pipeline diagram"
-      >
-        <defs>
-          <linearGradient id="circuitBlue" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stopColor="#62d9ff" />
-            <stop offset="100%" stopColor="#72f0a5" />
-          </linearGradient>
-          <linearGradient id="circuitAmber" x1="0" x2="1" y1="1" y2="0">
-            <stop offset="0%" stopColor="#ffd166" />
-            <stop offset="100%" stopColor="#62d9ff" />
-          </linearGradient>
-        </defs>
-        <path
-          className="circuit-line line-primary"
-          d="M78 122 H222 C292 122 290 220 358 220 H544"
-        />
-        <path
-          className="circuit-line line-secondary"
-          d="M102 484 H250 C314 484 306 394 372 394 H540"
-        />
-        <path
-          className="circuit-line line-tertiary"
-          d="M312 78 V170 C312 260 434 266 434 352 V548"
-        />
-        <circle className="circuit-node node-one" cx="78" cy="122" r="9" />
-        <circle className="circuit-node node-two" cx="544" cy="220" r="9" />
-        <circle className="circuit-node node-three" cx="102" cy="484" r="9" />
-        <circle className="circuit-node node-four" cx="434" cy="548" r="9" />
-      </svg>
-
-      {nodes.map((node, index) => (
-        <motion.div
-          key={node.label}
-          className={`orbit-chip ${node.className}`}
-          animate={
-            reduceMotion
-              ? undefined
-              : {
-                  y: [0, index % 2 === 0 ? -10 : 10, 0],
-                  opacity: [0.78, 1, 0.78],
-                }
-          }
-          transition={{
-            duration: 4.4 + index * 0.32,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          {node.label}
-        </motion.div>
-      ))}
-
-      <motion.div
-        className="portrait-card"
-        animate={reduceMotion ? undefined : { y: [0, -9, 0] }}
-        transition={{ repeat: Infinity, duration: 5.8, ease: "easeInOut" }}
-      >
-        <img
-          src={profile.photo}
-          alt="Parth Rajesh Chandurkar"
-          width="420"
-          height="520"
-          loading="eager"
-        />
-        <span className="portrait-scan" aria-hidden="true" />
-        <div className="portrait-caption">
-          <span>Parth Rajesh Chandurkar</span>
-          <strong>Cloud & DevOps Engineer</strong>
-        </div>
-      </motion.div>
-
-      <div className="ops-card">
-        {heroOps.map((item) => (
-          <div className="ops-row" key={item.label}>
-            <span>{item.label}</span>
-            <strong>{item.value}</strong>
-          </div>
-        ))}
-      </div>
-
-      <div className="command-card">
-        <div className="terminal-bar">
-          <span />
-          <span />
-          <span />
-        </div>
-        {heroCommands.map((command) => (
-          <p key={command}>
-            <span>$</span> {command}
-          </p>
-        ))}
-      </div>
-    </motion.div>
-  );
-}
-
-function ProjectFlow({ steps, accent }) {
-  return (
-    <div className={`flow-diagram accent-${accent}`} aria-label="Project workflow">
-      {steps.map((step, index) => (
-        <motion.div
-          className="flow-step"
-          key={`${step}-${index}`}
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ delay: index * 0.05, duration: 0.45 }}
-        >
-          <span className="flow-index">{String(index + 1).padStart(2, "0")}</span>
-          <span className="flow-label">{step}</span>
-        </motion.div>
-      ))}
-    </div>
-  );
-}
-
-function StackExplorer() {
-  const [activeStack, setActiveStack] = useState(stackGroups[0].id);
-  const activeGroup =
-    stackGroups.find((group) => group.id === activeStack) ?? stackGroups[0];
-  const ActiveIcon = activeGroup.Icon;
-
-  return (
-    <div className="stack-explorer">
-      <div className="stack-tabs" role="tablist" aria-label="Technology stack categories">
-        {stackGroups.map((group) => {
-          const Icon = group.Icon;
-          const selected = group.id === activeGroup.id;
-
-          return (
-            <button
-              type="button"
-              key={group.id}
-              className={`stack-tab ${selected ? "active" : ""}`}
-              onClick={() => setActiveStack(group.id)}
-              onMouseEnter={() => setActiveStack(group.id)}
-              onFocus={() => setActiveStack(group.id)}
-              role="tab"
-              aria-selected={selected}
-              aria-controls={`stack-panel-${group.id}`}
-            >
-              <Icon size={18} aria-hidden="true" />
-              <span>{group.label}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      <motion.div
-        key={activeGroup.id}
-        id={`stack-panel-${activeGroup.id}`}
-        className="stack-panel"
-        role="tabpanel"
-        initial={{ opacity: 0, x: 18 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
-      >
-        <div className="stack-panel-head">
-          <span className="stack-panel-icon">
-            <ActiveIcon size={24} aria-hidden="true" />
-          </span>
-          <div>
-            <p className="panel-kicker">{activeGroup.label}</p>
-            <h3>{activeGroup.summary}</h3>
-          </div>
-        </div>
-
-        <div className="stack-items">
-          {activeGroup.items.map((item, index) => {
-            const Icon = item.Icon;
-            return (
-              <motion.article
-                className="stack-item"
-                key={item.name}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.035, duration: 0.3 }}
-              >
-                <Icon size={22} aria-hidden="true" />
-                <div>
-                  <h4>{item.name}</h4>
-                  <p>{item.note}</p>
-                </div>
-              </motion.article>
-            );
-          })}
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
-function ProjectShowcase() {
-  const [activeProject, setActiveProject] = useState(0);
-  const project = projects[activeProject];
-
-  return (
-    <div className="project-showcase">
-      <div className="project-rail" role="tablist" aria-label="Featured projects">
-        {projects.map((item, index) => {
-          const selected = index === activeProject;
-          return (
-            <button
-              type="button"
-              key={item.name}
-              className={`project-tab ${selected ? "active" : ""}`}
-              onClick={() => setActiveProject(index)}
-              role="tab"
-              aria-selected={selected}
-            >
-              <span>{item.number}</span>
-              <strong>{item.name}</strong>
-            </button>
-          );
-        })}
-      </div>
-
-      <motion.article
-        key={project.name}
-        className={`project-panel accent-${project.accent}`}
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
-        <div className="project-panel-content">
-          <p className="project-number">{project.number}</p>
-          <h3>{project.name}</h3>
-          <h4>{project.title}</h4>
-          <p className="project-intro">{project.intro}</p>
-          <p className="project-scope">{project.scope}</p>
-
-          <div className="tag-row" aria-label={`${project.name} technologies`}>
-            {project.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
-
-          <ul className="project-highlights">
-            {project.highlights.map((point) => (
-              <li key={point}>
-                <CheckCircle2 size={16} aria-hidden="true" />
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-
-          <a
-            className="button secondary"
-            href={project.repo}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaGithub aria-hidden="true" />
-            View Repository
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
-        </div>
-
-        <ProjectFlow steps={project.flow} accent={project.accent} />
-      </motion.article>
-    </div>
-  );
-}
 
 function App() {
-  const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
-  const reduceMotion = useReducedMotion();
+  const [avatarSrc, setAvatarSrc] = useState("/profile.jpeg");
+  const [projectQuery, setProjectQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
+  const projectCategories = useMemo(
+    () => ["All", ...Array.from(new Set(projects.map((project) => project.category)))],
+    [],
+  );
+  const filteredProjects = useMemo(() => {
+    const query = projectQuery.trim().toLowerCase();
 
-  useEffect(() => {
-    const sections = navItems
-      .map((item) => document.getElementById(item.id))
-      .filter(Boolean);
+    return projects.filter((project) => {
+      const matchesCategory = activeCategory === "All" || project.category === activeCategory;
+      const searchable = [
+        project.title,
+        project.status,
+        project.stack,
+        project.category,
+        ...project.points,
+      ]
+        .join(" ")
+        .toLowerCase();
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-42% 0px -50% 0px",
-        threshold: 0,
-      },
-    );
+      return matchesCategory && (!query || searchable.includes(query));
+    });
+  }, [activeCategory, projectQuery]);
+  const visibleFeaturedCount = useMemo(
+    () => filteredProjects.filter((project) => project.featured).length,
+    [filteredProjects],
+  );
 
-    sections.forEach((section) => observer.observe(section));
+  const closeMenu = () => setMenuOpen(false);
+  const resetProjectFilters = () => {
+    setProjectQuery("");
+    setActiveCategory("All");
+  };
 
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    document.body.classList.toggle("nav-open", menuOpen);
-    return () => document.body.classList.remove("nav-open");
-  }, [menuOpen]);
-
-  const handleNavClick = () => setMenuOpen(false);
+  const handleContact = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name");
+    const message = formData.get("message");
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name || "visitor"}`);
+    const body = encodeURIComponent(message || "Hi Parth, I found your portfolio.");
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+  };
 
   return (
-    <div className="app-shell">
-      <header className="site-nav">
-        <a className="brand-mark" href="#home" onClick={handleNavClick}>
-          <span>PC</span>
-          <strong>Cloud & DevOps</strong>
+    <div className="site-shell">
+      <header className="site-header">
+        <a className="brand" href="#top" aria-label="Parth portfolio home">
+          <span className="brand-mark">PC</span>
+          <span>{profile.shortName}</span>
         </a>
 
-        <button
-          type="button"
-          className="nav-toggle"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-
-        <nav className={`nav-links ${menuOpen ? "open" : ""}`} aria-label="Primary">
+        <nav className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Primary navigation">
           {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={activeSection === item.id ? "active" : ""}
-              onClick={handleNavClick}
-            >
+            <a key={item.id} href={`#${item.id}`} onClick={closeMenu}>
               {item.label}
             </a>
           ))}
         </nav>
+
+        <button
+          className="icon-button mobile-menu"
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+        >
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </header>
 
-      <main>
-        <section className="hero section-shell" id="home" aria-labelledby="hero-title">
-          <div className="hero-content">
-            <Reveal>
-              <p className="eyebrow">AWS / Kubernetes / IaC / Observability</p>
-              <h1 id="hero-title">{profile.name}</h1>
-              <p className="hero-role">{profile.role}</p>
-              <p className="hero-copy">{profile.summary}</p>
+      <main id="top">
+        <section className="hero-section" aria-labelledby="hero-title">
+          <div className="hero-bg-grid" aria-hidden="true" />
+          <div className="hero-overlay" aria-hidden="true" />
 
-              <div className="hero-actions">
-                <a className="button primary" href="#projects">
-                  View Projects
-                  <ArrowRight size={17} aria-hidden="true" />
-                </a>
-                <a
-                  className="button secondary"
-                  href={profile.github}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FaGithub aria-hidden="true" />
+          <div className="hero-layout">
+            <div className="hero-content">
+              <div className="eyebrow">
+                <Terminal size={16} />
+                <span>cloud/devops engineer</span>
+              </div>
+              <h1 id="hero-title">
+                <span>Parth Rajesh</span>
+                <span className="name-accent">Chandurkar</span>
+              </h1>
+              <p className="hero-role">
+                I am into <span>Cloud, DevOps & AI Automation</span>
+                <i aria-hidden="true" />
+              </p>
+              <p className="hero-copy">
+                I build cloud-native products, deployment systems, AI workflow tools, and
+                analytics dashboards that connect backend engineering with infrastructure,
+                observability, and practical business outcomes.
+              </p>
+
+              <div className="hero-actions" aria-label="Profile links">
+                <a className="button button-primary" href={profile.github} target="_blank" rel="noreferrer">
+                  <FaGithub size={18} />
                   GitHub
                 </a>
-                <a
-                  className="button ghost"
-                  href={profile.resume}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Download size={17} aria-hidden="true" />
+                <a className="button button-secondary" href={profile.linkedin} target="_blank" rel="noreferrer">
+                  <FaLinkedinIn size={18} />
+                  LinkedIn
+                </a>
+                <a className="button button-ghost" href={profile.resume} target="_blank" rel="noreferrer">
+                  <Download size={18} />
                   Resume
                 </a>
               </div>
-            </Reveal>
 
-            <Reveal className="hero-signals" delay={0.12}>
-              {heroSignals.map((signal) => (
-                <span key={signal}>{signal}</span>
-              ))}
-            </Reveal>
+              <div className="hero-stack" aria-label="Featured technologies">
+                {featuredStack.map(({ name, icon: StackIcon, color }) => (
+                  <span className="stack-chip" key={name} style={{ "--skill-color": color }}>
+                    <StackIcon size={18} aria-hidden="true" />
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="hero-visual-card" aria-label="Cloud DevOps visual profile">
+              <svg className="infra-svg" viewBox="0 0 520 520" role="img" aria-label="Animated cloud infrastructure map">
+                <defs>
+                  <linearGradient id="infraStroke" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0%" stopColor="#38bdf8" />
+                    <stop offset="52%" stopColor="#34d399" />
+                    <stop offset="100%" stopColor="#f59e0b" />
+                  </linearGradient>
+                </defs>
+                <path className="infra-ring" d="M260 58a202 202 0 1 1 0 404 202 202 0 0 1 0-404Z" />
+                <path className="infra-line line-one" d="M88 260h96c28 0 42-42 76-42h172" />
+                <path className="infra-line line-two" d="M94 336h116c34 0 36-82 82-82h132" />
+                <path className="infra-line line-three" d="M104 184h84c30 0 50 72 86 72h154" />
+                {[
+                  [88, 260],
+                  [184, 260],
+                  [260, 218],
+                  [432, 218],
+                  [94, 336],
+                  [210, 336],
+                  [292, 254],
+                  [424, 254],
+                  [104, 184],
+                  [188, 184],
+                  [274, 256],
+                  [428, 256],
+                ].map(([cx, cy]) => (
+                  <circle className="infra-node" cx={cx} cy={cy} key={`${cx}-${cy}`} r="5" />
+                ))}
+              </svg>
+
+              <div className="profile-frame">
+                <img
+                  className="hero-photo"
+                  src={avatarSrc}
+                  alt="Parth Rajesh Chandurkar"
+                  onError={() => setAvatarSrc("/profile-fallback.bmp")}
+                />
+              </div>
+
+              <div className="cloud-console" aria-hidden="true">
+                <span className="console-dot" />
+                <code>kubectl get pods --watch</code>
+                <strong>99.9% uptime mindset</strong>
+              </div>
+            </div>
           </div>
 
-          <HeroVisual />
-
-          <Reveal className="quick-facts" delay={0.18}>
-            {quickFacts.map((fact) => (
-              <div className="quick-fact" key={fact.label}>
-                <strong>{fact.value}</strong>
-                <span>{fact.label}</span>
+          <div className="hero-stats metrics-band" aria-label="Portfolio highlights">
+            {stats.map((stat) => (
+              <div className="stat-tile" key={stat.label}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
               </div>
             ))}
-          </Reveal>
-
-          <motion.a
-            className="scroll-cue"
-            href="#about"
-            aria-label="Scroll to about section"
-            animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut" }}
-          >
-            <span />
-          </motion.a>
+          </div>
         </section>
 
-        <section className="section-shell about-grid" id="about" aria-labelledby="about-title">
-          <SectionHeader
-            eyebrow="About"
-            title="Infrastructure-minded, application-aware."
-            headingId="about-title"
-          />
-
-          <Reveal className="about-copy">
-            <p>
-              I am a final-year Information Technology student at Vishwakarma
-              Institute of Information Technology, Pune, focused on Cloud and
-              DevOps engineering.
-            </p>
-            <p>
-              My current work centers on AWS, Kubernetes, Terraform, CI/CD,
-              Linux, and observability. I like building systems where deployment,
-              monitoring, and reliability are part of the engineering design,
-              not an afterthought.
-            </p>
-          </Reveal>
-
-          <Reveal className="education-panel" delay={0.1}>
-            <div className="profile-snapshot">
-              <img
-                src={profile.photo}
-                alt="Parth Rajesh Chandurkar"
-                width="96"
-                height="96"
-                loading="lazy"
-              />
-              <div>
-                <span>Final-year IT student</span>
-                <strong>Cloud & DevOps focus</strong>
-              </div>
-            </div>
-            <p className="panel-kicker">Education</p>
-            <h3>Vishwakarma Institute of Information Technology, Pune</h3>
-            <p>Bachelor of Technology in Information Technology</p>
-            <div className="education-meta">
-              <span>Aug 2023 - Present</span>
-              <span>CGPA 8.71 / 10</span>
-            </div>
-          </Reveal>
-        </section>
-
-        <section className="section-shell" id="stack" aria-labelledby="stack-title">
-          <SectionHeader
-            eyebrow="Engineering Stack"
-            title="A practical stack for cloud-native delivery."
-            headingId="stack-title"
-          >
-            Explore the tools grouped by how they fit into infrastructure,
-            delivery, observability, application services, and current learning.
-          </SectionHeader>
-          <Reveal>
-            <StackExplorer />
-          </Reveal>
-        </section>
-
-        <section className="section-shell" id="projects" aria-labelledby="projects-title">
-          <SectionHeader
-            eyebrow="Project Archive"
-            title="Cloud, DevOps, and platform engineering work."
-            headingId="projects-title"
-          >
-            Each project is presented as an engineering workflow so recruiters can
-            quickly see the infrastructure, automation, and reliability thinking
-            behind the code.
-          </SectionHeader>
-          <Reveal>
-            <ProjectShowcase />
-          </Reveal>
-        </section>
-
-        <section
-          className="section-shell experience-section"
-          id="experience"
-          aria-labelledby="experience-title"
-        >
-          <SectionHeader
-            eyebrow="Research Experience"
-            title="ZenithMind capstone research deployment."
-            headingId="experience-title"
-          >
-            A research project with application deployment, orchestration,
-            autoscaling, and monitoring work across AWS EC2, Docker, Kubernetes,
-            HPA, and CloudWatch.
-          </SectionHeader>
-
-          <Reveal className="research-card">
-            <div className="research-heading">
-              <div>
-                <p className="panel-kicker">{research.type}</p>
-                <h3>{research.name}</h3>
-                <p>{research.title}</p>
-              </div>
-              <a
-                className="button secondary"
-                href={research.link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                IEEE Paper
-                <ExternalLink size={16} aria-hidden="true" />
-              </a>
-            </div>
-
-            <div className="research-meta">
-              <span>{research.timeline}</span>
-              <span>{research.distinction}</span>
-            </div>
-
-            <div className="tag-row">
-              {research.stack.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-
-            <ul className="research-points">
-              {research.points.map((point) => (
-                <li key={point}>
-                  <CheckCircle2 size={16} aria-hidden="true" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </section>
-
-        <section
-          className="section-shell cert-section"
-          id="certifications"
-          aria-labelledby="certifications-title"
-        >
-          <SectionHeader
-            eyebrow="Certifications"
-            title="Verified learning foundations."
-            headingId="certifications-title"
-          />
-          <Reveal className="cert-grid">
-            {certifications.map((cert, index) => (
-              <article className="cert-card" key={cert.name}>
-                <span className="cert-index">{String(index + 1).padStart(2, "0")}</span>
-                <Award size={24} aria-hidden="true" />
-                <h3>{cert.name}</h3>
-                <p>{cert.issuer}</p>
-              </article>
-            ))}
-          </Reveal>
-        </section>
-
-        <section className="section-shell github-section" aria-labelledby="github-title">
-          <Reveal className="github-panel">
-            <div>
-              <p className="eyebrow">GitHub / Open Source</p>
-              <h2 id="github-title">Explore my engineering work.</h2>
+        <section className="section about-section" id="about">
+          <div className="section-heading">
+            <span className="section-kicker">About</span>
+            <h2>Engineer for cloud systems that keep moving.</h2>
+          </div>
+          <div className="about-layout">
+            <div className="about-copy">
               <p>
-                The portfolio links to the repositories that best represent my
-                Cloud and DevOps direction: local Kubernetes observability,
-                secure workflow services, and reproducible MLOps infrastructure.
+                I am a B.Tech IT student at VIIT Pune focused on Cloud, DevOps, full-stack
+                systems, and AI automation. My work spans AWS infrastructure, Kubernetes,
+                CI/CD, observability, workflow automation, analytics, and practical ML systems.
+              </p>
+              <p>
+                My current GitHub portfolio includes public builds across deployment control
+                planes, invoice automation, retail BI, quantitative decision support, resume AI,
+                serverless analytics, quality dashboards, and MLOps products.
               </p>
             </div>
-            <a
-              className="button primary"
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaGithub aria-hidden="true" />
-              Open GitHub
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-          </Reveal>
+            <div className="identity-panel">
+              <div>
+                <span>College</span>
+                <strong>{profile.college}</strong>
+              </div>
+              <div>
+                <span>Current focus</span>
+                <strong>Kubernetes, Terraform, observability, AI automation, analytics systems</strong>
+              </div>
+              <div>
+                <span>Latest refresh</span>
+                <strong>GitHub projects and resume updated in {portfolioUpdated}</strong>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section className="section-shell learning-section" aria-labelledby="learning-title">
-          <SectionHeader
-            eyebrow="Currently Learning"
-            title="Extending the platform path."
-            headingId="learning-title"
-          >
-            These are active learning areas, presented as current focus rather
-            than claimed proficiency.
-          </SectionHeader>
-          <Reveal className="learning-track">
-            {learningPath.map((item, index) => (
-              <article className="learning-step" key={item.label}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{item.label}</h3>
-                  <p>{item.detail}</p>
+        <section className="section skills-section" id="skills">
+          <div className="section-heading">
+            <span className="section-kicker">Skills</span>
+            <h2>Tooling across infrastructure, apps, data, and AI.</h2>
+          </div>
+          <div className="skill-grid">
+            {skillGroups.map(({ title, icon: Icon, accent, items }) => (
+              <article className={`skill-card accent-${accent}`} key={title}>
+                <div className="card-title">
+                  <div className="card-title-main">
+                    <Icon size={20} />
+                    <h3>{title}</h3>
+                  </div>
+                  <span className="skill-count">{items.length}</span>
+                </div>
+                <div className="skill-cloud">
+                  {items.map(({ name, icon: SkillIcon, color }) => (
+                    <span className="skill-pill" key={name} style={{ "--skill-color": color }}>
+                      <SkillIcon size={18} aria-hidden="true" />
+                      <span>{name}</span>
+                    </span>
+                  ))}
                 </div>
               </article>
             ))}
-          </Reveal>
+          </div>
         </section>
 
-        <section className="section-shell contact-section" id="contact" aria-labelledby="contact-title">
-          <Reveal className="contact-panel">
+        <section className="section education-section" id="education">
+          <div className="section-heading centered-heading">
+            <span className="section-kicker">Education</span>
+            <h2>Learning path built around cloud systems.</h2>
+          </div>
+          <div className="education-grid">
+            {education.map((item) => (
+              <article className="education-card" key={item.title}>
+                <div className="education-icon">
+                  <Award size={22} />
+                </div>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.school}</p>
+                  <span>{item.period}</span>
+                  <strong>{item.status}</strong>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section timeline-section" id="experience">
+          <div className="section-heading">
+            <span className="section-kicker">Experience</span>
+            <h2>Applied engineering work with measurable outcomes.</h2>
+          </div>
+          <div className="timeline">
+            {experience.map((item) => (
+              <article className="timeline-item" key={item.title}>
+                <div className="timeline-marker" aria-hidden="true" />
+                <div className="timeline-content">
+                  <div className="item-meta">
+                    <span>
+                      <CalendarDays size={15} />
+                      {item.duration}
+                    </span>
+                    <span>{item.type}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p className="stack-line">{item.stack}</p>
+                  <ul>
+                    {item.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                  <div className="inline-links">
+                    <a href={item.github} target="_blank" rel="noreferrer">
+                      <GitBranch size={16} />
+                      Repository
+                    </a>
+                    {item.paper && (
+                      <a className="paper-link" href={item.paper} target="_blank" rel="noreferrer">
+                        <FileText size={16} />
+                        Published IEEE Paper
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section projects-section" id="work">
+          <div className="section-heading">
+            <span className="section-kicker">Work - GitHub synced {portfolioUpdated}</span>
+            <h2>Current public projects across cloud, automation, analytics, and AI.</h2>
+          </div>
+          <div className="project-finder" aria-label="Project finder">
+            <label className="project-search">
+              <span className="sr-only">Search projects</span>
+              <Search size={18} />
+              <input
+                type="search"
+                value={projectQuery}
+                onChange={(event) => setProjectQuery(event.target.value)}
+                placeholder="Search projects, stacks, or outcomes"
+              />
+            </label>
+            <div className="project-filter-group" aria-label="Filter projects by category">
+              {projectCategories.map((category) => (
+                <button
+                  className={`filter-chip ${activeCategory === category ? "is-active" : ""}`}
+                  key={category}
+                  type="button"
+                  aria-pressed={activeCategory === category}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="project-result-bar" aria-live="polite">
+            <span>{filteredProjects.length} of {projects.length} projects shown / {visibleFeaturedCount} featured visible</span>
+            {(projectQuery || activeCategory !== "All") && (
+              <button type="button" onClick={resetProjectFilters}>Reset</button>
+            )}
+          </div>
+          {filteredProjects.length > 0 ? (
+            <div className="project-grid">
+              {filteredProjects.map(({ title, label, status, category, stack, github, live, icon: Icon, points, featured }) => (
+                <article className={`project-card ${featured ? "is-featured" : ""}`} key={title}>
+                  <div className="project-topline">
+                    <Icon size={22} />
+                    <span>{category} / {label}</span>
+                  </div>
+                  <h3>{title}</h3>
+                  <p className="project-status">{status}</p>
+                  <p className="stack-line">{stack}</p>
+                  <ul>
+                    {points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                  <div className="project-links">
+                    {github && (
+                      <a className="card-link" href={github} target="_blank" rel="noreferrer">
+                        View repository
+                        <ExternalLink size={15} />
+                      </a>
+                    )}
+                    {live && (
+                      <a className="card-link" href={live} target="_blank" rel="noreferrer">
+                        Live demo
+                        <ExternalLink size={15} />
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="empty-project-state">
+              <h3>No matching projects</h3>
+              <p>Try a broader stack, outcome, or category.</p>
+              <button className="button button-ghost" type="button" onClick={resetProjectFilters}>
+                Reset filters
+              </button>
+            </div>
+          )}
+        </section>
+
+        <section className="section research-section" id="research">
+          <div className="research-band">
             <div>
-              <p className="eyebrow">Contact</p>
-              <h2 id="contact-title">Let's build reliable systems.</h2>
+              <span className="section-kicker">Research</span>
+              <span className="published-badge">
+                <ShieldCheck size={15} />
+                Published on IEEE Xplore
+              </span>
+              <h2>ZenithMind IEEE research work</h2>
               <p>
-                I am focused on Cloud Engineer, DevOps Engineer, Site
-                Reliability, Platform, and Infrastructure roles where systems
-                thinking matters.
+                A capstone research project exploring CBT-based mental wellness support with
+                NLP-driven chatbot flows, sentiment analysis, behavioral analytics, and
+                therapist escalation pathways.
               </p>
             </div>
+            <a
+              className="button button-primary paper-button"
+              href={researchPaperUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FileText size={18} />
+              Read Published Paper
+              <ExternalLink size={16} />
+            </a>
+          </div>
+        </section>
 
-            <div className="contact-actions" aria-label="Contact links">
+        <section className="section certifications-section" id="certifications">
+          <div className="section-heading">
+            <span className="section-kicker">Certifications</span>
+            <h2>Validated foundations for cloud, networks, and delivery.</h2>
+          </div>
+          <div className="cert-grid">
+            {certifications.map((cert) => (
+              <article className="cert-card" key={cert}>
+                <Award size={20} />
+                <span>{cert}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section contact-section" id="contact">
+          <div className="section-heading">
+            <span className="section-kicker">Contact</span>
+            <h2>Let's build something reliable.</h2>
+          </div>
+          <div className="contact-layout">
+            <div className="contact-details">
               <a href={`mailto:${profile.email}`}>
-                <Mail size={18} aria-hidden="true" />
+                <Mail size={18} />
                 {profile.email}
               </a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer">
-                <FaLinkedinIn aria-hidden="true" />
-                LinkedIn
-              </a>
-              <a href={profile.github} target="_blank" rel="noreferrer">
-                <FaGithub aria-hidden="true" />
-                GitHub
-              </a>
-              <a href={`tel:${profile.phone.replace(/[-\s]/g, "")}`}>
-                <Phone size={18} aria-hidden="true" />
+              <a href={`tel:${profile.phone}`}>
+                <Phone size={18} />
                 {profile.phone}
               </a>
-              <a href={profile.resume} target="_blank" rel="noreferrer">
-                <FileText size={18} aria-hidden="true" />
-                Resume
+              <a href={profile.github} target="_blank" rel="noreferrer">
+                <FaGithub size={18} />
+                github.com/ParthrChandurkar
               </a>
+              <a href={profile.linkedin} target="_blank" rel="noreferrer">
+                <FaLinkedinIn size={18} />
+                linkedin.com/in/parth-chandurkar
+              </a>
+              <span>
+                <MapPin size={18} />
+                {profile.location}
+              </span>
             </div>
-          </Reveal>
+
+            <form className="contact-form" onSubmit={handleContact}>
+              <label>
+                Name
+                <input name="name" type="text" placeholder="Your name" />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" placeholder="you@example.com" />
+              </label>
+              <label>
+                Message
+                <textarea name="message" rows="5" placeholder="Tell me about the role or project" />
+              </label>
+              <button className="button button-primary" type="submit">
+                <Send size={18} />
+                Send Message
+              </button>
+            </form>
+          </div>
         </section>
       </main>
 
       <footer className="site-footer">
-        <p>&copy; {currentYear} {profile.name}. Cloud & DevOps portfolio.</p>
-        <a href="#home">Back to top</a>
+        <span>&copy; {currentYear} {profile.name}</span>
+        <a href={profile.leetcode} target="_blank" rel="noreferrer">
+          LeetCode <ChevronRight size={14} />
+        </a>
       </footer>
     </div>
   );

@@ -1,7 +1,6 @@
 node_modules/
 dist/
 screenshots/
-.codex-screenshots/
 .env
 .env.local
 .DS_Store
