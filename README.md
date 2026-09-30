@@ -5,7 +5,7 @@
 [![Vite](https://img.shields.io/badge/Vite-8-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
 
-A fast, responsive portfolio for Parth Rajesh Chandurkar, focused on Cloud, DevOps, AI automation, analytics, MLOps, and full-stack engineering.
+A fast, responsive portfolio for Parth Rajesh Chandurkar, focused on Cloud and DevOps engineering: AWS, Terraform, Docker, Kubernetes, GitHub Actions, Linux, CI/CD, and observability.
 
 Live site: [parth-chandurkar.vercel.app](https://parth-chandurkar.vercel.app)
 
@@ -16,10 +16,10 @@ This repository is the source of truth for the live portfolio. It keeps the port
 The portfolio is built as a single-page React experience for recruiters, hiring managers, and technical reviewers who need quick access to:
 
 - Current public GitHub projects
-- Cloud, DevOps, automation, AI/ML, analytics, and full-stack skills
-- Freelance, capstone, and research work
+- Cloud, DevOps, networking, infrastructure-as-code, and observability skills
+- Capstone research, IEEE publication, and project work from the latest CV
 - Downloadable CV
-- Contact, GitHub, LinkedIn, LeetCode, and IEEE research links
+- Contact, GitHub, LinkedIn, and IEEE research links
 
 ## Portfolio Highlights
 
@@ -27,7 +27,7 @@ The portfolio is built as a single-page React experience for recruiters, hiring 
 | --- | --- |
 | Hero | Direct GitHub, LinkedIn, and resume actions |
 | Skills | Categorized technology chips with recognizable icons |
-| Experience | Applied engineering work with links and measurable outcomes |
+| Experience | ZenithMind capstone research deployment and IEEE publication |
 | Work | Current GitHub projects with repositories, live demos, and project categories |
 | Research | ZenithMind IEEE Xplore publication link |
 | Contact | Direct email, phone, GitHub, LinkedIn, and location details |
@@ -37,7 +37,7 @@ The portfolio is built as a single-page React experience for recruiters, hiring 
 The Work section includes an interactive project finder:
 
 - Search across project names, statuses, stacks, categories, and project outcomes
-- Filter projects by category such as `Analytics`, `Automation`, `AI`, `Full Stack`, `Cloud`, `DevOps`, `MLOps`, and `Desktop`
+- Filter projects by category such as `Analytics`, `Automation`, `AI`, `Web App`, `Cloud`, `DevOps`, `MLOps`, `Network`, `Research`, and `Desktop`
 - Show a live result count so visitors know how much of the portfolio is visible
 - Provide a reset action and empty-result state for clean navigation
 
@@ -113,7 +113,7 @@ Most portfolio content lives in [src/App.jsx](src/App.jsx):
 - `education`
 - `stats`
 
-Global layout and responsive styling live in [src/styles.css](src/styles.css). Static assets such as the profile photo, fallback image, and resume PDF live in [public/](public/).
+Global layout and responsive styling live in [src/styles.css](src/styles.css). Static assets such as the profile photo, fallback image, and latest resume PDF live in [public/](public/).
 
 Recommended update flow:
 
@@ -159,7 +159,7 @@ npx vercel deploy --prod
 
 - GitHub: [github.com/ParthrChandurkar](https://github.com/ParthrChandurkar)
 - LinkedIn: [linkedin.com/in/parth-chandurkar](https://www.linkedin.com/in/parth-chandurkar)
-- LeetCode: [leetcode.com/u/parthchn28](https://leetcode.com/u/parthchn28)
+- IEEE: [ieeexplore.ieee.org/document/11566649](https://ieeexplore.ieee.org/document/11566649)
 - Email: [parthrchn27@gmail.com](mailto:parthrchn27@gmail.com)
 
 ---

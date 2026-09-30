@@ -27,47 +27,23 @@ import {
 } from "lucide-react";
 import { FaAws, FaGithub, FaJava, FaLinkedinIn } from "react-icons/fa6";
 import {
-  SiAnsible,
-  SiC,
-  SiCplusplus,
   SiDocker,
-  SiDvc,
   SiFastapi,
-  SiFirebase,
-  SiFlask,
   SiGit,
   SiGithubactions,
-  SiGooglegemini,
   SiGrafana,
   SiGnubash,
   SiHelm,
   SiJenkins,
   SiKubernetes,
   SiLinux,
-  SiMongodb,
   SiMysql,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiN8N,
-  SiPostman,
-  SiPlotly,
   SiPostgresql,
-  SiPrisma,
   SiPrometheus,
   SiPython,
-  SiPytorch,
   SiRedis,
-  SiReact,
-  SiRender,
-  SiScikitlearn,
-  SiSelenium,
   SiSpringboot,
-  SiStreamlit,
-  SiTailwindcss,
-  SiTensorflow,
   SiTerraform,
-  SiTypescript,
-  SiVercel,
 } from "react-icons/si";
 
 const profile = {
@@ -80,11 +56,11 @@ const profile = {
   location: "Pune, India",
   github: "https://github.com/ParthrChandurkar",
   linkedin: "https://www.linkedin.com/in/parth-chandurkar",
-  leetcode: "https://leetcode.com/u/parthchn28",
+  ieee: "https://ieeexplore.ieee.org/document/11566649",
   resume: "/Parth_Rajesh_Chandurkar_Resume.pdf",
 };
 
-const portfolioUpdated = "August 2026";
+const portfolioUpdated = "September 2026";
 
 const navItems = [
   { label: "Home", id: "top" },
@@ -105,9 +81,9 @@ const featuredStack = [
   skill("Docker", SiDocker, "#2496ed"),
   skill("Kubernetes", SiKubernetes, "#326ce5"),
   skill("Terraform", SiTerraform, "#844fba"),
-  skill("FastAPI", SiFastapi, "#009688"),
-  skill("TypeScript", SiTypescript, "#3178c6"),
   skill("GitHub Actions", SiGithubactions, "#ffffff"),
+  skill("Prometheus", SiPrometheus, "#e6522c"),
+  skill("Linux", SiLinux, "#fcc624"),
 ];
 
 const skillGroups = [
@@ -116,8 +92,6 @@ const skillGroups = [
     icon: Code2,
     accent: "cyan",
     items: [
-      skill("C", SiC, "#a8b9cc"),
-      skill("C++", SiCplusplus, "#659ad2"),
       skill("Python", SiPython, "#ffd43b"),
       skill("Java", FaJava, "#f89820"),
       skill("SQL", Database, "#38bdf8"),
@@ -134,178 +108,186 @@ const skillGroups = [
       skill("RDS", Database, "#527fff"),
       skill("Lambda", FaAws, awsOrange),
       skill("IAM", ShieldCheck, "#a855f7"),
-      skill("DynamoDB", Database, "#4053d6"),
-      skill("Athena", Activity, "#38bdf8"),
       skill("CloudWatch", Activity, "#ff4f8b"),
       skill("Docker", SiDocker, "#2496ed"),
       skill("Kubernetes", SiKubernetes, "#326ce5"),
       skill("Helm", SiHelm, "#0f1689"),
-      skill("Jenkins", SiJenkins, "#d24939"),
-      skill("Terraform", SiTerraform, "#844fba"),
-      skill("Ansible", SiAnsible, "#ee0000"),
-      skill("Linux", SiLinux, "#fcc624"),
-      skill("GitHub Actions", SiGithubactions, "#ffffff"),
       skill("Git", SiGit, "#f05032"),
+      skill("GitHub Actions", SiGithubactions, "#ffffff"),
+      skill("Jenkins", SiJenkins, "#d24939"),
+      skill("CI/CD", SiGithubactions, "#ffffff"),
     ],
   },
   {
-    title: "Web & APIs",
+    title: "Networking & IaC",
     icon: ServerCog,
     accent: "green",
     items: [
-      skill("React", SiReact, "#61dafb"),
-      skill("TypeScript", SiTypescript, "#3178c6"),
-      skill("Next.js", SiNextdotjs, "#ffffff"),
-      skill("Node.js", SiNodedotjs, "#5fa04e"),
-      skill("Spring Boot", SiSpringboot, "#6db33f"),
-      skill("FastAPI", SiFastapi, "#009688"),
-      skill("Flask", SiFlask, "#ffffff"),
-      skill("REST APIs", ServerCog, "#34d399"),
-      skill("Tailwind CSS", SiTailwindcss, "#06b6d4"),
-      skill("Postman", SiPostman, "#ff6c37"),
-      skill("Selenium", SiSelenium, "#43b02a"),
+      skill("Linux Administration", SiLinux, "#fcc624"),
+      skill("Terraform", SiTerraform, "#844fba"),
+      skill("K8s", SiKubernetes, "#326ce5"),
+      skill("TCP/IP", Cloud, "#38bdf8"),
+      skill("DNS", Cloud, "#38bdf8"),
+      skill("Security Fundamentals", ShieldCheck, "#a855f7"),
     ],
   },
   {
-    title: "Databases",
-    icon: Database,
-    accent: "amber",
-    items: [
-      skill("MongoDB", SiMongodb, "#47a248"),
-      skill("MySQL", SiMysql, "#4479a1"),
-      skill("PostgreSQL", SiPostgresql, "#4169e1"),
-      skill("Redis", SiRedis, "#dc382d"),
-      skill("Prisma", SiPrisma, "#ffffff"),
-      skill("Firebase", SiFirebase, "#ffca28"),
-      skill("DynamoDB", Database, "#4053d6"),
-      skill("AWS RDS", FaAws, awsOrange),
-    ],
-  },
-  {
-    title: "AI / ML",
-    icon: BrainCircuit,
-    accent: "rose",
-    items: [
-      skill("Machine Learning", BrainCircuit, "#fb7185"),
-      skill("NLP", BrainCircuit, "#a855f7"),
-      skill("Gemini", SiGooglegemini, "#8e75b2"),
-      skill("TensorFlow", SiTensorflow, "#ff6f00"),
-      skill("PyTorch", SiPytorch, "#ee4c2c"),
-      skill("scikit-learn", SiScikitlearn, "#f7931e"),
-      skill("DVC", SiDvc, "#945dd6"),
-    ],
-  },
-  {
-    title: "Analytics",
+    title: "Observability & Monitoring",
     icon: Activity,
     accent: "blue",
     items: [
-      skill("Power BI", Activity, "#f2c811"),
-      skill("Streamlit", SiStreamlit, "#ff4b4b"),
-      skill("Plotly", SiPlotly, "#3f4f75"),
       skill("Prometheus", SiPrometheus, "#e6522c"),
       skill("Grafana", SiGrafana, "#f46800"),
-      skill("Monitoring", Activity, "#60a5fa"),
+      skill("Alertmanager", Activity, "#34d399"),
+      skill("Splunk", Activity, "#ff8f1f"),
+      skill("CloudWatch", Activity, "#ff4f8b"),
       skill("Dashboards", Workflow, "#34d399"),
     ],
   },
   {
-    title: "Automation & Hosting",
-    icon: Workflow,
-    accent: "cyan",
+    title: "Frameworks & Databases",
+    icon: Database,
+    accent: "amber",
     items: [
-      skill("n8n", SiN8N, "#ea4b71"),
-      skill("Workflow Automation", Workflow, "#34d399"),
-      skill("Vercel", SiVercel, "#ffffff"),
-      skill("Render", SiRender, "#46e3b7"),
-      skill("CI/CD", SiGithubactions, "#ffffff"),
-      skill("Webhook APIs", ServerCog, "#38bdf8"),
+      skill("Spring Boot", SiSpringboot, "#6db33f"),
+      skill("FastAPI", SiFastapi, "#009688"),
+      skill("REST APIs", ServerCog, "#34d399"),
+      skill("PostgreSQL", SiPostgresql, "#4169e1"),
+      skill("MySQL", SiMysql, "#4479a1"),
+      skill("Redis", SiRedis, "#dc382d"),
+    ],
+  },
+  {
+    title: "Currently Learning",
+    icon: Terminal,
+    accent: "rose",
+    items: [
+      skill("RHEL", SiLinux, "#ee0000"),
+      skill("OpenShift", SiKubernetes, "#ee0000"),
     ],
   },
 ];
 
 const experience = [
   {
-    title: "Orbis Flow - AI-Assisted Invoice Approval Workflow Platform",
-    type: "Freelance Project",
-    duration: "Mar 2025 - Jun 2025",
-    stack: "Spring Boot, FastAPI, Next.js, PostgreSQL, Redis, Docker, OCR, GitHub Actions",
-    github: "https://github.com/ParthrChandurkar/orbisflow-platform",
-    points: [
-      "Built an end-to-end invoice workflow across employee, manager, and finance roles with OCR extraction, JWT auth, RBAC, and audit trails.",
-      "Protected workflow integrity with optimistic locking, append-only events, and state validation to prevent duplicate invoice processing.",
-      "Configured CI for Maven, pytest, Vitest, and Playwright across a three-service Docker Compose stack.",
-    ],
-  },
-  {
     title: "ZenithMind - AI-Powered Mental Health Assistant",
     type: "Capstone Research Project",
-    duration: "Nov 2024 - Feb 2025",
-    stack: "React, Node.js, AWS EC2, NLP, Google API",
+    duration: "Oct 2025 - May 2026",
+    stack: "React, Node.js, AWS EC2, Docker, Kubernetes, HPA, CloudWatch",
     github:
       "https://github.com/ParthrChandurkar/-ZenithMind-AI-Powered-Mental-Health-Assistant",
     paper: researchPaperUrl,
     points: [
-      "Built a CBT-informed wellness platform with AI chat, mood analytics, therapist workflows, Google Fit integrations, and gamified self-care.",
-      "Deployed the MERN platform on AWS EC2 with Kubernetes HPA, CloudWatch alarms, JWT authentication, and real-time dashboards.",
-      "Published the associated research work on IEEE Xplore as document 11566649.",
-    ],
-  },
-  {
-    title: "F1 Race Prediction and Strategy System",
-    type: "Freelance Project",
-    duration: "Jan 2025 - Mar 2025",
-    stack: "Python, Streamlit, scikit-learn, DVC, Docker, GitHub Actions, MLOps",
-    github: "https://github.com/ParthrChandurkar/F1-Race-Prediction-Strategy-System",
-    points: [
-      "Built an end-to-end F1 analytics app for race outcome prediction, Monte Carlo grid simulation, and weather-aware pit strategy.",
-      "Used DVC, Docker, and GitHub Actions for reproducible data, model, and deployment workflows.",
-      "Modeled tyre degradation and pit windows to support data-backed race strategy decisions.",
+      "Collaborated with a team to deploy a React/Node.js application on AWS EC2 using Docker and Kubernetes for containerization and orchestration.",
+      "Made the platform available across the research cohort.",
+      "Configured Kubernetes Horizontal Pod Autoscaler and AWS CloudWatch alarms for workload scaling and monitoring.",
+      "Co-authored the associated ZenithMind research paper published on IEEE Xplore.",
     ],
   },
 ];
 
 const projects = [
   {
-    title: "Retail IQ",
-    label: "Aug 2026",
-    status: "Retail BI and decision-support platform",
-    category: "Analytics",
-    stack: "Python, Next.js, TypeScript, PostgreSQL, ETL, Power BI, ML, Docker",
-    github: "https://github.com/ParthrChandurkar/Retail-IQ",
-    icon: Activity,
+    title: "InfraWatch",
+    label: "Sep 2026",
+    status: "Open-source local Kubernetes deployment and observability platform",
+    category: "DevOps",
+    stack: "React, Kubernetes, Minikube, Docker, Terraform, Helm, GitHub Actions, Redis, Prometheus, Grafana, Alertmanager",
+    icon: Workflow,
+    github: "https://github.com/ParthrChandurkar/InfraWatch",
     featured: true,
     points: [
-      "Transforms raw Olist marketplace data into governed KPIs, customer analytics, RFM/CLV views, statistics, and dashboards.",
-      "Adds explainable satisfaction classification and decision-ready reporting without treating ML as the whole product.",
+      "Developed a local Kubernetes deployment and observability platform with a React dashboard for pod health, rollout status, live logs, and application metrics.",
+      "Provisioned infrastructure with Terraform and Helm while automating container image builds and Kubernetes manifest deployment through GitHub Actions.",
+      "Integrated Prometheus, Grafana, and Alertmanager, and used Redis to cache recent Prometheus query results for repeated dashboard requests.",
     ],
   },
   {
     title: "Orbis Flow",
-    label: "Aug 2026",
-    status: "AI-assisted finance workflow automation",
+    label: "Sep 2026",
+    status: "AI-assisted invoice approval workflow",
     category: "Automation",
-    stack: "Next.js, Spring Boot, FastAPI, PostgreSQL, Redis, MinIO, Docker Compose",
+    stack: "Java Spring Boot, FastAPI, AWS, Docker, Tesseract OCR, Amazon S3, JWT, RBAC",
     github: "https://github.com/ParthrChandurkar/orbisflow-platform",
     icon: Workflow,
     featured: true,
     points: [
-      "Replaces email and spreadsheet invoice handoffs with upload, OCR validation, manager approval, finance processing, and audit trails.",
-      "Uses a secure multi-service topology with browser-isolated OCR, RBAC, JWT auth, CSRF protection, and traceable workflow states.",
+      "Developed a multi-role invoice approval workflow with Spring Boot and FastAPI microservices on AWS.",
+      "Used Docker containerization and Tesseract OCR to extract invoice fields from documents stored in Amazon S3.",
+      "Implemented RBAC across Employee, Manager, and Finance workflows with JWT auth, subject-bound CSRF protection, append-only audit trails, and optimistic locking.",
+    ],
+  },
+  {
+    title: "F1 Race Prediction and Strategy System",
+    label: "Sep 2026",
+    status: "Reproducible ML/MLOps race analytics pipeline",
+    category: "MLOps",
+    stack: "Python, AWS EC2, Docker, Kubernetes, DVC, GitHub Actions, Amazon S3",
+    github: "https://github.com/ParthrChandurkar/F1-Race-Prediction-Strategy-System",
+    icon: BrainCircuit,
+    featured: true,
+    points: [
+      "Built an ML/MLOps pipeline on AWS EC2 for race-position prediction from historical F1 telemetry.",
+      "Used Docker for reproducible training and inference workloads, Kubernetes for batch execution, and DVC for dataset versioning.",
+      "Automated model retraining through GitHub Actions on dataset updates and stored pipeline outputs in Amazon S3.",
+    ],
+  },
+  {
+    title: "PurchaseLens",
+    label: "Sep 2026",
+    status: "Explainable purchase prediction and customer analytics",
+    category: "AI",
+    stack: "Python, Streamlit, scikit-learn, SHAP, retail analytics",
+    github: "https://github.com/ParthrChandurkar/explainable-purchase-prediction",
+    icon: BrainCircuit,
+    featured: true,
+    points: [
+      "Built a reproducible purchase-prediction workflow for e-commerce customer behavior data.",
+      "Compares class-balanced models, tunes probability thresholds, and produces global and local SHAP explanations.",
+      "Maps model predictions into transparent retail-action suggestions through a Streamlit prototype.",
+    ],
+  },
+  {
+    title: "SnapLink",
+    label: "Sep 2026",
+    status: "Serverless URL shortener with click analytics",
+    category: "Cloud",
+    stack: "React, Python, AWS Lambda, API Gateway, DynamoDB, S3, CloudFront",
+    github: "https://github.com/ParthrChandurkar/SnapLink",
+    live: "https://snaplink-eight.vercel.app",
+    icon: Rocket,
+    featured: true,
+    points: [
+      "Creates compact short links, redirects visitors, and tracks clicks by country, device, browser, referrer, and time.",
+      "Uses a serverless AWS architecture with Lambda, API Gateway, DynamoDB, S3, and CloudFront.",
     ],
   },
   {
     title: "OptiVest",
-    label: "Aug 2026",
-    status: "Quantitative portfolio decision support",
+    label: "Sep 2026",
+    status: "Quantitative portfolio decision-support system",
     category: "Analytics",
-    stack: "Python, React, optimization, Indian equities, scenario simulation",
+    stack: "Python, React, PostgreSQL, optimization, Indian equities, scenario simulation",
     github: "https://github.com/ParthrChandurkar/quantitative-portfolio-optimization-dss",
     icon: Activity,
     featured: true,
     points: [
-      "Turns investor goals, risk appetite, capital, sector caps, and diversification limits into explainable Nifty 50 allocations.",
-      "Supports stress tests, binding-constraint inspection, projected drawdown analysis, and investment-committee exports.",
+      "Builds personalized Nifty portfolio allocations from risk appetite, sector limits, diversification rules, and optimization constraints.",
+      "Combines a decision-support loop for model, solve, explain, simulate, and report-style portfolio review.",
+    ],
+  },
+  {
+    title: "Retail IQ",
+    label: "Sep 2026",
+    status: "Retail business intelligence platform",
+    category: "Analytics",
+    stack: "Python, Next.js, PostgreSQL, ETL, Power BI, ML, Docker",
+    github: "https://github.com/ParthrChandurkar/Retail-IQ",
+    icon: Activity,
+    featured: true,
+    points: [
+      "Transforms an Indian retail transaction dataset into clean data, governed KPIs, dashboards, recommendations, and statistical evidence.",
+      "Adds explainable high-profit order prediction as a decision-support layer, not as a replacement for BI.",
     ],
   },
   {
@@ -313,159 +295,113 @@ const projects = [
     label: "Aug 2026",
     status: "Private AI resume and cover-letter studio",
     category: "AI",
-    stack: "FastAPI, React, Gemini, PDF export, LaTeX, private workspaces",
+    stack: "Python, FastAPI, React, Gemini, PDF export, LaTeX",
     github: "https://github.com/ParthrChandurkar/ResumeForge",
     icon: FileText,
     featured: true,
     points: [
       "Tailors role-specific resumes and cover letters from job descriptions while preserving truthful evidence and document style.",
-      "Supports multiple resume variants, ATS keyword insight, personal history, clickable links, PDF output, and Overleaf-ready LaTeX.",
+      "Supports private workspaces, ATS keyword insights, clickable links, PDF output, and Overleaf-ready LaTeX.",
     ],
   },
   {
     title: "Six Sigma DMAIC Quality Dashboard",
     label: "Aug 2026",
-    status: "ML-assisted manufacturing quality analytics",
+    status: "ML-assisted manufacturing quality dashboard",
     category: "Analytics",
-    stack: "Python, Streamlit, scikit-learn, Random Forest, DMAIC, quality control",
+    stack: "Python, Streamlit, scikit-learn, Random Forest, DMAIC",
     github: "https://github.com/ParthrChandurkar/six-sigma-dmaic-quality-dashboard",
     icon: Activity,
     points: [
-      "Combines DMAIC workflow, Pareto analysis, defect severity prediction, risk ranking, and process improvement recommendations.",
-      "Monitors process stability with weekly defect views and c-chart-style control limits.",
-    ],
-  },
-  {
-    title: "SeatFlow",
-    label: "July 2026",
-    status: "Live full-stack deployment",
-    category: "Full Stack",
-    stack: "React, Vite, TypeScript, Node.js, Express, Prisma, PostgreSQL, JWT, Resend, Render, Vercel, Neon",
-    github: "https://github.com/ParthrChandurkar/Ticket-Booking-System",
-    live: "https://seatflow-ticket-booking-tawny.vercel.app",
-    icon: ServerCog,
-    featured: true,
-    points: [
-      "Built a production-style movie and concert booking system with role-based admin, organiser, and customer workflows.",
-      "Implemented concurrency-safe seat holds with atomic SQL updates, TTL expiry jobs, waitlist auto-assignment, and QR email tickets.",
-      "Deployed the full stack on Vercel, Render, and Neon with seeded demo data, verified email delivery, and automated Jest/Supertest coverage.",
+      "Combines the Six Sigma DMAIC framework with a trained machine-learning pipeline for defect analysis.",
+      "Measures defects, predicts severity, identifies risky process combinations, recommends improvements, and monitors process stability.",
     ],
   },
   {
     title: "FlowCraft Pipeline Builder",
-    label: "July 2026",
-    status: "Visual workflow builder",
+    label: "Jul 2026",
+    status: "Visual node-based workflow builder",
     category: "Automation",
-    stack: "React Flow, FastAPI, JavaScript, graph validation, drag-and-drop UI",
+    stack: "React Flow, FastAPI, JavaScript, graph validation",
     github: "https://github.com/ParthrChandurkar/flowcraft-pipeline-builder",
     icon: Workflow,
     points: [
-      "Built a responsive node-canvas builder for composing inputs, outputs, prompts, transforms, API calls, filters, and timers.",
-      "Analyzes submitted graphs through a FastAPI backend with dynamic handles from text variables and workflow validation.",
+      "Composes node-based workflows on a drag-and-drop canvas with a responsive React Flow frontend.",
+      "Uses a FastAPI backend to analyze submitted graphs and validate workflow structure in real time.",
     ],
   },
   {
-    title: "SnapLink",
-    label: "June 2026",
-    status: "Live serverless URL analytics app",
-    category: "Cloud",
-    stack: "React, Tailwind CSS, Recharts, Python, AWS SAM, Lambda, DynamoDB, API Gateway",
-    github: "https://github.com/ParthrChandurkar/SnapLink",
-    live: "https://snaplink-eight.vercel.app",
-    icon: Rocket,
-    featured: true,
+    title: "SeatFlow",
+    label: "Jul 2026",
+    status: "Movie and concert ticket booking app",
+    category: "Web App",
+    stack: "React, TypeScript, Node.js, Express, Prisma, PostgreSQL",
+    github: "https://github.com/ParthrChandurkar/Ticket-Booking-System",
+    live: "https://seatflow-ticket-booking-tawny.vercel.app",
+    icon: ServerCog,
     points: [
-      "Creates compact short links, redirects visitors with low latency, and tracks clicks by country, device, browser, referrer, and time.",
-      "Showcases cloud deployment, backend architecture, and frontend analytics in one production-style serverless build.",
-    ],
-  },
-  {
-    title: "InfraWatch",
-    label: "June 2026",
-    status: "Zero-touch deployment control plane",
-    category: "DevOps",
-    stack: "FastAPI, React, TypeScript, Docker, Kubernetes, Terraform, Helm, Prometheus, Grafana, Loki, GitHub Actions",
-    github: "https://github.com/ParthrChandurkar/InfraWatch-Zero-Touch-Deployments-with-Full-Infrastructure-Visibility",
-    live: "https://infrawatch-platform.vercel.app",
-    icon: Workflow,
-    featured: true,
-    points: [
-      "Built a cloud-native DevOps command center for deployments, service state, health metrics, logs, and audit events.",
-      "Connected Docker Compose, Kubernetes manifests, Terraform/Helm, Prometheus, Grafana, Loki, and GitHub Actions into a demo-ready platform.",
+      "Implements live seat maps, timed seat holds, waitlists, booking confirmation emails, and QR tickets.",
+      "Focuses on booking correctness so two customers cannot hold or book the same seat at the same time.",
     ],
   },
   {
     title: "AI-Based Network Route Optimizer",
-    label: "July 2026",
+    label: "Jul 2026",
     status: "Failure-aware network routing dashboard",
-    category: "AI",
-    stack: "Python, Streamlit, Random Forest, Dijkstra, Plotly, network telemetry",
+    category: "Network",
+    stack: "Python, Streamlit, Random Forest, Dijkstra, Plotly",
     github: "https://github.com/ParthrChandurkar/AI-Based-Network-Route-Optimizer",
     icon: Cloud,
     points: [
-      "Compares traditional shortest-path routing with ML-assisted routing that penalizes risky links using predicted failure probability.",
-      "Visualizes latency, packet loss, bandwidth, stress simulations, and safer route selection in an interactive dashboard.",
-    ],
-  },
-  {
-    title: "F1 Race Prediction and Strategy System",
-    label: "Aug 2026",
-    status: "MLOps race analytics application",
-    category: "MLOps",
-    stack: "Python, Streamlit, scikit-learn, DVC, Docker, Monte Carlo simulation, CI",
-    github: "https://github.com/ParthrChandurkar/F1-Race-Prediction-Strategy-System",
-    icon: BrainCircuit,
-    points: [
-      "Predicts race outcomes and simulates strategy using trained models, circuit characteristics, weather, and tyre degradation rules.",
-      "Uses MLOps tooling and CI to keep the data, model, and dashboard workflow reproducible.",
+      "Compares traditional shortest-path routing with machine-learning assisted, failure-aware routing.",
+      "Uses Random Forest failure prediction from link telemetry and penalizes risky edges before selecting a path.",
     ],
   },
   {
     title: "ZenithMind",
-    label: "July 2026",
+    label: "Jul 2026",
     status: "IEEE-published AI mental wellness platform",
-    category: "AI",
-    stack: "React, Express, MongoDB, Gemini, Socket.IO, Google Fit, AWS EC2, Kubernetes",
+    category: "Research",
+    stack: "React, Node.js, MongoDB, Gemini, Socket.IO, AWS EC2, Kubernetes",
     github: "https://github.com/ParthrChandurkar/-ZenithMind-AI-Powered-Mental-Health-Assistant",
     icon: BrainCircuit,
     points: [
-      "Combines CBT-informed AI chat, mood and stress analytics, therapist workflows, community features, and gamified mental fitness.",
+      "Combines CBT-informed chatbot support, mood and stress tracking, therapist workflows, realtime community spaces, and gamified self-care tools.",
       "Associated research paper is published on IEEE Xplore as document 11566649.",
     ],
   },
   {
     title: "Pharmenia",
-    label: "June 2026",
-    status: "Pharmacy operations and DBMS system",
+    label: "Jun 2026",
+    status: "Pharmacy management and DBMS system",
     category: "Desktop",
     stack: "Python, Tkinter, MySQL, ReportLab, stored procedures, triggers, views",
     github: "https://github.com/ParthrChandurkar/Pharmenia---Pharmacy-Management-System",
     icon: Database,
     points: [
-      "Manages medicine stock, suppliers, customers, purchases, GST invoices, FIFO batch consumption, and PDF invoice exports.",
+      "Handles medicine stock, suppliers, purchases, GST invoices, FIFO batch consumption, and PDF invoice export.",
       "Demonstrates normalized 3NF database design with stored procedures, triggers, views, and cursor-based invoice processing.",
     ],
   },
   {
     title: "LexiLog",
-    label: "June 2026",
+    label: "Jul 2026",
     status: "Personal vocabulary journal",
     category: "Desktop",
     stack: "Python, Tkinter, MongoDB, PDF export, quiz workflows",
     github: "https://github.com/ParthrChandurkar/LexiLog-Your-Personal-Vocabulary-Journal",
     icon: FileText,
     points: [
-      "Captures words, phrases, and idioms from films into searchable notes with meanings, context, and difficulty levels.",
-      "Adds quiz practice, learning stats, exportable collections, and a desktop-first workflow for regular vocabulary building.",
+      "Captures memorable words, phrases, and idioms from movies into searchable notes.",
+      "Adds quiz practice, learning stats, and printable PDF exports for regular vocabulary building.",
     ],
   },
 ];
 
 const certifications = [
-  "IBM DevOps and Software Engineering - Coursera",
+  "IBM DevOps and Software Engineering Professional Certificate - Coursera",
+  "AWS Cloud Practitioner Specialization - Udemy",
   "CCNA v7: Introduction to Networks - Cisco Networking Academy",
-  "AWS Certified Cloud Practitioner Specialization - Udemy",
-  "Career Essentials in Project Management - Microsoft & LinkedIn Learning",
 ];
 
 const education = [
@@ -477,13 +413,25 @@ const education = [
   },
   {
     title: "Cloud & DevOps Engineering Track",
-    school: "AWS, Kubernetes, Terraform, Helm, CI/CD, Linux, observability",
+    school: "AWS, Terraform, Docker, Kubernetes, GitHub Actions, Linux, observability, Redis caching",
     period: "Current Focus",
-    status: "Building production-grade cloud and automation systems",
+    status: "Currently learning RHEL and OpenShift",
+  },
+  {
+    title: "Research Publication",
+    school: "Co-authored and published the ZenithMind research paper on IEEE Xplore",
+    period: "Achievement",
+    status: "IEEE document 11566649",
+  },
+  {
+    title: "Academic Achievements",
+    school: "100% in SSC and 97.97 percentile in MHT-CET",
+    period: "Achievement",
+    status: "Strong academic foundation alongside engineering project work",
   },
   {
     title: "DevOps & Software Engineering",
-    school: "IBM, Cisco, AWS, Microsoft Learning",
+    school: "IBM, Cisco Networking Academy, Udemy",
     period: "Certifications",
     status: "Validated fundamentals across delivery, networks, and cloud",
   },
@@ -491,9 +439,9 @@ const education = [
 
 const stats = [
   { value: "8.71", label: "CGPA" },
-  { value: "17", label: "Public GitHub repos" },
-  { value: "14", label: "Portfolio projects" },
+  { value: "15", label: "GitHub project repos" },
   { value: "IEEE", label: "Published research" },
+  { value: "97.97", label: "MHT-CET percentile" },
 ];
 
 function App() {
@@ -588,13 +536,13 @@ function App() {
                 <span className="name-accent">Chandurkar</span>
               </h1>
               <p className="hero-role">
-                I am into <span>Cloud, DevOps & AI Automation</span>
+                I am into <span>Cloud, DevOps & Infrastructure Automation</span>
                 <i aria-hidden="true" />
               </p>
               <p className="hero-copy">
-                I build cloud-native products, deployment systems, AI workflow tools, and
-                analytics dashboards that connect backend engineering with infrastructure,
-                observability, and practical business outcomes.
+                Final-year Information Technology student specializing in AWS, Terraform,
+                Docker, Kubernetes, GitHub Actions, Linux, CI/CD, observability, and
+                Redis-based caching.
               </p>
 
               <div className="hero-actions" aria-label="Profile links">
@@ -665,7 +613,7 @@ function App() {
               <div className="cloud-console" aria-hidden="true">
                 <span className="console-dot" />
                 <code>kubectl get pods --watch</code>
-                <strong>99.9% uptime mindset</strong>
+                <strong>Cloud monitoring mindset</strong>
               </div>
             </div>
           </div>
@@ -688,14 +636,14 @@ function App() {
           <div className="about-layout">
             <div className="about-copy">
               <p>
-                I am a B.Tech IT student at VIIT Pune focused on Cloud, DevOps, full-stack
-                systems, and AI automation. My work spans AWS infrastructure, Kubernetes,
-                CI/CD, observability, workflow automation, analytics, and practical ML systems.
+                I am a final-year B.Tech Information Technology student at VIIT Pune focused
+                on Cloud and DevOps engineering. My work spans AWS infrastructure,
+                Terraform, Docker, Kubernetes, CI/CD, Linux, and observability.
               </p>
               <p>
-                My current GitHub portfolio includes public builds across deployment control
-                planes, invoice automation, retail BI, quantitative decision support, resume AI,
-                serverless analytics, quality dashboards, and MLOps products.
+                My current GitHub portfolio includes public builds across local Kubernetes
+                observability, invoice approval workflows, MLOps pipelines, serverless
+                analytics, network routing, quality dashboards, and applied AI systems.
               </p>
             </div>
             <div className="identity-panel">
@@ -705,7 +653,7 @@ function App() {
               </div>
               <div>
                 <span>Current focus</span>
-                <strong>Kubernetes, Terraform, observability, AI automation, analytics systems</strong>
+                <strong>AWS, Terraform, Docker, Kubernetes, CI/CD, Linux, observability, and Redis caching</strong>
               </div>
               <div>
                 <span>Latest refresh</span>
@@ -718,7 +666,7 @@ function App() {
         <section className="section skills-section" id="skills">
           <div className="section-heading">
             <span className="section-kicker">Skills</span>
-            <h2>Tooling across infrastructure, apps, data, and AI.</h2>
+            <h2>Tooling across cloud, DevOps, networking, and observability.</h2>
           </div>
           <div className="skill-grid">
             {skillGroups.map(({ title, icon: Icon, accent, items }) => (
@@ -768,7 +716,7 @@ function App() {
         <section className="section timeline-section" id="experience">
           <div className="section-heading">
             <span className="section-kicker">Experience</span>
-            <h2>Applied engineering work with measurable outcomes.</h2>
+            <h2>Capstone research deployment with cloud operations work.</h2>
           </div>
           <div className="timeline">
             {experience.map((item) => (
@@ -810,7 +758,7 @@ function App() {
         <section className="section projects-section" id="work">
           <div className="section-heading">
             <span className="section-kicker">Work - GitHub synced {portfolioUpdated}</span>
-            <h2>Current public projects across cloud, automation, analytics, and AI.</h2>
+            <h2>Current public GitHub projects across cloud, DevOps, analytics, and applied AI.</h2>
           </div>
           <div className="project-finder" aria-label="Project finder">
             <label className="project-search">
@@ -897,9 +845,9 @@ function App() {
               </span>
               <h2>ZenithMind IEEE research work</h2>
               <p>
-                A capstone research project exploring CBT-based mental wellness support with
-                NLP-driven chatbot flows, sentiment analysis, behavioral analytics, and
-                therapist escalation pathways.
+                A capstone research project where the team deployed a React and Node.js
+                application on AWS EC2 using Docker and Kubernetes, configured HPA and
+                CloudWatch alarms, and published the associated paper on IEEE Xplore.
               </p>
             </div>
             <a
@@ -953,6 +901,10 @@ function App() {
                 <FaLinkedinIn size={18} />
                 linkedin.com/in/parth-chandurkar
               </a>
+              <a href={profile.ieee} target="_blank" rel="noreferrer">
+                <FileText size={18} />
+                IEEE publication
+              </a>
               <span>
                 <MapPin size={18} />
                 {profile.location}
@@ -983,8 +935,8 @@ function App() {
 
       <footer className="site-footer">
         <span>&copy; {currentYear} {profile.name}</span>
-        <a href={profile.leetcode} target="_blank" rel="noreferrer">
-          LeetCode <ChevronRight size={14} />
+        <a href={profile.ieee} target="_blank" rel="noreferrer">
+          IEEE Paper <ChevronRight size={14} />
         </a>
       </footer>
     </div>
