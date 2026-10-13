@@ -231,10 +231,12 @@ img {
   grid-template-columns: minmax(0, 1.06fr) minmax(330px, 0.78fr);
   align-items: start;
   gap: clamp(2rem, 5vw, 5rem);
+  min-width: 0;
 }
 
 .hero-content {
   width: min(760px, 100%);
+  min-width: 0;
 }
 
 .hero-visual-card {
@@ -1555,6 +1557,24 @@ li::before {
     flex: 1 1 160px;
   }
 
+  .hero-content,
+  .hero-copy,
+  .hero-actions,
+  .hero-stack {
+    width: min(100%, calc(100vw - 3rem));
+    max-width: calc(100vw - 3rem);
+  }
+
+  .hero-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .stack-chip {
+    min-width: 0;
+    width: 100%;
+  }
+
   .hero-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1581,6 +1601,10 @@ li::before {
     max-width: 100%;
   }
 
+  .hero-content {
+    width: min(100%, calc(100vw - 3rem));
+  }
+
   .hero-visual-card {
     min-height: 560px;
   }
@@ -1599,8 +1623,40 @@ li::before {
   }
 
   .hero-role {
+    display: block;
     max-width: 100%;
+    max-width: calc(100vw - 3rem);
+    width: 100%;
     font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .hero-copy,
+  .hero-actions,
+  .hero-stack {
+    width: min(100%, calc(100vw - 3rem));
+    max-width: calc(100vw - 3rem);
+  }
+
+  .hero-role span {
+    display: inline;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-role i {
+    display: inline-flex;
+    vertical-align: text-bottom;
+  }
+
+  .hero-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: calc(100vw - 3rem);
+  }
+
+  .stack-chip {
+    min-width: 0;
+    width: 100%;
   }
 
   .section {
