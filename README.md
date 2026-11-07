@@ -55,19 +55,38 @@ Portfolio/
 
 ## Getting Started
 
-Prerequisites: a Node.js version supported by Vite 8 and npm.
+Prerequisites: Node.js 20.19+ within the 20.x release line, or Node.js 22.12+, and npm. These versions match the installed Vite package's Node engine requirement.
+
+Clone the repository and install the versions recorded in `package-lock.json`:
 
 ```bash
-npm install
+git clone https://github.com/ParthrChandurkar/Portfolio-Parth-Chandurkar.git
+cd Portfolio-Parth-Chandurkar
+npm ci
 npm run dev
 ```
 
-Use the local URL printed by Vite. To verify a production build:
+Use the local URL printed by Vite. The dev server binds to `127.0.0.1`. To request another port when one is occupied:
+
+```bash
+npm run dev -- --port 5174
+```
+
+To verify a production build:
 
 ```bash
 npm run build
 npm run preview
 ```
+
+| Command | Purpose |
+| --- | --- |
+| `npm ci` | Install dependencies from the committed lockfile; fails if it disagrees with `package.json` |
+| `npm run dev` | Start the local development server with hot reload |
+| `npm run build` | Generate the production site in `dist/` |
+| `npm run preview` | Serve the existing `dist/` build locally for verification |
+
+Rebuild before previewing changes. Preview does not rebuild the app or publish it. The repository currently defines no lint, type-check, or automated test scripts.
 
 ## Content Maintenance
 
