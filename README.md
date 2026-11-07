@@ -101,6 +101,32 @@ Most portfolio content lives in `src/App.jsx`:
 - `education`
 - `stats`
 
+### Updating Projects
+
+Edit the `projects` array in [src/App.jsx](src/App.jsx). Each card uses the following fields:
+
+| Fields | Purpose |
+| --- | --- |
+| `title`, `status` | Unique project name and short description |
+| `label`, `category` | Display date and category; category filters are generated from these values |
+| `stack`, `points` | Technology summary and an array of evidence-backed descriptions |
+| `icon` | An imported icon component used on the card |
+| `github` | Repository link |
+| `live`, `paper` | Optional demo and publication links, rendered only when present |
+| `featured` | Enables the featured card styling and contributes to the featured result count |
+
+Cards appear in array order. Setting `featured: true` does not move a card to the top, so keep the four featured CV projects first. Search is case-insensitive and covers title, status, stack, category, and points; it combines with the selected category filter.
+
+Verify claims against the current CV and repository implementation. Keep planned work explicitly labeled, preserve publication links, and update `portfolioUpdated` only after reviewing the content. This is a manually maintained portfolio; the page does not fetch GitHub project data at runtime.
+
+### Updating Assets
+
+- Replace [the resume PDF](public/Parth_Rajesh_Chandurkar_Resume.pdf) at the existing path to preserve the download link. Check that its text agrees with the visible profile and project descriptions.
+- Replace `public/profile.jpeg` to update the portrait. If it fails to load, the app uses `public/profile-fallback.bmp`.
+- To regenerate the fallback image, run `node scripts/create-profile-fallback.mjs` from the repository root. This overwrites the existing fallback bitmap.
+- If an asset filename changes, update its reference in `src/App.jsx`. Files in `public/` are served from the URL root, without a `/public/` prefix.
+- Keep the title and description in [index.html](index.html) aligned with the profile positioning.
+
 Before publishing content changes, verify:
 
 - `npm run build` passes
