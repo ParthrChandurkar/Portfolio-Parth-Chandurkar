@@ -140,6 +140,39 @@ Before publishing content changes, verify:
 
 The public site is deployed on Vercel. The repository does not include a committed Vercel project configuration, so deployment settings are managed through the connected Vercel project.
 
+### Build Configuration
+
+The repository's scripts produce a static Vite build. When configuring or repairing the connected Vercel project, use:
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | Vite |
+| Root directory | Repository root |
+| Install command | `npm ci` |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Production branch | `main` |
+
+### Release Verification
+
+1. Run `npm run build` and `git diff --check`, then preview the build locally.
+2. Check project search with `InfraWatch`, combine it with a category, and verify Reset restores the full list. Test an unmatched query to check the empty state.
+3. Open the resume, portrait, repository links, and IEEE paper. Check long card titles and navigation at both desktop and mobile widths.
+4. Commit the intended files and push to `main`. In Vercel, check that the production deployment references that commit and finishes successfully.
+5. Open [the live portfolio](https://parth-chandurkar.vercel.app) and verify the published content and resume. A successful Git push alone does not confirm a successful deployment.
+
+### Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| Dependency installation reports an unsupported engine | Compare `node --version` with the prerequisites above |
+| `npm ci` reports a lockfile mismatch | Reconcile `package.json` and `package-lock.json`; review and commit dependency changes together |
+| Local preview shows old content | Run `npm run build` again before starting `npm run preview` |
+| Portrait or resume fails to load | Verify the exact filename and letter case in `public/` and its root-relative URL in `src/App.jsx` |
+| A project disappears from results | Reset both filters and check the card's category and searchable fields |
+| Contact form does not send mail automatically | It opens the visitor's configured email client through `mailto:`; the app has no email-sending backend |
+| Production still shows an older version | Check Vercel's deployed commit and build logs, then reload the page without cache |
+
 ## Connect
 
 - GitHub: [github.com/ParthrChandurkar](https://github.com/ParthrChandurkar)
