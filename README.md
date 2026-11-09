@@ -4,6 +4,19 @@ A responsive React portfolio for **Parth Rajesh Chandurkar - Cloud & DevOps Enth
 
 - [Live site](https://parth-chandurkar.vercel.app)
 
+## Quick Navigation
+
+For visitors: [Projects](https://parth-chandurkar.vercel.app/#work), [Experience](https://parth-chandurkar.vercel.app/#experience), [Research](https://parth-chandurkar.vercel.app/#research), and [Resume PDF](https://parth-chandurkar.vercel.app/Parth_Rajesh_Chandurkar_Resume.pdf).
+
+For maintainers:
+
+- [Getting Started](#getting-started): install dependencies and run the app.
+- [Content Maintenance](#content-maintenance): edit projects, profile information, and assets.
+- [Deployment](#deployment): configure builds and verify releases.
+- [Troubleshooting](#troubleshooting): investigate installation, asset, filter, and publishing problems.
+
+The website uses section anchors on a single page. Keep section IDs and `navItems` in `src/App.jsx` aligned when changing navigation so shared links remain valid.
+
 ## Current Focus
 
 - Cloud infrastructure, Kubernetes, deployment automation, CI/CD, observability, networking, and reliability engineering
