@@ -66,6 +66,16 @@ Portfolio/
 `-- vite.config.js
 ```
 
+## How the App Runs
+
+`index.html` provides the root element and loads `src/main.jsx`, which mounts `App` in React Strict Mode and imports `src/styles.css`. Profile and project data live directly in `src/App.jsx`; Vite bundles them into the static production output.
+
+The mobile menu, project query, category selection, and image fallback use React state. Search and category changes are processed in the browser. They are not stored in a database or encoded in the URL, so reloading resets the filters.
+
+The contact form opens a `mailto:` URL using the visitor's name for the subject and message for the body. It does not submit to a server or confirm delivery. Although an email field is displayed, the current handler does not include that field in the generated draft; the sending address is controlled by the visitor's email client.
+
+There is no application backend or database to start for this portfolio. The technologies listed in project cards describe those separate repositories, not dependencies required to run this website.
+
 ## Getting Started
 
 Prerequisites: Node.js 20.19+ within the 20.x release line, or Node.js 22.12+, and npm. These versions match the installed Vite package's Node engine requirement.
