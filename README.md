@@ -150,6 +150,21 @@ Verify claims against the current CV and repository implementation. Keep planned
 - If an asset filename changes, update its reference in `src/App.jsx`. Files in `public/` are served from the URL root, without a `/public/` prefix.
 - Keep the title and description in [index.html](index.html) aligned with the profile positioning.
 
+### Keeping CV Updates Consistent
+
+Some facts appear in several places and are not derived from a single value. Review these together when updating the CV:
+
+| Changed fact | Places to review |
+| --- | --- |
+| Professional title or focus | `profile`, hero and about copy in `src/App.jsx`, page metadata in `index.html`, and the README introduction |
+| Education or achievements | `profile.college`, `education`, `stats`, and the downloadable resume |
+| Featured project selection | Array order and `featured` flags in `projects`, the manually written featured-project statistic, and the README project table |
+| Project responsibilities or implementation status | Relevant `experience` and `projects` entries, research copy where applicable, and the resume |
+| IEEE publication URL | `researchPaperUrl`, `profile.ieee`, and the README research/contact links |
+| Refresh date | `portfolioUpdated`, after the corresponding content and resume review is complete |
+
+Record evaluation context alongside metrics: held-out model scores and controlled Mininet results should retain their test conditions. Describe virtual experiences as such, and keep roadmap capabilities separate from implemented project behavior. When the CV and a public repository differ, identify the source of the claim instead of silently treating both as equivalent evidence.
+
 Before publishing content changes, verify:
 
 - `npm run build` passes
