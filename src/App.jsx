@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import RetroHero from './RetroHero.jsx';
 import {
   Activity,
   Award,
@@ -21,7 +22,6 @@ import {
   Send,
   ServerCog,
   ShieldCheck,
-  Terminal,
   Workflow,
   X,
 } from "lucide-react";
@@ -77,16 +77,6 @@ const navItems = [
 const skill = (name, icon, color) => ({ name, icon, color });
 const awsOrange = "#ff9900";
 const researchPaperUrl = "https://ieeexplore.ieee.org/document/11566649";
-
-const featuredStack = [
-  skill("AWS", FaAws, awsOrange),
-  skill("Docker", SiDocker, "#2496ed"),
-  skill("Kubernetes", SiKubernetes, "#326ce5"),
-  skill("Minikube", SiKubernetes, "#326ce5"),
-  skill("GitHub Actions", SiGithubactions, "#ffffff"),
-  skill("Prometheus", SiPrometheus, "#e6522c"),
-  skill("Terraform", SiTerraform, "#844fba"),
-];
 
 const skillGroups = [
   {
@@ -528,13 +518,14 @@ function App() {
 
   return (
     <div className="site-shell">
+      <a className="skip-link" href="#about">Skip to content</a>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Parth portfolio home">
-          <span className="brand-mark">PC</span>
-          <span>{profile.shortName}</span>
+          <img className="brand-mark" src="/parth-mark.svg" alt="" width="38" height="38" />
+          <span>PARTH<span className="brand-suffix"> / ENGINEERING</span></span>
         </a>
 
-        <nav className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Primary navigation">
+        <nav id="primary-navigation" className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Primary navigation">
           <a href="/opensource" onClick={closeMenu}>Open Source</a>
           {navItems.map((item) => (
             <a key={item.id} href={`#${item.id}`} onClick={closeMenu}>
@@ -548,118 +539,15 @@ function App() {
           type="button"
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
         >
           {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </header>
 
       <main id="top">
-        <section className="hero-section" aria-labelledby="hero-title">
-          <div className="hero-bg-grid" aria-hidden="true" />
-          <div className="hero-overlay" aria-hidden="true" />
-
-          <div className="hero-layout">
-            <div className="hero-content">
-              <div className="eyebrow">
-                <Terminal size={16} />
-                <span>cloud/devops enthusiast</span>
-              </div>
-              <h1 id="hero-title">
-                <span>Parth Rajesh</span>
-                <span className="name-accent">Chandurkar</span>
-              </h1>
-              <p className="hero-role">
-                I am into <span>Cloud, DevOps & Reliability</span>
-                <i aria-hidden="true" />
-              </p>
-              <p className="hero-copy">
-                Final-year Information Technology student focused on cloud infrastructure,
-                deployment automation, Kubernetes, observability, networking, and practical
-                reliability engineering projects.
-              </p>
-
-              <div className="hero-actions" aria-label="Profile links">
-                <a className="button button-primary" href={profile.github} target="_blank" rel="noreferrer">
-                  <FaGithub size={18} />
-                  GitHub
-                </a>
-                <a className="button button-secondary" href={profile.linkedin} target="_blank" rel="noreferrer">
-                  <FaLinkedinIn size={18} />
-                  LinkedIn
-                </a>
-                <a className="button button-ghost" href={profile.resume} target="_blank" rel="noreferrer">
-                  <Download size={18} />
-                  Resume
-                </a>
-              </div>
-
-              <div className="hero-stack" aria-label="Featured technologies">
-                {featuredStack.map(({ name, icon: StackIcon, color }) => (
-                  <span className="stack-chip" key={name} style={{ "--skill-color": color }}>
-                    <StackIcon size={18} aria-hidden="true" />
-                    {name}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="hero-visual-card" aria-label="Cloud DevOps visual profile">
-              <svg className="infra-svg" viewBox="0 0 520 520" role="img" aria-label="Animated cloud infrastructure map">
-                <defs>
-                  <linearGradient id="infraStroke" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#38bdf8" />
-                    <stop offset="52%" stopColor="#34d399" />
-                    <stop offset="100%" stopColor="#f59e0b" />
-                  </linearGradient>
-                </defs>
-                <path className="infra-ring" d="M260 58a202 202 0 1 1 0 404 202 202 0 0 1 0-404Z" />
-                <path className="infra-line line-one" d="M88 260h96c28 0 42-42 76-42h172" />
-                <path className="infra-line line-two" d="M94 336h116c34 0 36-82 82-82h132" />
-                <path className="infra-line line-three" d="M104 184h84c30 0 50 72 86 72h154" />
-                {[
-                  [88, 260],
-                  [184, 260],
-                  [260, 218],
-                  [432, 218],
-                  [94, 336],
-                  [210, 336],
-                  [292, 254],
-                  [424, 254],
-                  [104, 184],
-                  [188, 184],
-                  [274, 256],
-                  [428, 256],
-                ].map(([cx, cy]) => (
-                  <circle className="infra-node" cx={cx} cy={cy} key={`${cx}-${cy}`} r="5" />
-                ))}
-              </svg>
-
-              <div className="profile-frame">
-                <img
-                  className="hero-photo"
-                  src={avatarSrc}
-                  alt="Parth Rajesh Chandurkar"
-                  onError={() => setAvatarSrc("/profile-fallback.bmp")}
-                />
-              </div>
-
-              <div className="cloud-console" aria-hidden="true">
-                <span className="console-dot" />
-                <code>kubectl get pods --watch</code>
-                <strong>Cloud monitoring mindset</strong>
-              </div>
-            </div>
-          </div>
-
-          <div className="hero-stats metrics-band" aria-label="Portfolio highlights">
-            {stats.map((stat) => (
-              <div className="stat-tile" key={stat.label}>
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+        <RetroHero profile={profile} stats={stats} />
 
         <section className="section about-section" id="about">
           <div className="section-heading">
@@ -667,6 +555,7 @@ function App() {
             <h2>Student engineer building practical cloud and DevOps systems.</h2>
           </div>
           <div className="about-layout">
+            <figure className="about-portrait"><img src={avatarSrc} alt="Parth Rajesh Chandurkar" onError={() => setAvatarSrc('/profile-fallback.bmp')} /><figcaption>PARTH R. CHANDURKAR <span>PUNE / INDIA</span></figcaption></figure>
             <div className="about-copy">
               <p>
                 I am a final-year B.Tech Information Technology student at VIIT Pune focused
@@ -793,7 +682,7 @@ function App() {
         <section className="section projects-section" id="work">
           <div className="section-heading">
             <span className="section-kicker">Work - GitHub synced {portfolioUpdated}</span>
-            <h2>Featured CV projects first, with the wider GitHub portfolio still searchable.</h2>
+            <h2>Built to learn. Made to work.</h2>
           </div>
           <div className="project-finder" aria-label="Project finder">
             <label className="project-search">

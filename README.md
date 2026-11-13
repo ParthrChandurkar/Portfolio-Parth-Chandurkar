@@ -1,6 +1,6 @@
 # Parth Rajesh Chandurkar Portfolio
 
-A responsive React portfolio for **Parth Rajesh Chandurkar - Cloud & DevOps Enthusiast**. The site preserves the existing dark infrastructure-themed design while keeping the content aligned with the final CV, public GitHub repositories, IEEE publication, and downloadable resume.
+A responsive React portfolio for **Parth Rajesh Chandurkar - Cloud & DevOps Enthusiast**. The retro engineering design draws on the navigation and content-directory approach of Layer5 Docs, with original PC branding, a pointer-responsive animated network, and charcoal, teal, and lime colors. Portfolio facts, projects, the IEEE publication, and the downloadable resume are retained.
 
 - [Live site](https://parth-chandurkar.vercel.app)
 
@@ -60,7 +60,8 @@ Portfolio/
 |-- src/
 |   |-- App.jsx          # Portfolio data and component structure
 |   |-- main.jsx         # React entry point
-|   `-- styles.css       # Global and responsive styles
+|   |-- RetroHero.jsx    # Animated network and portfolio directory
+|   `-- retro.css        # Active global and responsive styles
 |-- index.html
 |-- package.json
 `-- vite.config.js
@@ -68,7 +69,9 @@ Portfolio/
 
 ## How the App Runs
 
-`index.html` provides the root element and loads `src/main.jsx`, which mounts `App` in React Strict Mode and imports `src/styles.css`. Profile and project data live directly in `src/App.jsx`; Vite bundles them into the static production output.
+`index.html` provides the root element and loads `src/main.jsx`, which selects the portfolio or `/opensource` page in React Strict Mode and imports `src/retro.css`. Profile and project data live directly in `src/App.jsx`; Vite bundles them into the static production output. The original `src/styles.css` is retained but no longer imported. The logo and favicon share `public/parth-mark.svg`.
+
+The canvas network responds to pointer movement and stops animation when reduced motion is requested. Typography uses Space Grotesk and IBM Plex Mono from Google Fonts with local sans-serif/monospace fallbacks. The portrait remains available in About; the resume URL and existing section anchors are unchanged.
 
 The mobile menu, project query, category selection, and image fallback use React state. Search and category changes are processed in the browser. They are not stored in a database or encoded in the URL, so reloading resets the filters.
 
@@ -129,7 +132,6 @@ Edit curated contribution summaries in `src/Contributions.jsx` and page styles i
 Most portfolio content lives in `src/App.jsx`:
 
 - `profile`
-- `featuredStack`
 - `skillGroups`
 - `experience`
 - `projects`

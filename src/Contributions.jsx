@@ -48,7 +48,7 @@ export default function Contributions() {
     <div className="oss-page">
       <a className="oss-skip" href="#contribution-list">Skip to contributions</a>
       <header className="oss-header">
-        <a href="/" className="brand"><span className="brand-mark">PC</span><span>ParthChandurkar</span></a>
+        <a href="/" className="brand"><img className="brand-mark" src="/parth-mark.svg" alt="" width="38" height="38" /><span>PARTH / OPEN SOURCE</span></a>
         <a href="/" className="oss-back"><ArrowLeft size={16} /> Portfolio</a>
       </header>
       <main className="oss-main">
