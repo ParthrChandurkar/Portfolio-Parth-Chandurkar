@@ -15,7 +15,7 @@ For maintainers:
 - [Deployment](#deployment): configure builds and verify releases.
 - [Troubleshooting](#troubleshooting): investigate installation, asset, filter, and publishing problems.
 
-The website uses section anchors on a single page. Keep section IDs and `navItems` in `src/App.jsx` aligned when changing navigation so shared links remain valid.
+The main portfolio uses section anchors; [Open Source](https://parth-chandurkar.vercel.app/opensource) has its own page. Keep section IDs and `navItems` in `src/App.jsx` aligned when changing navigation so shared links remain valid.
 
 ## Current Focus
 
@@ -113,6 +113,19 @@ Rebuild before previewing changes. Preview does not rebuild the app or publish i
 
 ## Content Maintenance
 
+### Open-source Contributions
+
+The `/opensource` page shows verified merged and open pull requests authored by `ParthrChandurkar` across Meshery and Layer5. It includes status and organization filters, search, direct PR links, and a verification date. Closed, unmerged PRs are excluded, and community introductions are labeled separately from engineering work.
+
+```bash
+npm run sync:contributions
+npm run build
+```
+
+The sync script queries GitHub's public API and checks each PR's merge status before writing `src/data/contributions.json`. Review and commit this snapshot to publish refreshed statuses; visitors do not call GitHub at runtime. API failures leave the previous snapshot intact. Unauthenticated GitHub API rate limits apply.
+
+Edit curated contribution summaries in `src/Contributions.jsx` and page styles in `src/contributions.css`. Newly discovered PRs use their GitHub titles until a summary is added. Organization logos are stored locally in `public/opensource-*.png`.
+
 Most portfolio content lives in `src/App.jsx`:
 
 - `profile`
@@ -176,7 +189,7 @@ Before publishing content changes, verify:
 
 ## Deployment
 
-The public site is deployed on Vercel. The repository does not include a committed Vercel project configuration, so deployment settings are managed through the connected Vercel project.
+The public site is deployed on Vercel. Build settings are managed through the connected Vercel project; `vercel.json` rewrites `/opensource` and `/opensource/` to the app entry point so direct visits and refreshes work.
 
 ### Build Configuration
 

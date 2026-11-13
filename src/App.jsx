@@ -535,6 +535,7 @@ function App() {
         </a>
 
         <nav className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Primary navigation">
+          <a href="/opensource" onClick={closeMenu}>Open Source</a>
           {navItems.map((item) => (
             <a key={item.id} href={`#${item.id}`} onClick={closeMenu}>
               {item.label}
