@@ -1,6 +1,8 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 
 const author = 'ParthrChandurkar';
+// Keep the introductory PR out of the curated portfolio, including future refreshes.
+const excluded = new Set(['meshery/meshery#22413']);
 const headers = { Accept: 'application/vnd.github+json', 'User-Agent': 'parth-portfolio' };
 async function github(path) {
   const response = await fetch(`https://api.github.com/${path}`, { headers });
@@ -24,6 +26,7 @@ for (const item of found) {
   const pr = await github(path);
   if (pr.user.login.toLowerCase() !== author.toLowerCase()) throw new Error('Unexpected PR author');
   if (!pr.merged_at && pr.state !== 'open') continue;
+  if (excluded.has(`${pr.base.repo.full_name}#${pr.number}`)) continue;
   records.push({
     id: pr.id, number: pr.number, title: pr.title, repository: pr.base.repo.full_name,
     url: pr.html_url, status: pr.merged_at ? 'merged' : 'open', draft: pr.draft,

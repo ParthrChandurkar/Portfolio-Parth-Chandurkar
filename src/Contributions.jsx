@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowUpRight, GitMerge, GitPullRequest, Search, GitBranch, Check, Code2, BookOpen, Users } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, GitMerge, GitPullRequest, Search, GitBranch, Check, Code2, BookOpen } from 'lucide-react';
 import snapshot from './data/contributions.json';
 import './contributions.css';
 
@@ -8,11 +8,6 @@ const stories = {
     title: 'Keeping the operator toolchain current', kind: 'Engineering', icon: Code2,
     summary: 'Updated the Go version in the module and Docker builder, with related linting and modernization changes for Meshery Operator.',
     tags: ['Go', 'Docker', 'CI tooling'],
-  },
-  'meshery/meshery#22413': {
-    title: 'Joining the Meshery community', kind: 'Community', icon: Users,
-    summary: 'Added my contributor introduction to Meshery, sharing my interest in cloud-native technologies and DevOps.',
-    tags: ['Community', 'Documentation'],
   },
   'meshery/meshery-adapter-library#214': {
     title: 'Updating the adapter library build tools', kind: 'Engineering', icon: Code2,
@@ -34,7 +29,7 @@ export default function Contributions() {
   const [query, setQuery] = useState('');
   useEffect(() => {
     document.title = 'Open Source | Parth Rajesh Chandurkar';
-    document.querySelector('meta[name="description"]')?.setAttribute('content', 'Parth Chandurkar\'s verified merged and open pull requests across Meshery and Layer5: engineering, API documentation, and community contributions.');
+    document.querySelector('meta[name="description"]')?.setAttribute('content', 'Parth Chandurkar\'s selected merged and open pull requests across Meshery and Layer5: engineering and API documentation.');
   }, []);
   const counts = {
     all: snapshot.records.length,
@@ -61,7 +56,7 @@ export default function Contributions() {
           <p className="oss-eyebrow"><GitBranch size={16} /> BUILDING IN THE OPEN</p>
           <h1 id="oss-title">Open-source<br /><span>contributions.</span></h1>
           <p className="oss-lead">Parth Rajesh Chandurkar</p>
-          <p className="oss-description">Contributing to the cloud-native ecosystem, one pull request at a time. Engineering updates, clearer documentation, and community participation across Meshery and Layer5.</p>
+          <p className="oss-description">Contributing to the cloud-native ecosystem, one pull request at a time. Engineering updates and clearer documentation across Meshery and Layer5.</p>
           <div className="oss-community-links">
             <a href="https://github.com/meshery" target="_blank" rel="noreferrer"><img src="/opensource-meshery.png" alt="" width="36" height="36" /> Meshery <ArrowUpRight size={16} /></a>
             <a href="https://github.com/layer5io" target="_blank" rel="noreferrer"><img src="/opensource-layer5.png" alt="" width="36" height="36" /> Layer5 <ArrowUpRight size={16} /></a>
@@ -89,17 +84,19 @@ export default function Contributions() {
               const Icon = story.icon || GitPullRequest;
               const StatusIcon = pr.status === 'merged' ? GitMerge : GitPullRequest;
               return <article className={`oss-pr oss-pr-${pr.status}`} key={pr.id}>
+                <div className="oss-pr-date"><time dateTime={pr.mergedAt || pr.createdAt}>{date(pr.mergedAt || pr.createdAt)}</time><span>{pr.mergedAt ? 'Merged' : 'Opened'}</span><a href={pr.url} target="_blank" rel="noreferrer">PR #{pr.number} <ArrowUpRight size={15} /></a></div>
+                <div className="oss-pr-content">
                 <div className="oss-pr-top"><span className={`oss-badge oss-${pr.status}`}><StatusIcon size={15} />{pr.draft ? 'Draft' : pr.status === 'merged' ? 'Merged' : 'Open'}</span><span className="oss-kind"><Icon size={15} /> {story.kind}</span></div>
                 <a className="oss-repository" href={`https://github.com/${pr.repository}`} target="_blank" rel="noreferrer">{pr.repository}</a>
                 <h3><a href={pr.url} target="_blank" rel="noreferrer">{story.title}<ArrowUpRight size={20} /></a></h3>
                 <p>{story.summary}</p>
                 <ul className="oss-tags" aria-label="Contribution topics">{story.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
-                <div className="oss-pr-footer"><span>{pr.mergedAt ? 'Merged' : 'Opened'} <time dateTime={pr.mergedAt || pr.createdAt}>{date(pr.mergedAt || pr.createdAt)}</time></span><a href={pr.url} target="_blank" rel="noreferrer">PR #{pr.number} <ArrowUpRight size={15} /></a></div>
+                </div>
               </article>;
             })}
           </div>
           {!visible.length && <div className="oss-empty"><Search size={28} /><h3>No matching contributions</h3><button type="button" onClick={reset}>Reset filters</button></div>}
-          <p className="oss-footnote">Merged and open pull requests authored by @{snapshot.author}. Statuses reflect the verification date above; GitHub has the latest review activity. Closed, unmerged PRs are excluded.</p>
+          <p className="oss-footnote">Selected merged and open pull requests authored by @{snapshot.author}, newest first. Statuses reflect the verification date above; GitHub has the latest review activity. Introduction and closed, unmerged PRs are excluded.</p>
         </section>
         <section className="oss-closing"><GitBranch size={30} /><div><h2>Learning by contributing.</h2><p>From maintaining build tooling to documenting APIs, every contribution is a chance to understand how shared systems work.</p></div><a href="https://github.com/ParthrChandurkar" target="_blank" rel="noreferrer">Follow my work <ArrowUpRight size={17} /></a></section>
       </main>

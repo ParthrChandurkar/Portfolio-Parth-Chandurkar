@@ -115,7 +115,7 @@ Rebuild before previewing changes. Preview does not rebuild the app or publish i
 
 ### Open-source Contributions
 
-The `/opensource` page shows verified merged and open pull requests authored by `ParthrChandurkar` across Meshery and Layer5. It includes status and organization filters, search, direct PR links, and a verification date. Closed, unmerged PRs are excluded, and community introductions are labeled separately from engineering work.
+The `/opensource` page shows selected, verified merged and open pull requests authored by `ParthrChandurkar` across Meshery and Layer5. Contributions appear as full-width dated rows, newest first, with status and organization filters, search, direct PR links, and a verification date. Closed, unmerged PRs and the community introduction (`meshery/meshery#22413`) are excluded. The sync script preserves that exclusion on future refreshes.
 
 ```bash
 npm run sync:contributions

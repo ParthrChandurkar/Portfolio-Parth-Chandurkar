@@ -1,6 +1,6 @@
 {
   "author": "ParthrChandurkar",
-  "verifiedAt": "2026-11-13T17:48:35.790Z",
+  "verifiedAt": "2026-11-13T18:14:07.591Z",
   "records": [
     {
       "id": 5296421996,
@@ -8,11 +8,11 @@
       "title": "docs: add public event feed reference",
       "repository": "layer5io/docs",
       "url": "https://github.com/layer5io/docs/pull/1378",
-      "status": "open",
+      "status": "merged",
       "draft": false,
       "createdAt": "2026-11-13T13:36:04Z",
-      "updatedAt": "2026-11-13T17:46:32Z",
-      "mergedAt": null,
+      "updatedAt": "2026-11-13T18:07:03Z",
+      "mergedAt": "2026-11-13T18:06:58Z",
       "files": 3
     },
     {
@@ -40,19 +40,6 @@
       "updatedAt": "2026-10-17T19:53:53Z",
       "mergedAt": "2026-10-17T19:41:06Z",
       "files": 5
-    },
-    {
-      "id": 4889321013,
-      "number": 22413,
-      "title": "Create parth-chandurkar introductory text.md",
-      "repository": "meshery/meshery",
-      "url": "https://github.com/meshery/meshery/pull/22413",
-      "status": "merged",
-      "draft": false,
-      "createdAt": "2026-10-16T13:48:59Z",
-      "updatedAt": "2026-10-16T20:18:32Z",
-      "mergedAt": "2026-10-16T14:26:25Z",
-      "files": 1
     }
   ]
 }
